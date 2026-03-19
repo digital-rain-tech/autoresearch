@@ -524,7 +524,7 @@ print(f"Gradient accumulation steps: {grad_accum_steps}")
 def get_lr_multiplier(progress):
     return get_king_wen_lr_multiplier(
         progress,
-        base_amplitude=0.15,
+        base_amplitude=0.5,
         warmup_ratio=WARMUP_RATIO,
         warmdown_ratio=WARMDOWN_RATIO,
         final_lr_frac=FINAL_LR_FRAC,
