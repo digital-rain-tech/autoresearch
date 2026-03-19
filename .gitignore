@@ -21,3 +21,8 @@ dev/
 
 # Results file
 results.tsv
+
+# Seed sweep artifacts
+checkpoints/
+samples/
+scores/

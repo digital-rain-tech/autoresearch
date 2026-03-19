@@ -18,8 +18,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # Use PyTorch SDPA instead of FA3 for GPU compatibility (Turing/RTX 2060)
-from king_wen_schedules import get_king_wen_lr_multiplier
-
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
 # ---------------------------------------------------------------------------
@@ -461,8 +459,9 @@ DEVICE_BATCH_SIZE = 16   # per-device batch size (reduced for 6GB VRAM)
 # ---------------------------------------------------------------------------
 
 t_start = time.time()
-torch.manual_seed(42)
-torch.cuda.manual_seed(42)
+_seed = int(os.environ.get("AUTORESEARCH_SEED", "42"))
+torch.manual_seed(_seed)
+torch.cuda.manual_seed(_seed)
 torch.set_float32_matmul_precision("high")
 device = torch.device("cuda")
 autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.float32)  # fp32 for Turing GPU compat
@@ -522,13 +521,13 @@ print(f"Gradient accumulation steps: {grad_accum_steps}")
 # Schedules (all based on progress = training_time / TIME_BUDGET)
 
 def get_lr_multiplier(progress):
-    return get_king_wen_lr_multiplier(
-        progress,
-        base_amplitude=0.5,
-        warmup_ratio=WARMUP_RATIO,
-        warmdown_ratio=WARMDOWN_RATIO,
-        final_lr_frac=FINAL_LR_FRAC,
-    )
+    if progress < WARMUP_RATIO:
+        return progress / WARMUP_RATIO if WARMUP_RATIO > 0 else 1.0
+    elif progress < 1.0 - WARMDOWN_RATIO:
+        return 1.0
+    else:
+        cooldown = (1.0 - progress) / WARMDOWN_RATIO
+        return cooldown * 1.0 + (1 - cooldown) * FINAL_LR_FRAC
 
 def get_muon_momentum(step):
     frac = min(step / 300, 1)
@@ -618,6 +617,18 @@ total_tokens = step * TOTAL_BATCH_SIZE
 model.eval()
 with autocast_ctx:
     val_bpb = evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
+
+# Save checkpoint if requested via environment variable
+_ckpt_path = os.environ.get("AUTORESEARCH_CHECKPOINT_PATH")
+if _ckpt_path:
+    os.makedirs(os.path.dirname(_ckpt_path) or ".", exist_ok=True)
+    torch.save({
+        "config": config,
+        "model_state_dict": model.state_dict(),
+        "val_bpb": val_bpb,
+        "seed": _seed,
+    }, _ckpt_path)
+    print(f"checkpoint_saved: {_ckpt_path}")
 
 # Final summary
 t_end = time.time()
