@@ -2,3 +2,4 @@ commit	val_bpb	memory_gb	status	description
 23522d8	1.753376	4.3	keep	baseline - standard LR schedule
 645a821	1.730856	4.3	keep	random_perturbation amp=0.3
 396f5bd	1.732407	4.3	keep	shao_yong amp=0.3
+29030d8	1.785356	4.3	keep	king_wen amp=0.3
