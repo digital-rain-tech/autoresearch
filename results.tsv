@@ -1,1 +1,3 @@
 commit	val_bpb	memory_gb	status	description
+23522d8	1.753376	4.3	keep	baseline - standard LR schedule
+645a821	1.730856	4.3	keep	random_perturbation amp=0.3

@@ -18,7 +18,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # Use PyTorch SDPA instead of FA3 for GPU compatibility (Turing/RTX 2060)
-from king_wen_schedules import get_random_perturbation_lr_multiplier
+from king_wen_schedules import get_shao_yong_lr_multiplier
 
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
@@ -522,7 +522,7 @@ print(f"Gradient accumulation steps: {grad_accum_steps}")
 # Schedules (all based on progress = training_time / TIME_BUDGET)
 
 def get_lr_multiplier(progress):
-    return get_random_perturbation_lr_multiplier(
+    return get_shao_yong_lr_multiplier(
         progress,
         base_amplitude=0.3,
         warmup_ratio=WARMUP_RATIO,
