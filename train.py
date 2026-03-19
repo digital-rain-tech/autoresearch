@@ -18,6 +18,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # Use PyTorch SDPA instead of FA3 for GPU compatibility (Turing/RTX 2060)
+from king_wen_schedules import get_random_perturbation_lr_multiplier
 
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
@@ -521,13 +522,13 @@ print(f"Gradient accumulation steps: {grad_accum_steps}")
 # Schedules (all based on progress = training_time / TIME_BUDGET)
 
 def get_lr_multiplier(progress):
-    if progress < WARMUP_RATIO:
-        return progress / WARMUP_RATIO if WARMUP_RATIO > 0 else 1.0
-    elif progress < 1.0 - WARMDOWN_RATIO:
-        return 1.0
-    else:
-        cooldown = (1.0 - progress) / WARMDOWN_RATIO
-        return cooldown * 1.0 + (1 - cooldown) * FINAL_LR_FRAC
+    return get_random_perturbation_lr_multiplier(
+        progress,
+        base_amplitude=0.3,
+        warmup_ratio=WARMUP_RATIO,
+        warmdown_ratio=WARMDOWN_RATIO,
+        final_lr_frac=FINAL_LR_FRAC,
+    )
 
 def get_muon_momentum(step):
     frac = min(step / 300, 1)
