@@ -13,3 +13,9 @@ commit	val_bpb	memory_gb	status	description
 05f09f2	1.627136	4.3	keep	curriculum: hard_to_easy
 05f09f2	1.637931	4.3	keep	curriculum: shao_yong
 05f09f2	1.661734	4.3	keep	curriculum: king_wen (worst non-sequential)
+—	1.777541	4.3	keep	curriculum-cr: sequential (baseline, no buffer)
+—	1.640138	4.3	keep	curriculum-cr: buffered_passthrough
+—	1.626627	4.3	keep	curriculum-cr: random shuffle
+—	1.633691	4.3	keep	curriculum-cr: easy_to_hard
+—	1.633596	4.3	keep	curriculum-cr: hard_to_easy
+—	1.638436	4.3	keep	curriculum-cr: king_wen

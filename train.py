@@ -466,8 +466,10 @@ CURRICULUM_BUFFER_SIZE = 64  # matches King Wen sequence length
 # ---------------------------------------------------------------------------
 
 def score_batch_difficulty(x):
-    """Token diversity: unique tokens / total tokens. Higher = harder."""
-    return x.unique().numel() / x.numel()
+    """Compression ratio: gzip compressed / raw bytes. Higher = harder."""
+    import gzip
+    raw = x.cpu().numpy().tobytes()
+    return len(gzip.compress(raw)) / len(raw)
 
 
 def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
