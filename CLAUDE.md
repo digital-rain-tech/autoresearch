@@ -32,6 +32,9 @@ No test suite, linter, or CI exists. The "test" is whether val_bpb improves.
 - **`sweep_seeds.py`** — Orchestrates seed sweep: train → checkpoint → sample → score → aggregate.
 - **`analyze_seeds.py`** — Deep analysis of seed behavioral metrics (variance decomposition, outlier detection, PCA clustering, prompt sensitivity, val_bpb correlation).
 - **`king_wen_schedules.py`** — LR schedule variants and King Wen surprise values. Used by ADR-002 (LR) and ADR-003 (curriculum).
+- **`sweep_curriculum.py`** — Paired curriculum sweep comparing adaptive vs baseline orderings across seeds (ADR-007 Workstream A).
+- **`king_wen_openspiel.py`** — King Wen policy priors on OpenSpiel games: Kuhn Poker and Goofspiel (ADR-007 Workstream B).
+- **`run_adr007.py`** — Unified runner for both ADR-007 workstreams.
 
 ### train.py internals
 - GPT with RoPE, optional sliding window attention, value embeddings (ResFormer-style), per-layer scaling
@@ -39,7 +42,7 @@ No test suite, linter, or CI exists. The "test" is whether val_bpb improves.
 - Key hyperparams: `DEPTH`, `ASPECT_RATIO`, `TOTAL_BATCH_SIZE`, `DEVICE_BATCH_SIZE`, `MATRIX_LR`, `WARMDOWN_RATIO`
 - Training runs for exactly `TIME_BUDGET` seconds (300s default, set in `prepare.py`)
 - Seed and checkpoint path configurable via env vars: `AUTORESEARCH_SEED`, `AUTORESEARCH_CHECKPOINT_PATH`
-- Curriculum ordering configurable via env var: `AUTORESEARCH_CURRICULUM` (sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen)
+- Curriculum ordering configurable via env var: `AUTORESEARCH_CURRICULUM` (sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen, adaptive)
 - Curriculum buffering uses CPU pinned memory with single-tensor GPU yield (avoids torch.compile interaction)
 
 ### prepare.py constants

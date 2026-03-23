@@ -457,7 +457,7 @@ DEPTH = 4               # number of transformer layers (reduced for 6GB VRAM)
 DEVICE_BATCH_SIZE = 16   # per-device batch size (reduced for 6GB VRAM)
 
 # Curriculum ordering (set via AUTORESEARCH_CURRICULUM env var)
-# Options: sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen
+# Options: sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen, adaptive
 CURRICULUM_ORDERING = os.environ.get("AUTORESEARCH_CURRICULUM", "sequential")
 CURRICULUM_BUFFER_SIZE = 64  # matches King Wen sequence length
 
@@ -470,6 +470,12 @@ def score_batch_difficulty(x):
     import gzip
     raw = x.cpu().numpy().tobytes()
     return len(gzip.compress(raw)) / len(raw)
+
+
+# Shared feedback channel: training loop writes per-batch loss, curriculum reads at buffer refill
+_curriculum_feedback = {'losses': [], 'current_bucket': -1}
+# Adaptive curriculum stats for logging
+_adaptive_stats = {'ucb_scores': [], 'bucket_counts': [], 'bucket_avg_loss': []}
 
 
 def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
@@ -508,6 +514,15 @@ def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
 
     rng = random.Random(42)
 
+    # UCB1 state for adaptive ordering
+    NUM_BUCKETS = 8
+    assert buffer_size >= NUM_BUCKETS, f"buffer_size ({buffer_size}) must be >= NUM_BUCKETS ({NUM_BUCKETS})"
+    ucb_total_improvement = [0.0] * NUM_BUCKETS  # sum of loss improvements (higher = more learning)
+    ucb_count = [0] * NUM_BUCKETS
+    ucb_c = 1.414  # exploration constant (sqrt(2))
+    ucb_rounds = 0
+    prev_bucket_avg_loss = [None] * NUM_BUCKETS  # previous buffer's avg loss per bucket
+
     while True:
         # Fill buffer: copy GPU→CPU (dataloader yields GPU tensors)
         last_epoch = 0
@@ -518,10 +533,49 @@ def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
             cpu_y_buf[slot].copy_(y)
             last_epoch = epoch
 
-        # Score each batch (on CPU — token diversity doesn't need GPU)
+        # Process feedback from previous buffer (adaptive mode)
+        if ordering == "adaptive" and _curriculum_feedback['losses']:
+            # Compute per-bucket average loss this buffer
+            buf_loss = [0.0] * NUM_BUCKETS
+            buf_count = [0] * NUM_BUCKETS
+            for b_id, loss_val in _curriculum_feedback['losses']:
+                if 0 <= b_id < NUM_BUCKETS:
+                    buf_loss[b_id] += loss_val
+                    buf_count[b_id] += 1
+            # UCB reward = loss improvement (how much this bucket's loss dropped)
+            for b in range(NUM_BUCKETS):
+                if buf_count[b] > 0:
+                    cur_avg = buf_loss[b] / buf_count[b]
+                    if prev_bucket_avg_loss[b] is not None:
+                        improvement = prev_bucket_avg_loss[b] - cur_avg  # positive = loss dropped
+                        ucb_total_improvement[b] += improvement
+                        ucb_count[b] += 1
+                    prev_bucket_avg_loss[b] = cur_avg
+            # Export stats for logging
+            _adaptive_stats['bucket_counts'] = list(ucb_count)
+            _adaptive_stats['bucket_avg_loss'] = [
+                prev_bucket_avg_loss[b] if prev_bucket_avg_loss[b] is not None else 0.0
+                for b in range(NUM_BUCKETS)
+            ]
+            _curriculum_feedback['losses'] = []
+
+        # Score each batch by difficulty (token diversity as fast proxy for compression ratio).
+        # ADR-006a's gzip-based score_batch_difficulty() is too slow for the hot path (~50ms/batch
+        # vs ~0.1ms for unique ratio). Token diversity correlates well with compression ratio.
         scores = []
         for slot in range(buffer_size):
             scores.append(cpu_x_buf[slot].unique().numel() / cpu_x_buf[slot].numel())
+
+        # Assign batches to difficulty buckets (for adaptive mode)
+        batch_to_bucket = {}
+        buckets = [[] for _ in range(NUM_BUCKETS)]
+        if ordering == "adaptive":
+            sorted_by_diff = sorted(range(buffer_size), key=lambda i: scores[i])
+            bucket_size = buffer_size // NUM_BUCKETS
+            for rank, idx in enumerate(sorted_by_diff):
+                b = min(rank // bucket_size, NUM_BUCKETS - 1)
+                buckets[b].append(idx)
+                batch_to_bucket[idx] = b
 
         # Reorder
         if ordering == "random":
@@ -531,6 +585,37 @@ def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
             indices = sorted(range(buffer_size), key=lambda i: scores[i])
         elif ordering == "hard_to_easy":
             indices = sorted(range(buffer_size), key=lambda i: scores[i], reverse=True)
+        elif ordering == "adaptive":
+            # UCB1: prioritize buckets with highest loss improvement (most learning signal)
+            if ucb_rounds < 2:
+                # First two buffers: round-robin (need >=2 buffers to measure improvement)
+                bucket_order = list(range(NUM_BUCKETS))
+                _adaptive_stats['ucb_scores'] = [0.0] * NUM_BUCKETS
+            else:
+                total_pulls = max(sum(ucb_count), 1)
+                ucb_scores = []
+                for b in range(NUM_BUCKETS):
+                    if ucb_count[b] == 0:
+                        ucb_scores.append(float('inf'))
+                    else:
+                        avg_improvement = ucb_total_improvement[b] / ucb_count[b]
+                        exploration = ucb_c * math.sqrt(math.log(total_pulls) / ucb_count[b])
+                        ucb_scores.append(avg_improvement + exploration)
+                _adaptive_stats['ucb_scores'] = ucb_scores
+                bucket_order = sorted(range(NUM_BUCKETS), key=lambda b: ucb_scores[b], reverse=True)
+
+            # Interleave: cycle through buckets in priority order
+            bucket_iters = {b: iter(buckets[b]) for b in bucket_order}
+            indices = []
+            while len(indices) < buffer_size:
+                for b in bucket_order:
+                    try:
+                        indices.append(next(bucket_iters[b]))
+                    except StopIteration:
+                        pass
+                    if len(indices) >= buffer_size:
+                        break
+            ucb_rounds += 1
         elif ordering in ("king_wen", "shao_yong"):
             # Sort by difficulty to create rank ordering
             sorted_by_diff = sorted(range(buffer_size), key=lambda i: scores[i])
@@ -549,6 +634,7 @@ def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
 
         # Yield reordered batches: pinned CPU→GPU, reusing same gpu tensors
         for i in indices:
+            _curriculum_feedback['current_bucket'] = batch_to_bucket.get(i, -1)
             gpu_x.copy_(cpu_x_buf[i], non_blocking=True)
             gpu_y.copy_(cpu_y_buf[i], non_blocking=True)
             yield gpu_x, gpu_y, last_epoch
@@ -655,6 +741,10 @@ while True:
         with autocast_ctx:
             loss = model(x, y)
         train_loss = loss.detach()
+        # Adaptive curriculum feedback: record loss for the current batch's difficulty bucket
+        if CURRICULUM_ORDERING == "adaptive":
+            _curriculum_feedback['losses'].append(
+                (_curriculum_feedback['current_bucket'], train_loss.item()))
         loss = loss / grad_accum_steps
         loss.backward()
         x, y, epoch = next(train_loader)
@@ -750,3 +840,7 @@ print(f"num_steps:        {step}")
 print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
 print(f"curriculum:       {CURRICULUM_ORDERING}")
+if CURRICULUM_ORDERING == "adaptive" and _adaptive_stats['bucket_avg_loss']:
+    print(f"adaptive_bucket_counts: {_adaptive_stats['bucket_counts']}")
+    print(f"adaptive_bucket_avg_loss: {[f'{x:.4f}' for x in _adaptive_stats['bucket_avg_loss']]}")
+    print(f"adaptive_ucb_scores: {[f'{x:.4f}' if x != float('inf') else 'inf' for x in _adaptive_stats['ucb_scores']]}")
