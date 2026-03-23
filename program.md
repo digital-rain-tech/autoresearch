@@ -1,114 +1,153 @@
-# autoresearch
+# King Wen Anti-Habituation LR Schedule Experiment
 
-This is an experiment to have the LLM do its own research.
+This is an autoresearch experiment testing whether the King Wen sequence's
+anti-habituation surprise profile improves neural network training when
+applied as a learning rate schedule modulation.
+
+## Background
+
+The King Wen sequence (c. 1000 BC) orders the 64 I-Ching hexagrams in a
+pattern with statistically unusual properties: random-like mean surprise,
+significantly higher variance than all baselines, and zero autocorrelation.
+We hypothesize this "anti-habituation" profile prevents optimizer habituation
+when applied to learning rate scheduling.
+
+Paper: https://github.com/augchan42/king-wen-agi-framework
 
 ## Setup
 
-To set up a new experiment, work with the user to:
+To set up this experiment:
 
-1. **Agree on a run tag**: propose a tag based on today's date (e.g. `mar5`). The branch `autoresearch/<tag>` must not already exist — this is a fresh run.
+1. **Agree on a run tag** with the user (e.g. `kingwen-mar19`).
 2. **Create the branch**: `git checkout -b autoresearch/<tag>` from current master.
-3. **Read the in-scope files**: The repo is small. Read these files for full context:
-   - `README.md` — repository context.
+3. **Read the in-scope files**:
+   - `README.md` — repository context
    - `prepare.py` — fixed constants, data prep, tokenizer, dataloader, evaluation. Do not modify.
-   - `train.py` — the file you modify. Model architecture, optimizer, training loop.
-4. **Verify data exists**: Check that `~/.cache/autoresearch/` contains data shards and a tokenizer. If not, tell the human to run `uv run prepare.py`.
-5. **Initialize results.tsv**: Create `results.tsv` with just the header row. The baseline will be recorded after the first run.
-6. **Confirm and go**: Confirm setup looks good.
+   - `train.py` — the file you modify
+   - `king_wen_schedules.py` — pre-built LR schedule functions (copy into repo if not present)
+4. **Verify data exists**: Check `~/.cache/autoresearch/` for data shards and tokenizer.
+5. **Initialize results.tsv** with header row.
+6. **Confirm and go**.
 
-Once you get confirmation, kick off the experimentation.
+## Experiment Plan
 
-## Experimentation
+This is a STRUCTURED experiment, not free-form exploration. Run these experiments
+IN ORDER. Each takes ~5 minutes.
 
-Each experiment runs on a single GPU. The training script runs for a **fixed time budget of 5 minutes** (wall clock training time, excluding startup/compilation). You launch it simply as: `uv run train.py`.
+### Phase 1: Baselines (3 runs)
 
-**What you CAN do:**
-- Modify `train.py` — this is the only file you edit. Everything is fair game: model architecture, optimizer, hyperparameters, training loop, batch size, model size, etc.
+**Run 1 — Standard baseline:**
+Run unmodified `train.py`. Record val_bpb. This is the control.
 
-**What you CANNOT do:**
-- Modify `prepare.py`. It is read-only. It contains the fixed evaluation, data loading, tokenizer, and training constants (time budget, sequence length, etc).
-- Install new packages or add dependencies. You can only use what's already in `pyproject.toml`.
-- Modify the evaluation harness. The `evaluate_bpb` function in `prepare.py` is the ground truth metric.
+**Run 2 — Random perturbation control:**
+In `train.py`, add `from king_wen_schedules import get_random_perturbation_lr_multiplier`
+and replace `get_lr_multiplier` with `get_random_perturbation_lr_multiplier` (amplitude=0.3).
+This tests "does ANY perturbation help?" vs the standard schedule.
 
-**The goal is simple: get the lowest val_bpb.** Since the time budget is fixed, you don't need to worry about training time — it's always 5 minutes. Everything is fair game: change the architecture, the optimizer, the hyperparameters, the batch size, the model size. The only constraint is that the code runs without crashing and finishes within the time budget.
+**Run 3 — Shao Yong (structured predictable) control:**
+Replace with `get_shao_yong_lr_multiplier` (amplitude=0.3).
+This tests "does structured perturbation help?" — the Shao Yong ordering is
+highly autocorrelated (predictable), unlike King Wen.
 
-**VRAM** is a soft constraint. Some increase is acceptable for meaningful val_bpb gains, but it should not blow up dramatically.
+### Phase 2: King Wen (3 runs)
 
-**Simplicity criterion**: All else being equal, simpler is better. A small improvement that adds ugly complexity is not worth it. Conversely, removing something and getting equal or better results is a great outcome — that's a simplification win. When evaluating whether to keep a change, weigh the complexity cost against the improvement magnitude. A 0.001 val_bpb improvement that adds 20 lines of hacky code? Probably not worth it. A 0.001 val_bpb improvement from deleting code? Definitely keep. An improvement of ~0 but much simpler code? Keep.
+**Run 4 — King Wen (amplitude=0.3):**
+Replace with `get_king_wen_lr_multiplier` (amplitude=0.3).
+This is the primary test.
 
-**The first run**: Your very first run should always be to establish the baseline, so you will run the training script as is.
+**Run 5 — King Wen (amplitude=0.15):**
+Same but with `base_amplitude=0.15`. Tests sensitivity to perturbation strength.
 
-## Output format
+**Run 6 — King Wen (amplitude=0.5):**
+Same but with `base_amplitude=0.5`. Tests stronger perturbation.
 
-Once the script finishes it prints a summary like this:
+### Phase 3: Ablations (runs 7+)
 
+After Phase 2, if King Wen shows improvement, run ablations:
+
+**Run 7 — King Wen without warmdown:**
+Set `warmdown_ratio=0.0` to test KW modulation without the standard cooldown.
+
+**Run 8 — King Wen with double cycling:**
+Map progress through the KW sequence twice (0→63→0→63) instead of once.
+Test: `kw_idx = int((progress * 2 % 1.0) * 62)`.
+
+**Run 9+ — Free exploration:**
+If results are promising, try:
+- Combining King Wen LR schedule with architectural changes
+- Applying King Wen modulation to weight decay instead of LR
+- Applying King Wen modulation to momentum
+
+### Phase 4: Replication (3 runs)
+
+Re-run the best King Wen variant and the baseline with 3 different random seeds
+each (change `torch.manual_seed()` to seeds 42, 123, 456) to confirm the result
+isn't seed-dependent.
+
+## How to Modify train.py
+
+The ONLY change for each run is the `get_lr_multiplier` function. Here's the pattern:
+
+```python
+# Add at top of train.py, after other imports:
+from king_wen_schedules import get_king_wen_lr_multiplier
+
+# Then replace the existing get_lr_multiplier function with:
+def get_lr_multiplier(progress):
+    return get_king_wen_lr_multiplier(
+        progress,
+        base_amplitude=0.3,      # ← change this per run
+        warmup_ratio=WARMUP_RATIO,
+        warmdown_ratio=WARMDOWN_RATIO,
+        final_lr_frac=FINAL_LR_FRAC,
+    )
 ```
----
-val_bpb:          0.997900
-training_seconds: 300.1
-total_seconds:    325.9
-peak_vram_mb:     45060.2
-mfu_percent:      39.80
-total_tokens_M:   499.6
-num_steps:        953
-num_params_M:     50.3
-depth:            8
-```
 
-Note that the script is configured to always stop after 5 minutes, so depending on the computing platform of this computer the numbers might look different. You can extract the key metric from the log file:
+For baseline/control runs, swap in the appropriate function:
+- `get_random_perturbation_lr_multiplier` for random control
+- `get_shao_yong_lr_multiplier` for Shao Yong control
 
-```
-grep "^val_bpb:" run.log
-```
+## Logging
 
-## Logging results
-
-When an experiment is done, log it to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
-
-The TSV has a header row and 5 columns:
+Use the standard autoresearch results.tsv format:
 
 ```
 commit	val_bpb	memory_gb	status	description
 ```
 
-1. git commit hash (short, 7 chars)
-2. val_bpb achieved (e.g. 1.234567) — use 0.000000 for crashes
-3. peak memory in GB, round to .1f (e.g. 12.3 — divide peak_vram_mb by 1024) — use 0.0 for crashes
-4. status: `keep`, `discard`, or `crash`
-5. short text description of what this experiment tried
-
-Example:
+Add a column or note in the description for which schedule variant was used:
 
 ```
-commit	val_bpb	memory_gb	status	description
-a1b2c3d	0.997900	44.0	keep	baseline
-b2c3d4e	0.993200	44.2	keep	increase LR to 0.04
-c3d4e5f	1.005000	44.0	discard	switch to GeLU activation
-d4e5f6g	0.000000	0.0	crash	double model width (OOM)
+a1b2c3d	0.997900	44.0	keep	baseline - standard LR schedule
+b2c3d4e	0.995200	44.0	keep	king_wen amp=0.3
+c3d4e5f	0.998100	44.0	discard	random_perturbation amp=0.3
+d4e5f6g	0.999000	44.0	discard	shao_yong amp=0.3
 ```
 
-## The experiment loop
+## Success Criteria
 
-The experiment runs on a dedicated branch (e.g. `autoresearch/mar5` or `autoresearch/mar5-gpu0`).
+The experiment supports the hypothesis if:
+
+1. **King Wen schedule achieves lower val_bpb than standard baseline** (primary)
+2. **King Wen outperforms random perturbation** (rules out "any noise helps")
+3. **King Wen outperforms Shao Yong** (rules out "any structured perturbation helps")
+4. **Result replicates across seeds** (rules out luck)
+
+Even if King Wen doesn't win, the results are informative — they tell us whether
+anti-habituation LR schedules are worth pursuing at all.
+
+## The Experiment Loop
+
+After completing the structured phases above, you may continue with free exploration.
+Follow the standard autoresearch loop:
 
 LOOP FOREVER:
-
-1. Look at the git state: the current branch/commit we're on
-2. Tune `train.py` with an experimental idea by directly hacking the code.
+1. Look at git state
+2. Modify `train.py` with next experiment
 3. git commit
-4. Run the experiment: `uv run train.py > run.log 2>&1` (redirect everything — do NOT use tee or let output flood your context)
-5. Read out the results: `grep "^val_bpb:\|^peak_vram_mb:" run.log`
-6. If the grep output is empty, the run crashed. Run `tail -n 50 run.log` to read the Python stack trace and attempt a fix. If you can't get things to work after more than a few attempts, give up.
-7. Record the results in the tsv (NOTE: do not commit the results.tsv file, leave it untracked by git)
-8. If val_bpb improved (lower), you "advance" the branch, keeping the git commit
-9. If val_bpb is equal or worse, you git reset back to where you started
+4. Run: `uv run train.py > run.log 2>&1`
+5. Read results: `grep "^val_bpb:\|^peak_vram_mb:" run.log`
+6. Record in results.tsv
+7. If improved: keep. If not: git reset.
 
-The idea is that you are a completely autonomous researcher trying things out. If they work, keep. If they don't, discard. And you're advancing the branch so that you can iterate. If you feel like you're getting stuck in some way, you can rewind but you should probably do this very very sparingly (if ever).
-
-**Timeout**: Each experiment should take ~5 minutes total (+ a few seconds for startup and eval overhead). If a run exceeds 10 minutes, kill it and treat it as a failure (discard and revert).
-
-**Crashes**: If a run crashes (OOM, or a bug, or etc.), use your judgment: If it's something dumb and easy to fix (e.g. a typo, a missing import), fix it and re-run. If the idea itself is fundamentally broken, just skip it, log "crash" as the status in the tsv, and move on.
-
-**NEVER STOP**: Once the experiment loop has begun (after the initial setup), do NOT pause to ask the human if you should continue. Do NOT ask "should I keep going?" or "is this a good stopping point?". The human might be asleep, or gone from a computer and expects you to continue working *indefinitely* until you are manually stopped. You are autonomous. If you run out of ideas, think harder — read papers referenced in the code, re-read the in-scope files for new angles, try combining previous near-misses, try more radical architectural changes. The loop runs until the human interrupts you, period.
-
-As an example use case, a user might leave you running while they sleep. If each experiment takes you ~5 minutes then you can run approx 12/hour, for a total of about 100 over the duration of the average human sleep. The user then wakes up to experimental results, all completed by you while they slept!
+**NEVER STOP** once the loop begins. The human may be away. Run until interrupted.

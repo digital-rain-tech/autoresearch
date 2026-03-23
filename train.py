@@ -10,6 +10,7 @@ os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
 
 import gc
 import math
+import random
 import time
 from dataclasses import dataclass, asdict
 
@@ -17,13 +18,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from kernels import get_kernel
-cap = torch.cuda.get_device_capability()
-# varunneal's FA3 is Hopper only, use kernels-community on non-Hopper GPUs
-repo = "varunneal/flash-attention-3" if cap == (9, 0) else "kernels-community/flash-attn3"
-fa3 = get_kernel(repo).flash_attn_interface
-
+# Use PyTorch SDPA instead of FA3 for GPU compatibility (Turing/RTX 2060)
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
+from king_wen_schedules import KING_WEN_SURPRISE
 
 # ---------------------------------------------------------------------------
 # GPT Model
@@ -90,8 +87,17 @@ class CausalSelfAttention(nn.Module):
         q, k = apply_rotary_emb(q, cos, sin), apply_rotary_emb(k, cos, sin)
         q, k = norm(q), norm(k)
 
-        y = fa3.flash_attn_func(q, k, v, causal=True, window_size=window_size)
-        y = y.contiguous().view(B, T, -1)
+        # SDPA expects (B, H, T, D)
+        q = q.transpose(1, 2)
+        k = k.transpose(1, 2)
+        v = v.transpose(1, 2)
+        # Expand KV heads if GQA
+        if self.n_kv_head < self.n_head:
+            reps = self.n_head // self.n_kv_head
+            k = k.repeat_interleave(reps, dim=1)
+            v = v.repeat_interleave(reps, dim=1)
+        y = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+        y = y.transpose(1, 2).contiguous().view(B, T, -1)
         y = self.c_proj(y)
         return y
 
@@ -176,9 +182,9 @@ class GPT(nn.Module):
         cos, sin = self._precompute_rotary_embeddings(self.rotary_seq_len, head_dim)
         self.cos, self.sin = cos, sin
         # Cast embeddings to bf16
-        self.transformer.wte.to(dtype=torch.bfloat16)
+        self.transformer.wte.to(dtype=torch.float32)
         for ve in self.value_embeds.values():
-            ve.to(dtype=torch.bfloat16)
+            ve.to(dtype=torch.float32)
 
     def _precompute_rotary_embeddings(self, seq_len, head_dim, base=10000, device=None):
         if device is None:
@@ -188,7 +194,7 @@ class GPT(nn.Module):
         t = torch.arange(seq_len, dtype=torch.float32, device=device)
         freqs = torch.outer(t, inv_freq)
         cos, sin = freqs.cos(), freqs.sin()
-        cos, sin = cos.bfloat16(), sin.bfloat16()
+        cos, sin = cos.float(), sin.float()
         cos, sin = cos[None, :, None, :], sin[None, :, None, :]
         return cos, sin
 
@@ -321,7 +327,7 @@ def muon_step_fused(stacked_grads, stacked_params, momentum_buffer, second_momen
     momentum_buffer.lerp_(stacked_grads, 1 - momentum)
     g = stacked_grads.lerp_(momentum_buffer, momentum)
     # Polar express orthogonalization
-    X = g.bfloat16()
+    X = g.float()
     X = X / (X.norm(dim=(-2, -1), keepdim=True) * 1.02 + 1e-6)
     if g.size(-2) > g.size(-1):
         for a, b, c in polar_express_coeffs[:ns_steps]:
@@ -432,10 +438,10 @@ class MuonAdamW(torch.optim.Optimizer):
 # Model architecture
 ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
 HEAD_DIM = 128          # target head dimension for attention
-WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
+WINDOW_PATTERN = "L"    # full attention (SDPA doesn't support sliding window)
 
 # Optimization
-TOTAL_BATCH_SIZE = 2**19 # ~524K tokens per optimizer step
+TOTAL_BATCH_SIZE = 2**17 # ~131K tokens per optimizer step (reduced for 6GB VRAM)
 EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
@@ -447,19 +453,116 @@ WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
 FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Model size
-DEPTH = 8               # number of transformer layers
-DEVICE_BATCH_SIZE = 128  # per-device batch size (reduce if OOM)
+DEPTH = 4               # number of transformer layers (reduced for 6GB VRAM)
+DEVICE_BATCH_SIZE = 16   # per-device batch size (reduced for 6GB VRAM)
+
+# Curriculum ordering (set via AUTORESEARCH_CURRICULUM env var)
+# Options: sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen
+CURRICULUM_ORDERING = os.environ.get("AUTORESEARCH_CURRICULUM", "sequential")
+CURRICULUM_BUFFER_SIZE = 64  # matches King Wen sequence length
+
+# ---------------------------------------------------------------------------
+# Curriculum ordering: buffered batch reordering by difficulty
+# ---------------------------------------------------------------------------
+
+def score_batch_difficulty(x):
+    """Token diversity: unique tokens / total tokens. Higher = harder."""
+    return x.unique().numel() / x.numel()
+
+
+def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
+                          B=None, T=None):
+    """Wrap a dataloader with curriculum-ordered buffering.
+
+    Buffers `buffer_size` batches on CPU, scores by difficulty, reorders
+    according to `ordering`, then transfers to GPU one at a time during yield.
+    This preserves the original dataloader's H2D transfer pattern that
+    torch.compile expects.
+    """
+    if ordering == "sequential":
+        yield from base_loader
+        return
+
+    # Pre-allocate CPU pinned buffer for all batches (avoids per-batch allocation)
+    cpu_x_buf = torch.empty((buffer_size, B, T), dtype=torch.long, pin_memory=True)
+    cpu_y_buf = torch.empty((buffer_size, B, T), dtype=torch.long, pin_memory=True)
+    # Single GPU output tensor — reused like the original dataloader's gpu_buffer
+    gpu_x = torch.empty((B, T), dtype=torch.long, device="cuda")
+    gpu_y = torch.empty((B, T), dtype=torch.long, device="cuda")
+
+    # Build schedule values for structured orderings
+    if ordering == "king_wen":
+        # 63 values — pad to buffer_size with neutral 0.5
+        schedule_values = list(KING_WEN_SURPRISE) + [0.5] * (buffer_size - len(KING_WEN_SURPRISE))
+    elif ordering == "shao_yong":
+        # Period-8 sawtooth (matches king_wen_schedules.py)
+        schedule_values = [(i % 8) / 7.0 for i in range(buffer_size)]
+    else:
+        schedule_values = None  # random, easy_to_hard, hard_to_easy
+
+    # Precompute target ranks for structured orderings
+    if schedule_values is not None:
+        target_ranks = [round(v * (buffer_size - 1)) for v in schedule_values[:buffer_size]]
+
+    rng = random.Random(42)
+
+    while True:
+        # Fill buffer: copy GPU→CPU (dataloader yields GPU tensors)
+        last_epoch = 0
+        for slot in range(buffer_size):
+            x, y, epoch = next(base_loader)
+            torch.cuda.synchronize()  # ensure non_blocking H2D copy is complete
+            cpu_x_buf[slot].copy_(x)
+            cpu_y_buf[slot].copy_(y)
+            last_epoch = epoch
+
+        # Score each batch (on CPU — token diversity doesn't need GPU)
+        scores = []
+        for slot in range(buffer_size):
+            scores.append(cpu_x_buf[slot].unique().numel() / cpu_x_buf[slot].numel())
+
+        # Reorder
+        if ordering == "random":
+            indices = list(range(buffer_size))
+            rng.shuffle(indices)
+        elif ordering == "easy_to_hard":
+            indices = sorted(range(buffer_size), key=lambda i: scores[i])
+        elif ordering == "hard_to_easy":
+            indices = sorted(range(buffer_size), key=lambda i: scores[i], reverse=True)
+        elif ordering in ("king_wen", "shao_yong"):
+            # Sort by difficulty to create rank ordering
+            sorted_by_diff = sorted(range(buffer_size), key=lambda i: scores[i])
+            # Greedy assignment: each output position gets the batch closest to target rank
+            used = set()
+            indices = []
+            for rank in target_ranks:
+                best_j = min(
+                    (j for j in range(buffer_size) if j not in used),
+                    key=lambda j: abs(j - rank),
+                )
+                indices.append(sorted_by_diff[best_j])
+                used.add(best_j)
+        else:
+            indices = list(range(buffer_size))
+
+        # Yield reordered batches: pinned CPU→GPU, reusing same gpu tensors
+        for i in indices:
+            gpu_x.copy_(cpu_x_buf[i], non_blocking=True)
+            gpu_y.copy_(cpu_y_buf[i], non_blocking=True)
+            yield gpu_x, gpu_y, last_epoch
+
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
 # ---------------------------------------------------------------------------
 
 t_start = time.time()
-torch.manual_seed(42)
-torch.cuda.manual_seed(42)
+_seed = int(os.environ.get("AUTORESEARCH_SEED", "42"))
+torch.manual_seed(_seed)
+torch.cuda.manual_seed(_seed)
 torch.set_float32_matmul_precision("high")
 device = torch.device("cuda")
-autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16)
+autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.float32)  # fp32 for Turing GPU compat
 H100_BF16_PEAK_FLOPS = 989.5e12
 
 tokenizer = Tokenizer.from_directory()
@@ -507,7 +610,10 @@ optimizer = model.setup_optimizer(
 
 model = torch.compile(model, dynamic=False)
 
-train_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+_raw_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+train_loader = curriculum_dataloader(_raw_loader, ordering=CURRICULUM_ORDERING,
+                                     buffer_size=CURRICULUM_BUFFER_SIZE,
+                                     B=DEVICE_BATCH_SIZE, T=MAX_SEQ_LEN)
 x, y, epoch = next(train_loader)  # prefetch first batch
 
 print(f"Time budget: {TIME_BUDGET}s")
@@ -561,6 +667,7 @@ while True:
         if group['kind'] == 'muon':
             group["momentum"] = muon_momentum
             group["weight_decay"] = muon_weight_decay
+    torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     optimizer.step()
     model.zero_grad(set_to_none=True)
 
@@ -612,6 +719,18 @@ model.eval()
 with autocast_ctx:
     val_bpb = evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
 
+# Save checkpoint if requested via environment variable
+_ckpt_path = os.environ.get("AUTORESEARCH_CHECKPOINT_PATH")
+if _ckpt_path:
+    os.makedirs(os.path.dirname(_ckpt_path) or ".", exist_ok=True)
+    torch.save({
+        "config": config,
+        "model_state_dict": model.state_dict(),
+        "val_bpb": val_bpb,
+        "seed": _seed,
+    }, _ckpt_path)
+    print(f"checkpoint_saved: {_ckpt_path}")
+
 # Final summary
 t_end = time.time()
 startup_time = t_start_training - t_start
@@ -628,3 +747,4 @@ print(f"total_tokens_M:   {total_tokens / 1e6:.1f}")
 print(f"num_steps:        {step}")
 print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
+print(f"curriculum:       {CURRICULUM_ORDERING}")
