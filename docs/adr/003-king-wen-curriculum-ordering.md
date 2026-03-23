@@ -151,52 +151,66 @@ A Hugging Face paper search revealed critical findings that affect our experimen
 
 ---
 
-## Revised Experiment Plan
+## Implementation v2 Results (2026-03-23)
 
-Based on implementation findings and literature review, the experiment needs two fixes before proceeding:
+### Fix applied
 
-### Fix 1: Buffer implementation (required)
+Switched from GPU tensor cloning to CPU pinned memory buffering with a single reusable GPU tensor pair. This eliminates the torch.compile interaction (no more sawtooth loss pattern). The fix correctly preserves the original dataloader's H2D transfer pattern.
 
-Switch from GPU tensor cloning to CPU pinned memory buffering with single-tensor GPU yield. This eliminates the torch.compile interaction. Must verify the fix produces identical val_bpb to sequential baseline before running any curriculum experiments.
+### Regime A results (standard warmdown)
 
-### Fix 2: LR schedule co-design (important)
+| Ordering | val_bpb | Steps | Mean dt | vs Passthrough |
+|----------|---------|-------|---------|----------------|
+| sequential (no buffer) | 1.719 | 124 | 2658ms | N/A |
+| buffered_passthrough | 1.680 | 86 | 4044ms | — |
+| random | **1.614** | 98 | 3449ms | **-0.066** |
+| easy_to_hard | 1.632 | 95 | 3581ms | -0.048 |
+| hard_to_easy | 1.627 | 97 | 3516ms | -0.053 |
+| shao_yong | 1.638 | 93 | 3669ms | -0.042 |
+| king_wen | 1.662 | 89 | 3873ms | -0.018 |
 
-Run curriculum experiments in TWO LR regimes:
+### Analysis
 
-**Regime A — Standard warmdown (current):**
-- `WARMDOWN_RATIO = 0.5`, `FINAL_LR_FRAC = 0.0`
-- Tests curriculum ordering under the existing setup
-- May underestimate curriculum benefits due to LR-curriculum interaction
+**Buffer overhead is significant and varies by ordering.** The CPU buffer approach adds 30-52% per-step overhead (2658ms → 3449-4044ms). This reduces training steps from 124 to 86-98 within the 5-minute budget. The overhead varies by ordering because:
+- Buffer fill + scoring is constant (~1.6s per refill every 16 steps)
+- Reordering compute is negligible
+- But run-to-run GPU thermal/clock variance affects totals
 
-**Regime B — Reduced warmdown:**
-- `WARMDOWN_RATIO = 0.1`, `FINAL_LR_FRAC = 0.1`
-- Preserves higher LR throughout training
-- Gives curriculum ordering a fair chance to show effects
-- Aligned with literature recommendations
+**Step count strongly correlates with val_bpb (r = -0.979).** Among buffered orderings, more steps → lower val_bpb. This makes it difficult to attribute val_bpb improvements to curriculum ordering vs simply more training.
 
-### Full run matrix
+**All buffered orderings beat the unbuffered sequential baseline.** Even the passthrough (same order, with buffer overhead) achieves 1.680 vs 1.719. This may indicate that the buffer's implicit data shuffling (reading 64 batches then yielding) provides mild regularization, or it may be a measurement artifact from the different H2D transfer patterns.
 
-| Run | Ordering | LR Regime | Env vars |
-|-----|----------|-----------|----------|
-| 1 | sequential | A (standard) | `CURRICULUM=sequential` |
-| 2 | random | A | `CURRICULUM=random` |
-| 3 | easy_to_hard | A | `CURRICULUM=easy_to_hard` |
-| 4 | hard_to_easy | A | `CURRICULUM=hard_to_easy` |
-| 5 | shao_yong | A | `CURRICULUM=shao_yong` |
-| 6 | king_wen | A | `CURRICULUM=king_wen` |
-| 7 | sequential | B (reduced) | `CURRICULUM=sequential` + warmdown override |
-| 8 | random | B | `CURRICULUM=random` + warmdown override |
-| 9 | easy_to_hard | B | `CURRICULUM=easy_to_hard` + warmdown override |
-| 10 | hard_to_easy | B | `CURRICULUM=hard_to_easy` + warmdown override |
-| 11 | shao_yong | B | `CURRICULUM=shao_yong` + warmdown override |
-| 12 | king_wen | B | `CURRICULUM=king_wen` + warmdown override |
+**King Wen is the worst non-sequential ordering.** It barely beats passthrough (1.662 vs 1.680) and has 3 more steps. The Junzi hypothesis prediction — that King Wen's anti-habituation profile would outperform all controls — is not supported.
 
-12 runs x 5 min = 1 hour total. All use seed 42.
+**Random shuffle performed best** (1.614, 98 steps), but also had the most steps among buffered orderings, so this may simply reflect more training.
 
-### Implementation sequence
+### Confounds that prevent firm conclusions
 
-1. Fix buffer implementation (CPU pinned memory approach)
-2. Verify sequential ordering matches unmodified baseline
-3. Add `AUTORESEARCH_WARMDOWN_RATIO` env var override for Regime B
-4. Run all 12 experiments
-5. Record results, update ADR with findings
+1. **Variable overhead**: Step counts range from 86-98 across orderings (14% variance). With only ~90 steps total, each step matters.
+2. **Small effect sizes**: The val_bpb differences between orderings (0.02-0.07) are within the seed noise range established by ADR-004 (±0.04).
+3. **LR decay interaction**: Per the literature (arXiv:2511.18903), our WARMDOWN_RATIO=0.5 may be sabotaging curriculum effects by reducing LR when harder data arrives.
+
+---
+
+## Decision
+
+**King Wen curriculum ordering does not outperform controls at this scale.** The hypothesis that anti-habituation data ordering improves training is not supported.
+
+However, the experiment has significant confounds (buffer overhead variance, LR-curriculum interaction) that limit the strength of this conclusion. A cleaner test would require:
+
+1. **Equal overhead across all orderings** — perhaps by pre-computing the ordering before training and applying it without runtime buffering
+2. **Longer time budget** — 15-30 min instead of 5 min, to reduce the relative impact of buffer overhead
+3. **Reduced warmdown** — test with WARMDOWN_RATIO=0.0 to eliminate the LR-curriculum interaction
+
+### Regime B (reduced warmdown) — NOT YET RUN
+
+The literature strongly suggests LR decay sabotages curriculum learning. If resources permit, running with reduced warmdown would provide a fairer test. But given that King Wen was the worst performer in Regime A (not second-best or competitive), it is unlikely to become the best performer simply by changing the LR schedule.
+
+### Overall Junzi hypothesis status
+
+Three experiments completed, all negative:
+- ADR-002: King Wen as LR modulation — hurts
+- ADR-004: Seed behavioral sensitivity — negligible at this scale
+- ADR-003: King Wen as curriculum ordering — worst of all orderings tested
+
+The honest conclusion: **the Junzi hypothesis may require larger models to test meaningfully**, or the King Wen sequence's statistical properties (high variance, zero autocorrelation) may not translate to useful training curricula at any scale. The mainstream curriculum learning literature finds that simple easy-to-hard ordering with appropriate LR co-design is what works — not exotic anti-habituation profiles.
