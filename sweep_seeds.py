@@ -160,6 +160,9 @@ def aggregate_results(seeds):
         val_bpb = None
         if os.path.exists(ckpt_path):
             import torch
+            from model_def import GPTConfig
+            import __main__
+            __main__.GPTConfig = GPTConfig
             ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
             val_bpb = ckpt.get("val_bpb")
 

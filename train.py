@@ -10,6 +10,7 @@ os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
 
 import gc
 import math
+import random
 import time
 from dataclasses import dataclass, asdict
 
@@ -19,6 +20,7 @@ import torch.nn.functional as F
 
 # Use PyTorch SDPA instead of FA3 for GPU compatibility (Turing/RTX 2060)
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
+from king_wen_schedules import KING_WEN_SURPRISE
 
 # ---------------------------------------------------------------------------
 # GPT Model
@@ -454,6 +456,102 @@ FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 DEPTH = 4               # number of transformer layers (reduced for 6GB VRAM)
 DEVICE_BATCH_SIZE = 16   # per-device batch size (reduced for 6GB VRAM)
 
+# Curriculum ordering (set via AUTORESEARCH_CURRICULUM env var)
+# Options: sequential, random, easy_to_hard, hard_to_easy, shao_yong, king_wen
+CURRICULUM_ORDERING = os.environ.get("AUTORESEARCH_CURRICULUM", "sequential")
+CURRICULUM_BUFFER_SIZE = 64  # matches King Wen sequence length
+
+# ---------------------------------------------------------------------------
+# Curriculum ordering: buffered batch reordering by difficulty
+# ---------------------------------------------------------------------------
+
+def score_batch_difficulty(x):
+    """Token diversity: unique tokens / total tokens. Higher = harder."""
+    return x.unique().numel() / x.numel()
+
+
+def curriculum_dataloader(base_loader, ordering="sequential", buffer_size=64,
+                          B=None, T=None):
+    """Wrap a dataloader with curriculum-ordered buffering.
+
+    Buffers `buffer_size` batches on CPU, scores by difficulty, reorders
+    according to `ordering`, then transfers to GPU one at a time during yield.
+    This preserves the original dataloader's H2D transfer pattern that
+    torch.compile expects.
+    """
+    if ordering == "sequential":
+        yield from base_loader
+        return
+
+    # Pre-allocate CPU pinned buffer for all batches (avoids per-batch allocation)
+    cpu_x_buf = torch.empty((buffer_size, B, T), dtype=torch.long, pin_memory=True)
+    cpu_y_buf = torch.empty((buffer_size, B, T), dtype=torch.long, pin_memory=True)
+    # Single GPU output tensor — reused like the original dataloader's gpu_buffer
+    gpu_x = torch.empty((B, T), dtype=torch.long, device="cuda")
+    gpu_y = torch.empty((B, T), dtype=torch.long, device="cuda")
+
+    # Build schedule values for structured orderings
+    if ordering == "king_wen":
+        # 63 values — pad to buffer_size with neutral 0.5
+        schedule_values = list(KING_WEN_SURPRISE) + [0.5] * (buffer_size - len(KING_WEN_SURPRISE))
+    elif ordering == "shao_yong":
+        # Period-8 sawtooth (matches king_wen_schedules.py)
+        schedule_values = [(i % 8) / 7.0 for i in range(buffer_size)]
+    else:
+        schedule_values = None  # random, easy_to_hard, hard_to_easy
+
+    # Precompute target ranks for structured orderings
+    if schedule_values is not None:
+        target_ranks = [round(v * (buffer_size - 1)) for v in schedule_values[:buffer_size]]
+
+    rng = random.Random(42)
+
+    while True:
+        # Fill buffer: copy GPU→CPU (dataloader yields GPU tensors)
+        last_epoch = 0
+        for slot in range(buffer_size):
+            x, y, epoch = next(base_loader)
+            torch.cuda.synchronize()  # ensure non_blocking H2D copy is complete
+            cpu_x_buf[slot].copy_(x)
+            cpu_y_buf[slot].copy_(y)
+            last_epoch = epoch
+
+        # Score each batch (on CPU — token diversity doesn't need GPU)
+        scores = []
+        for slot in range(buffer_size):
+            scores.append(cpu_x_buf[slot].unique().numel() / cpu_x_buf[slot].numel())
+
+        # Reorder
+        if ordering == "random":
+            indices = list(range(buffer_size))
+            rng.shuffle(indices)
+        elif ordering == "easy_to_hard":
+            indices = sorted(range(buffer_size), key=lambda i: scores[i])
+        elif ordering == "hard_to_easy":
+            indices = sorted(range(buffer_size), key=lambda i: scores[i], reverse=True)
+        elif ordering in ("king_wen", "shao_yong"):
+            # Sort by difficulty to create rank ordering
+            sorted_by_diff = sorted(range(buffer_size), key=lambda i: scores[i])
+            # Greedy assignment: each output position gets the batch closest to target rank
+            used = set()
+            indices = []
+            for rank in target_ranks:
+                best_j = min(
+                    (j for j in range(buffer_size) if j not in used),
+                    key=lambda j: abs(j - rank),
+                )
+                indices.append(sorted_by_diff[best_j])
+                used.add(best_j)
+        else:
+            indices = list(range(buffer_size))
+
+        # Yield reordered batches: pinned CPU→GPU, reusing same gpu tensors
+        for i in indices:
+            gpu_x.copy_(cpu_x_buf[i], non_blocking=True)
+            gpu_y.copy_(cpu_y_buf[i], non_blocking=True)
+            yield gpu_x, gpu_y, last_epoch
+
+
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
 # ---------------------------------------------------------------------------
@@ -512,7 +610,10 @@ optimizer = model.setup_optimizer(
 
 model = torch.compile(model, dynamic=False)
 
-train_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+_raw_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+train_loader = curriculum_dataloader(_raw_loader, ordering=CURRICULUM_ORDERING,
+                                     buffer_size=CURRICULUM_BUFFER_SIZE,
+                                     B=DEVICE_BATCH_SIZE, T=MAX_SEQ_LEN)
 x, y, epoch = next(train_loader)  # prefetch first batch
 
 print(f"Time budget: {TIME_BUDGET}s")
@@ -646,3 +747,4 @@ print(f"total_tokens_M:   {total_tokens / 1e6:.1f}")
 print(f"num_steps:        {step}")
 print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
+print(f"curriculum:       {CURRICULUM_ORDERING}")

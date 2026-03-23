@@ -51,13 +51,17 @@ PREFIXES = [
 
 def load_model_and_tokenizer(checkpoint_path):
     """Load model from checkpoint. Checkpoint must contain 'config' and 'model_state_dict'."""
+    from model_def import GPT, GPTConfig
+
+    # Register GPTConfig so pickle can resolve it when loading checkpoints
+    # saved from train.py (where GPTConfig lives in __main__)
+    import __main__
+    __main__.GPTConfig = GPTConfig
+
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
     config = checkpoint["config"]
     tokenizer = Tokenizer.from_directory()
 
-    # Reconstruct model — need to import GPT class
-    # We import the class definitions but avoid running training code
-    from model_def import GPT
     with torch.device("meta"):
         model = GPT(config)
     model.to_empty(device="cuda")
