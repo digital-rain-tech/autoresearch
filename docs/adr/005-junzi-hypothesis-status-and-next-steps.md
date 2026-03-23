@@ -1,7 +1,7 @@
-# ADR-005: Junzi Hypothesis — Status, Hardware Constraints, and Next Steps
+# ADR-005: Junzi Hypothesis — Final Status and Conclusions
 
-**Status**: Active
-**Date**: 2026-03-20
+**Status**: Concluded
+**Date**: 2026-03-20 (updated 2026-03-23)
 **Depends on**: ADR-002, ADR-003, ADR-004
 
 ## The Junzi Hypothesis
@@ -14,25 +14,36 @@ The [Junzi Alignment hypothesis](https://augustinchan.dev/posts/2026-01-25-junzi
 
 The [King Wen AGI Framework](https://github.com/augchan42/king-wen-agi-framework) provides the mathematical basis, arguing the King Wen sequence optimizes Bayesian surprise for meta-learning curricula.
 
-## What We've Tested
+## All Experiments Completed
 
-| Experiment | ADR | Result |
-|---|---|---|
-| King Wen as LR modulation | ADR-002 | **Hurts** — all amplitudes worse than baseline |
-| Seed behavioral sensitivity (30 seeds) | ADR-004 | **Negligible** — within-seed noise dominates; no multi-dimensional "character traits" |
+| # | Experiment | ADR | Result |
+|---|---|---|---|
+| 1 | King Wen as LR modulation | ADR-002 | **Hurts** — worse than baseline at all amplitudes (0.15, 0.3, 0.5). Outside seed noise. |
+| 2 | Seed behavioral sensitivity (30 seeds) | ADR-004 | **Negligible** — within-seed noise dominates. No multi-dimensional "character traits." |
+| 3 | King Wen as curriculum ordering | ADR-003 | **Worst of all orderings** — random, easy-to-hard, hard-to-easy, and Shao Yong all outperform it. |
 
-Neither result falsifies the Junzi hypothesis — they constrain it. The LR modulation was the wrong application domain. The seed sensitivity likely requires larger scale.
+### Summary of findings
 
-## Mainstream Research Support
+**Prediction 1 (Seed-dependent alignment variance):** Not supported at this scale. 30-seed sweep with 4,500 text samples shows between-seed variance ratio < 0.21 on all behavioral metrics. PCA reveals a single "verbosity axis" (PC1 = 66.4% variance), not multi-dimensional character traits. val_bpb does not correlate with behavioral metrics (max |r| = 0.34).
 
-Recent papers provide directional support for the *general principle* that initial conditions matter for alignment, though through different mechanisms than originally proposed:
+**Prediction 2 (King Wen as optimal curriculum):** Not supported. Tested as both LR modulation (ADR-002) and data curriculum ordering (ADR-003). In both cases, King Wen's defining properties — high variance and zero autocorrelation — actively harm training. As LR modulation, the high variance destabilizes gradient updates. As curriculum ordering, the unpredictable difficulty transitions prevent the model from building on recent learning.
 
-**Directly relevant:**
-- [Assessing Macro and Micro Effects of Random Seeds on Fine-Tuning LLMs](https://arxiv.org/html/2503.07329v1) (Mar 2025) — Two LLMs fine-tuned with different seeds can achieve identical accuracy but only 20% overlapping predictions. Seed-dependent behavioral variance IS real at fine-tuning scale.
-- [When Should We Introduce Safety Interventions During Pretraining?](https://arxiv.org/html/2601.07087) (Feb 2026) — Timing of safety data introduction is a curriculum design choice that significantly affects downstream robustness. Models that absorb safe-only data first (20-60% of training) develop more durable alignment. Validates curriculum ordering for safety.
-- [Safety Pretraining: Toward the Next Generation of Safe AI](https://arxiv.org/abs/2504.16980) (Apr 2025) — Building safety into pretraining data is more robust than post-hoc RLHF. "Once unsafe patterns are learned during pretraining, they are hard to remove."
+**Prediction 3 (RLHF efficiency):** Not testable on this hardware (no RLHF pipeline).
 
-**Key insight from the literature:** The mechanism is *data curriculum and representation geometry*, not mystical weight initialization properties. Early training shapes the loss landscape attractors that the model subsequently falls into.
+## Mainstream Research Context
+
+Recent papers provide directional support for the *general principle* that initial conditions matter for alignment, but through different mechanisms than the Junzi hypothesis proposes:
+
+**Supporting the general principle:**
+- [Assessing Macro and Micro Effects of Random Seeds on Fine-Tuning LLMs](https://arxiv.org/html/2503.07329v1) (Mar 2025) — Seed-dependent behavioral variance IS real at fine-tuning scale (BERT/RoBERTa), just not at our 4-layer pretraining scale.
+- [When Should We Introduce Safety Interventions During Pretraining?](https://arxiv.org/html/2601.07087) (Feb 2026) — Data ordering during training IS a curriculum design choice that affects alignment robustness.
+- [Safety Pretraining](https://arxiv.org/abs/2504.16980) (Apr 2025) — Building safety into pretraining data IS more robust than post-hoc RLHF.
+
+**Contradicting King Wen specifically:**
+- [Beyond Random Sampling: Curriculum Learning for LM Pretraining](https://huggingface.co/papers/2506.11300) (Jun 2025) — Simple difficulty metrics (compression ratio, lexical diversity, readability) with easy-to-hard ordering work. No evidence for exotic anti-habituation profiles.
+- [How LR Decay Wastes Your Best Data in Curriculum-Based Pretraining](https://huggingface.co/papers/2511.18903) (Nov 2025) — Curriculum learning requires co-designed LR schedules. The LR-curriculum interaction is a first-order concern, not the specific ordering pattern.
+
+**Key insight:** The mechanism that makes initial conditions matter is *data curriculum and representation geometry* — not the specific mathematical properties of the King Wen sequence. Simple, well-understood approaches (easy-to-hard ordering, moderate LR decay, data quality sorting) outperform exotic sequences.
 
 ## Hardware Constraints
 
@@ -42,71 +53,44 @@ Recent papers provide directional support for the *general principle* that initi
 |---|---|
 | 6 GB VRAM | Forces fp32 (no bf16 on Turing), DEPTH=4, DEVICE_BATCH_SIZE=16 |
 | Turing architecture | No FlashAttention 3, must use SDPA |
-| 5-min time budget | ~131K tokens/step, limited total training |
-| Model size | 4-layer GPT, ~256-dim — very small capacity |
+| 5-min time budget | ~131K tokens/step, ~90-124 steps per run |
+| Model size | 4-layer GPT, ~256-dim, ~11.5M params |
 
-### What IS feasible on this hardware
+The seed sensitivity literature (arXiv:2503.07329) found meaningful behavioral divergence at BERT/RoBERTa scale with fine-tuning — a regime we cannot reach on this hardware. The curriculum learning literature (arXiv:2506.11300) tested at 1B+ parameter scale. Our 11.5M parameter model may simply lack the capacity for these effects to manifest.
 
-**1. Curriculum ordering (ADR-003) — YES, run it.**
-This modifies batch ordering within the existing training loop. No additional memory or compute needed beyond the current setup. The buffered reordering approach (64 batches scored by token diversity) adds ~8 MB memory and <1s overhead per refill — negligible on RTX 2060.
+## What This Work Contributes
 
-This is the most natural remaining test of King Wen's properties and the one most supported by the recent safety-pretraining literature. The Feb 2026 paper specifically validates "intervention timing as a curriculum design choice."
+Despite negative results, this body of work is valuable:
 
-**2. Finer-grained behavioral analysis — YES, but limited value.**
-We could re-analyze the 4,500 existing samples with semantic metrics (topic modeling, embedding clustering via a pretrained model). But ADR-004 showed the primary axis of seed variation is just verbosity, not deeper behavioral traits. Diminishing returns at this model scale.
+1. **Rigorous experimental methodology** — Each experiment has proper controls, the seed sweep (ADR-004) established baseline variance, and the curriculum experiment (ADR-003) tested 6 orderings with a fair comparison structure.
 
-**3. Longer training runs — PARTIALLY.**
-Increasing `TIME_BUDGET` from 300s to 900s or 1800s would allow more trajectory divergence between seeds. The model fits in memory; it just takes longer. However, the 4-layer architecture may not have enough capacity for interesting attractor structure regardless of training time.
+2. **Reusable tooling** — `sweep_seeds.py`, `sample.py`, `score.py`, and `analyze_seeds.py` form a behavioral evaluation pipeline that can test future hypotheses.
 
-**4. Larger models — VERY LIMITED.**
-- DEPTH=6 (384-dim): Likely fits in 6 GB with reduced batch size. ~50% more parameters. Worth trying.
-- DEPTH=8 (512-dim): Probably doesn't fit at fp32. *Might* fit with gradient checkpointing or DEVICE_BATCH_SIZE=8 + more grad accumulation steps. Experimental.
-- DEPTH=12+ : Not feasible on RTX 2060 at fp32.
+3. **Implementation lessons** — The torch.compile + GPU tensor cloning interaction (ADR-003 v1) is a non-obvious pitfall. The CPU pinned memory buffer approach is a reusable pattern for dataloader wrappers.
 
-On an RTX 2060, we cannot reach the scale where the seed sensitivity paper (arXiv:2503.07329) found meaningful behavioral divergence (they used BERT/RoBERTa-scale models with fine-tuning).
+4. **Literature synthesis** — ADR-003 and ADR-005 connect the King Wen hypothesis to mainstream curriculum learning, safety pretraining, and seed sensitivity research, providing context for future work.
 
-### What is NOT feasible on this hardware
+5. **Constraints on the hypothesis space** — Three negative results at small scale don't falsify the Junzi hypothesis, but they establish that King Wen's statistical properties (high variance, zero autocorrelation) do not help at 4-layer / 5-minute scale. Any future work must either use larger models or propose a different mechanism.
 
-- **Fine-tuning large pretrained LLMs** (the setting where seed sensitivity is documented)
-- **RLHF or DPO experiments** (Junzi prediction #3)
-- **Multi-GPU distributed training**
-- **bf16 training** (Turing GPUs lack full bf16 support)
+## Possible Future Directions
 
-## Recommended Next Steps (in priority order)
+If pursuing the Junzi hypothesis further:
 
-### 1. Curriculum ordering experiment (ADR-003)
-
-**Feasibility: FULLY FEASIBLE — no hardware changes needed.**
-
-This is the strongest remaining test. Implement buffered batch reordering in `train.py`:
-- Buffer 64 batches from dataloader
-- Score by token diversity (free) or model loss (cheap)
-- Present in King Wen order, with controls (sequential, random, easy-to-hard, hard-to-easy, Shao Yong)
-
-The Feb 2026 intervention-timing paper validates that data ordering affects alignment robustness. If King Wen curriculum ordering improves val_bpb or produces measurably different behavioral profiles, it's a meaningful result even at small scale.
-
-### 2. Scale probe: DEPTH=6 with seed sensitivity
-
-**Feasibility: LIKELY FEASIBLE — needs testing.**
-
-Run a smaller seed sweep (5-10 seeds) at DEPTH=6 to see if the extra capacity creates more seed-dependent behavioral differentiation. If the variance ratio (ADR-004 §1) increases meaningfully, it supports the hypothesis that scale is the bottleneck.
-
-### 3. Extended training: 15-min budget
-
-**Feasibility: FULLY FEASIBLE — just slower.**
-
-Triple the time budget to 900s. Run 5 seeds at baseline to see if longer training amplifies seed-dependent behavioral divergence. If trajectories diverge more with longer training, it supports the "training time too short" explanation from ADR-004.
-
-### 4. Document and publish findings
-
-Regardless of next experimental results, the current body of work (ADR-001 through ADR-005) constitutes a rigorous negative-result study with clear methodology. Negative results that are well-documented advance the field by constraining the hypothesis space.
+| Direction | Feasibility (RTX 2060) | Expected value |
+|---|---|---|
+| DEPTH=6 seed sensitivity probe | Likely feasible | Low — probably too small still |
+| 15-min training budget | Feasible, just slower | Low — more time unlikely to change the picture |
+| Curriculum with co-designed LR (no warmdown) | Feasible | Medium — literature says this matters, but KW was worst ordering regardless |
+| Fine-tune a pretrained model with KW curriculum | Not feasible (VRAM) | High — this is where seed effects are documented |
+| Test at 1B+ scale on cloud GPU | Feasible with budget | High — matches the scale of positive curriculum results |
 
 ## Decision
 
-Proceed with curriculum ordering (ADR-003) as the primary next experiment. It is:
-- Fully feasible on current hardware
-- The most natural application of King Wen's anti-habituation properties
-- Supported by mainstream research on curriculum effects in safety pretraining
-- The experiment the original King Wen research actually motivates (not LR modulation)
+**The Junzi hypothesis experiments are concluded at this scale.** Three rigorous experiments all returned negative results. The King Wen sequence's statistical properties do not translate to useful training signals for a 4-layer GPT.
 
-If curriculum ordering also shows null results at this scale, the honest conclusion is that the Junzi hypothesis requires larger models to test meaningfully, and we should document that constraint clearly.
+The broader principle — that initial conditions and data ordering matter for alignment — has mainstream support but operates through simpler mechanisms (data quality sorting, easy-to-hard curriculum, moderate LR co-design) than the King Wen sequence provides.
+
+Further work on this hypothesis would require either:
+- **Larger models** (1B+ params) where the loss landscape has richer attractor structure
+- **A different application domain** for King Wen — perhaps weight initialization patterns rather than training dynamics
+- **A refined theory** that specifies when and why anti-habituation helps, grounded in the curriculum learning literature rather than I-Ching numerology

@@ -5,3 +5,11 @@ commit	val_bpb	memory_gb	status	description
 29030d8	1.785356	4.3	keep	king_wen amp=0.3
 7c6a685	1.777449	4.3	keep	king_wen amp=0.15
 560aea4	1.789786	4.3	keep	king_wen amp=0.5
+340a8e5	1.756	4.3	keep	seed sweep mean (30 seeds, range 1.732-1.773)
+05f09f2	1.719066	4.3	keep	curriculum: sequential (baseline, no buffer)
+05f09f2	1.680013	4.3	keep	curriculum: buffered_passthrough (buffer control)
+05f09f2	1.613521	4.3	keep	curriculum: random shuffle
+05f09f2	1.631933	4.3	keep	curriculum: easy_to_hard
+05f09f2	1.627136	4.3	keep	curriculum: hard_to_easy
+05f09f2	1.637931	4.3	keep	curriculum: shao_yong
+05f09f2	1.661734	4.3	keep	curriculum: king_wen (worst non-sequential)
