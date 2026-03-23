@@ -1,7 +1,7 @@
 # ADR-007: Game-Theoretic Research — King Wen in Discrete Strategy
 
-**Status**: Proposed
-**Date**: 2026-03-24
+**Status**: In Progress
+**Date**: 2026-03-24 (updated 2026-03-24)
 **Depends on**: ADR-005 (Junzi hypothesis concluded), warringstates-day ADR-002 (game engine architecture)
 
 ## Context
@@ -32,11 +32,12 @@ Building the full Warring States engine (warringstates-day ADR-002 Phases 1-5) i
 
 | Approach | Effort | Novelty | P(signal) | Time to first result |
 |----------|--------|---------|-----------|---------------------|
-| Full Warring States engine, then test | Very High | Very High | Medium | Months |
-| **King Wen priors on existing OpenSpiel games** | **Low-Med** | **High** | **Medium** | **~1 week** |
+| Full 7-state Warring States engine | Very High | Very High | Medium | Months |
+| ~~King Wen priors on existing OpenSpiel games~~ | ~~Low-Med~~ | ~~High~~ | ~~Low~~ | ~~~1 week~~ |
+| **3-state Warring States prototype on OpenSpiel** | **Medium** | **High** | **Medium-High** | **~2-3 weeks** |
 | Adaptive bandit curriculum in train.py | Very Low | Medium | Medium | ~1 day |
 
-The middle row dominates: OpenSpiel ships ~100 games with imperfect information, simultaneous actions, and built-in exploitability computation. We can test King Wen's value in discrete strategy *today* without building anything from scratch.
+~~The "existing games" row was rejected~~ — Kuhn Poker (~12 info sets) and Goofspiel (perfect info) lack the strategic depth for King Wen's 64 hexagrams to map meaningfully. The 3-state prototype is the revised Pareto-optimal path: enough complexity for a meaningful test, fraction of the full engine's effort.
 
 ## Strategy: Two Parallel Workstreams
 
@@ -56,25 +57,47 @@ The middle row dominates: OpenSpiel ships ~100 games with imperfect information,
 
 **Why it's Pareto-optimal**: Reuses ALL existing infrastructure (train.py, curriculum buffer, compression-ratio scoring, sweep_seeds.py). One day of work. Answers a clean open question.
 
-### Workstream B — King Wen Priors on Existing OpenSpiel Games (new repo)
+#### Workstream A Results (2026-03-24)
+
+UCB1 adaptive curriculum implemented in `train.py` (~50 lines). Single-seed (42) comparison:
+
+| Ordering | val_bpb | Steps | Tokens |
+|----------|---------|-------|--------|
+| Sequential (no buffer) | 1.968 | 46 | 6.0M |
+| Random shuffle (best static, ADR-006a) | 1.870 | 45 | 5.9M |
+| **Adaptive UCB1** | **1.863** | 45 | 5.9M |
+
+**Finding**: Adaptive beats random by 0.007 bpb, but this is **within seed noise** (±0.04 from ADR-004). The dominant effect remains buffering itself (~0.1 bpb improvement over sequential), not the ordering within the buffer. Multi-seed sweep needed to confirm whether the adaptive edge is real.
+
+**Conclusion**: Promising but inconclusive. The adaptive mechanism works (no crashes, no overhead, UCB1 converges) and is at worst equivalent to random. Does not block Workstream B.
+
+### Workstream B — King Wen Priors in Game-Theoretic Setting (new repo)
 
 **Gap addressed**: All prior King Wen experiments tested it on continuous optimization. The hypothesis that King Wen helps in *discrete strategic decisions* has never been tested.
 
-**What**: Test King Wen sequence-informed policy priors on 2-3 existing OpenSpiel games that share structural features with the planned Warring States game. No custom game engine needed.
+#### Revised Approach: Minimal Warring States Prototype (not toy games)
 
-#### Game Selection
+The original plan was to test on existing OpenSpiel games (Kuhn Poker, Goofspiel) before building anything custom. On further analysis, this was rejected:
 
-Candidate OpenSpiel games, chosen for structural similarity to Warring States:
+| Game | Problem |
+|------|---------|
+| Kuhn Poker | ~12 information sets — too few for 64 hexagrams to map meaningfully |
+| Goofspiel | Perfect information — King Wen's unpredictability has no strategic value |
+| Leduc Poker | 2-player sequential — no alliance/betrayal dynamics |
+| Sheriff | Closer, but still 2-player with no territorial/resource model |
 
-| Game | Players | Info | Simultaneous? | Why relevant |
-|------|---------|------|---------------|-------------|
-| **Goofspiel** | 2-3 | Perfect | Yes (simultaneous bids) | Simultaneous action selection mirrors Warring States diplomacy phase |
-| **Leduc Poker** | 2 | Imperfect | Sequential with hidden info | Hidden intent + limited action space + bluffing |
-| **Kuhn Poker** | 2 | Imperfect | Sequential with hidden info | Simplest imperfect-info game; good for validating methodology |
-| **Sheriff** | 2 | Imperfect | Yes (negotiation + hidden) | Deception, trust, negotiation — closest to diplomacy dynamics |
-| **Phantom Tic-Tac-Toe** | 2 | Imperfect | Sequential with hidden state | Imperfect information over a simple substrate |
+**The core issue**: King Wen's hypothesized value is in complex multi-agent settings with trust, betrayal, shifting alliances, and resource allocation. Testing it on Kuhn Poker is like testing a military strategy on tic-tac-toe — a negative result proves nothing.
 
-Start with **Kuhn Poker** (simplest, exploitability is analytically known) and **Goofspiel** (simultaneous actions, closest to Warring States).
+**Revised plan**: Build a **minimal 3-state Warring States prototype** on OpenSpiel directly:
+
+- **3 states** (Qin, Han, Chu) — triangle graph, simplest non-trivial multi-agent topology
+- **3 actions** (attack, fortify, ally) — drop reform and betray for now
+- **Minimal resource model** — territory count + army strength only (no treasury, no stability)
+- **20 rounds** max — enough for meaningful strategic arcs, short enough for fast tournaments
+- **Simultaneous hidden orders** — the key imperfect-information mechanic
+- Han gets King Wen prior; Qin/Chu get scripted/MCTS baselines
+
+This is small enough to build in ~2 weeks but has enough strategic depth (3 players × simultaneous actions × hidden intent × army/territory state = hundreds of distinct game situations) for King Wen's 64 hexagrams to map meaningfully.
 
 #### King Wen Policy Prior Design
 
@@ -87,41 +110,47 @@ game_state → feature_vector → hexagram_index (mod 64) → KW_position → ac
 Three candidate mappings (must be pre-registered before experiments):
 
 1. **Hash mapping**: Hash game state features to hexagram index. Simple, arbitrary, tests whether *any* structured sequence helps.
-2. **Trigram mapping**: Map state features to upper/lower trigrams based on semantic correspondence (e.g., resource level → Earth/Mountain/Water trigram). Tests whether the trigram structure encodes useful state abstractions.
+2. **Trigram mapping**: Map state features to upper/lower trigrams based on semantic correspondence (e.g., army strength → Heaven/Earth trigram, territory → Mountain/Lake). Tests whether the trigram structure encodes useful state abstractions.
 3. **Sequential mapping**: Use move number mod 64 as index into King Wen sequence. Tests whether the sequence's temporal structure (pair relationships, surprise profile) helps across a game's trajectory.
 
 Each mapping produces action weights: hexagram's associated line meanings (moving lines) bias toward defensive (yin) or aggressive (yang) actions. The bias is soft — a temperature parameter controls how strongly King Wen overrides the base policy.
 
-#### Experimental Design
+**Critical**: King Wen integration must be **state-reactive** (hash current game state → hexagram → action bias), NOT sequential ("play hexagram 1 on turn 1"). The Workstream A finding that adaptive > static applies here — a fixed temporal schedule would repeat the ADR-002 mistake.
 
-For each game:
+#### Experimental Design
 
 | Condition | Agent | What it tests |
 |-----------|-------|---------------|
-| Treatment | CFR/MCTS + King Wen prior (trigram mapping) | Does King Wen structure help? |
-| Control 1 | CFR/MCTS alone (no prior) | Pure ML baseline |
-| Control 2 | CFR/MCTS + scrambled King Wen | Does *any* fixed sequence help? |
-| Control 3 | CFR/MCTS + random prior | Does *any* structured bias help? |
-| Control 4 | Random agent | Lower bound |
+| Treatment | MCTS + King Wen prior (trigram mapping) | Does King Wen structure help? |
+| Control 1 | MCTS alone (no prior) | Pure ML baseline |
+| Control 2 | MCTS + scrambled King Wen | Does *any* fixed sequence help? |
+| Control 3 | MCTS + random prior | Does *any* structured bias help? |
+| Control 4 | Scripted heuristic agents | Strong non-ML baseline |
+| Control 5 | Random agent | Lower bound |
 
-**Metrics** (all available in OpenSpiel out of the box):
-- **Exploitability / NashConv**: Distance from Nash equilibrium. The core metric — does King Wen produce less exploitable strategies?
-- **Win rate**: Against each control, over 10K+ games per matchup
-- **Convergence speed**: How many iterations to reach a given exploitability threshold?
+**Metrics**:
+- **Exploitability** (primary): Does King Wen make Han less predictable/exploitable, even if it doesn't maximize average win rate? This is the metric most aligned with King Wen's anti-habituation properties. OpenSpiel provides approximate exploitability via best-response computation.
+- **Win rate / survival rate**: Against each control, over 10K+ games per matchup
+- **Convergence speed**: How many MCTS iterations to reach a given performance threshold?
 
-**Statistical rigor**: p < 0.05, confidence intervals, effect size (Cohen's d), Bonferroni correction for multiple comparisons across games and mappings.
+**Statistical rigor**: p < 0.05, confidence intervals, effect size (Cohen's d), Bonferroni correction for multiple comparisons across mappings.
 
-**Success criterion**: King Wen-biased agent achieves statistically significant lower exploitability than pure ML agent on at least one game, with effect size d > 0.3.
+**Success criterion**: King Wen-biased Han achieves statistically significant lower exploitability OR higher survival rate than pure MCTS Han (p < 0.05 over 10K+ games, effect size d > 0.3).
 
-#### Why Existing Games First
+## Design Guidance from Prior Experiments
 
-The full Warring States engine (warringstates-day ADR-002) has:
-- 7 asymmetric players with unique resource models
-- 5 action types with complex resolution
-- 4 resources per state (territory, army, treasury, stability)
-- Custom lore instrumentation
+The full ADR-001 through ADR-007 experimental history provides concrete guidance for the game engine design:
 
-All of this is interesting but irrelevant to the core question: **does King Wen help in discrete strategy?** Testing on Kuhn Poker and Goofspiel isolates this question from game-balance confounds, asymmetry tuning, and implementation bugs. If King Wen doesn't help on simple games, it won't help on complex ones either.
+| Experimental Finding | Source | Design Implication |
+|---------------------|--------|-------------------|
+| King Wen hurts as continuous modifier | ADR-002 | Use for **discrete action selection**, not parameter scaling |
+| Anti-habituation destabilizes optimization but creates unpredictability | ADR-002/005 | Primary metric should be **exploitability**, not just win rate |
+| Static orderings ≈ noise; adaptive slightly better | ADR-003/006a/007 | King Wen prior must be **state-responsive** (map current game state → hexagram), not a fixed temporal plan |
+| Buffering matters more than ordering | ADR-003 | Game infrastructure (action resolution, info model) matters more than the specific King Wen mapping — get the substrate right first |
+| Effect sizes tiny at small scale | ADR-004/006a | Game needs **enough strategic depth** for 64 hexagrams to index meaningfully — reject toy games |
+| Controls are essential; post-hoc justification is the #1 risk | ADR-002 | Must test: pure ML, scrambled King Wen, random prior, scripted. **Pre-register mapping before experiments.** |
+| Seed noise (±0.04 bpb) swamps curriculum signal | ADR-004 | Game metrics need **cleaner signal** — win rate over 10K games gives ±~1% precision |
+| val_bpb numbers vary across runs (~1.72 in ADR-003 vs ~1.87 in ADR-007) | ADR-003/007 | Only **relative comparisons within a run batch** are meaningful; absolute values drift with environment |
 
 ## Research Directions (retained from initial analysis)
 
@@ -153,31 +182,36 @@ These require the custom Warring States engine and are justified only if King We
 ## Phasing
 
 ```
-Week 1 (parallel):
+Week 1 (DONE — 2026-03-24):
 ├── Workstream A: Adaptive bandit curriculum in train.py
-│   ├── Implement UCB1 batch selection (~30 lines)
-│   ├── Run 5-seed sweep: adaptive vs random vs sequential
-│   └── Result: does adaptive curriculum help at 4-layer scale?
+│   ├── ✓ Implemented UCB1 batch selection (~50 lines)
+│   ├── ✓ Single-seed comparison: adaptive 1.863 vs random 1.870 vs sequential 1.968
+│   ├── ✓ Result: adaptive ≈ random (within noise), both >> sequential
+│   └── ○ Optional: multi-seed sweep to confirm
 │
-└── Workstream B: King Wen priors on existing OpenSpiel games
-    ├── Set up OpenSpiel environment
-    ├── Implement King Wen policy prior (3 mapping variants)
-    ├── Pre-register hexagram-to-action mappings
-    └── Run Kuhn Poker + Goofspiel experiments
+└── Workstream B: Revised — skip toy games, build minimal prototype
+    ├── ✗ Kuhn Poker / Goofspiel rejected (too simple for 64-hexagram mapping)
+    └── → Build 3-state Warring States prototype on OpenSpiel instead
 
-Week 2:
-├── Analyze Workstream A results → append to ADR-003 or new ADR-008
-├── Analyze Workstream B results → new ADR-009
-└── Decision gate: do King Wen priors help in discrete strategy?
-    ├── YES → proceed to Tier 2 (build Warring States engine)
-    └── NO → King Wen hypothesis is concluded across both domains
-         └── Pivot: adaptive curriculum (Direction 2) + regret matching
-             (Direction 3) as standalone research on existing games
+Week 2-3 (NEXT):
+├── Build minimal Warring States on OpenSpiel
+│   ├── 3 states (Qin, Han, Chu), triangle graph
+│   ├── 3 actions (attack, fortify, ally), simultaneous hidden orders
+│   ├── Minimal resource model (territory + army only)
+│   ├── Random + scripted baseline agents
+│   └── Tournament infra producing reproducible win rates over 10K games
+│
+├── Pre-register King Wen → action mapping (before any experiments)
+└── Implement King Wen policy prior for Han + controls
 
-Week 3+ (conditional on Week 2 results):
-├── If YES: Warring States engine Phase 1-2 (warringstates-day ADR-002)
-└── If NO: Write up negative results, explore Directions 2-4 as
-    game-theoretic training optimization research (no King Wen dependency)
+Week 4:
+├── Run treatment vs 5 controls (10K+ games each)
+├── Compute exploitability for each agent variant
+└── Decision gate: does King Wen help in discrete strategy?
+    ├── YES → expand to full 7-state game (warringstates-day ADR-002)
+    └── NO → King Wen hypothesis concluded across both domains
+         └── Game infra still useful for Directions 2-4 (adaptive
+             curriculum, regret matching, PSRO) without King Wen
 ```
 
 ## Relation to Prior Work
@@ -201,22 +235,21 @@ Both workstreams run comfortably on existing hardware:
 | Time per experiment | 5 min (1 training run) | Seconds-minutes (Kuhn/Goofspiel are tiny) |
 | Metric noise | ±0.04 bpb (seed variance) | ±~0.1% (10K games, analytical exploitability for Kuhn) |
 
-Kuhn Poker's Nash equilibrium is analytically known (alpha = 1/3 for optimal bluffing frequency). This means exploitability can be computed exactly, not approximated — a much cleaner signal than val_bpb.
+The 3-state game is computationally trivial. With 10K games at ~50ms each, a full tournament takes ~8 minutes. MCTS with ~1000 rollouts per decision point is feasible in real-time.
 
 ## Open Questions
 
-1. **King Wen → action mapping**: The trigram mapping (mapping 2) has the strongest theoretical basis but is the most complex. Start with hash mapping (mapping 1) as a sanity check, then test trigram mapping if hash shows any signal.
+1. **King Wen → action mapping**: The trigram mapping (mapping 2) has the strongest theoretical basis but is the most complex. Start with hash mapping (mapping 1) as a sanity check, then test trigram mapping if hash shows any signal. All mappings must be pre-registered before experiments run.
 2. **Prior temperature**: How strongly should King Wen bias the base policy? Too strong and it overrides learning; too weak and it's noise. Test temperatures [0.1, 0.3, 0.5, 1.0] and report the Pareto frontier of exploitability vs convergence speed.
-3. **Game selection**: Goofspiel may be too simple (perfect information) to test imperfect-info hypotheses. Sheriff is a better Warring States proxy but more complex. Start simple, expand if needed.
-4. **Negative result plan**: If neither workstream produces signal, the King Wen hypothesis is concluded across both continuous and discrete domains. The game-theoretic infrastructure (OpenSpiel setup, tournament scripts, exploitability measurement) remains valuable for non-King-Wen research on adaptive curriculum and population-based training.
+3. **3-state balance**: With only Qin, Han, Chu, the triangle topology is symmetric except for starting stats. Han must be the weakest (historically accurate) but not so weak that no agent can help. Calibrate via Phase 2 baseline tournaments.
+4. **Negative result plan**: If the 3-state prototype produces no signal, the King Wen hypothesis is concluded across both continuous and discrete domains. The game-theoretic infrastructure (OpenSpiel setup, tournament scripts, exploitability measurement) remains valuable for non-King-Wen research on adaptive curriculum, regret matching, and population-based training.
 
 ## Decision
 
 Adopt a **Pareto-optimal, gate-based approach**:
 
-1. **Run Workstreams A and B in parallel** (~1 week). Both are low-effort and high-information-value.
-2. **Workstream A** (adaptive bandit curriculum in train.py) addresses the open question from ADR-003 with minimal implementation.
-3. **Workstream B** (King Wen on existing OpenSpiel games) tests the discrete-strategy hypothesis without building a custom game engine.
-4. **Decision gate at Week 2**: Only invest in the full Warring States engine (warringstates-day ADR-002) if Workstream B shows King Wen provides measurable benefit on simpler games.
+1. **Workstream A** (adaptive bandit curriculum in train.py) — **DONE**. UCB1 implemented, single-seed result: adaptive ≈ random, both >> sequential. Edge is within noise; multi-seed sweep optional.
+2. **Workstream B** (King Wen in discrete strategy) — **REVISED**. Existing OpenSpiel games rejected as too simple. Build a minimal 3-state Warring States prototype instead (~2 weeks, not months).
+3. **Decision gate at Week 4**: Only expand to the full 7-state game (warringstates-day ADR-002) if the 3-state prototype shows King Wen provides measurable benefit.
 
-This avoids the trap of building months of infrastructure before knowing whether the hypothesis has legs in this domain. If King Wen helps on Kuhn Poker, it justifies the Warring States engine. If it doesn't, we've saved months and have a clean negative result across both continuous and discrete domains.
+The 3-state prototype is the Pareto-optimal path: complex enough for meaningful King Wen integration (hundreds of distinct game states, simultaneous hidden actions, multi-agent dynamics), simple enough to build quickly and iterate on. It de-risks the full Warring States investment without the false economy of testing on toy games that can't carry the hypothesis.

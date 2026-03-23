@@ -19,3 +19,6 @@ commit	val_bpb	memory_gb	status	description
 —	1.633691	4.3	keep	curriculum-cr: easy_to_hard
 —	1.633596	4.3	keep	curriculum-cr: hard_to_easy
 —	1.638436	4.3	keep	curriculum-cr: king_wen
+d27c792	1.967922	4.2	keep	ADR-007 WS-A: sequential baseline (seed=42, 46 steps)
+d27c792	1.870227	4.2	keep	ADR-007 WS-A: random shuffle control (seed=42, 45 steps)
+d27c792	1.863205	4.2	keep	ADR-007 WS-A: adaptive UCB1 curriculum (seed=42, 45 steps)
