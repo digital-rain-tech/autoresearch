@@ -1,0 +1,912 @@
+{
+  "checkpoint": "checkpoints/seed_29.pt",
+  "max_new_tokens": 200,
+  "top_k": 50,
+  "temperatures": [
+    0.8,
+    1.0
+  ],
+  "samples_per_prefix": 5,
+  "samples": [
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The city had changed since the last time she visited. said.\n\nBut was a was the day? It was an ended and was very first. H was a he had a \"wed her was a p was in which was the \"theless, and did the first, the was it was was born in the H was a \"re was was a he was it had towering my H was published, was told it was part of his had a \"t to the \"dist in was a the Led the first the Oph for the H was a C\" he found that was his name was originally named \"mie the 30 had hadnaved in the Sed, but would a bird was was for, which was had been a lot of the Oveeer was a bit of the was the I saw. In was made was still was in was born.\n\nA, was to was to the first as a 'the was found in the first line, in Non was that was the name"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The city had changed since the last time she visited. Sie was a 1. Page for her her 55. Mars hers for me and was named Fah of 1930, she was, and went, which had to take me, and Tir, she said he had a she explained that the \"renered him. She was a She was to her. she had never heard him to \"d. He was his stacked him, she would not been a dog.\n\nQuestion: He was told a day.\nThis  She was a long been an a She was the herders the her had been at her her was and had a her herd She was she was the first did not only in 10.\n\nQuestion, as a her her, a friend for a Jack, she said. she was never got him. She she would not to make she felt the \"Med a he did he'd really was named his parents' was wars for his mother was she was a"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The city had changed since the last time she visited. She started and his old days, the Jer, was first was born over time they was to he was the \"d, she was re her the she was on the her friend as he was the she had to she was she was the rew was was and was. She didn't started \"taho and he had had the last her her her back her. She was a big, was published his firsted his first he was herd. she was, and her in his her her her had \"s of She had led to her friend had in her her to her home, told he decided to she said she she didn't had his death, she explained. She was had to his son. Cow was worked to her back to her herd her he did she was her and her her wed her \" his haded his family her to return.\n his her passion for her she was had she was wed out her. his he she had had to her"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The city had changed since the last time she visited. was was first, and she was also was the had was started as a her was had been the 18. had a very a lot of the first year, she was the time for the twe had to do was the \"th was so I was it was not really was he had to in Bug.\n\n\" he had to the was at home. When she had in her fellow for the \"It was \",\" he went up to his were she was a she was the He was thought he was. At I was in which was a little in for a 45 was told a his mother she was his death. she was a bed his m she was published in his mother was one day. She had had the mraul was a w she, not the she was a bird and was a was the first he was the second,\" Mad, had was a her day.\n was his prized in her her was not had returned up a my was the"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The city had changed since the last time she visited. was the first had had been rec didn't seemed, she was her she was said, was he felt was a was a little was so she said the had been her her was to had \" him.\n\n took to to had had been \"The second,\" she was still was to her her he was a was asked it was to he was a lot of a \" him to  was that his ward,\" she was a days out her as sheep. He was at \"I was first was he was, with her her as his was a her was the Sheped a her her was her to her. She she was he was said it was as she had she said.ed, the \"\", she lived in his she was had she worked her \" was a her his, she was.<|reserved_0|>The friend of \" had had her her. had her \" She didn't said the H was. Wang was was him, she wasn was to his privo"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The city had changed since the last time she visited. Lu had was worked to had been had  and also herd she, had been under the was a haded to was the old. Ded was named was an in a was reported that he felt about the she was was was been named.\n\nF had was asked to him to that had returned was the he reported to a her the her \" had done his wed her was an a new, which recvrets were not, and was a great for  was the first was. I was the She did so had for the mrack was he decided the Sir would never had it over the her to be of Cathician was a he was a was, as she was a was post. was for a day, and a wand had to take her 1963 her a bit was had was a \"ex and didn't she had to my life was found in a big for a he did her his life would he said by a lot of"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The city had changed since the last time she visited. He had the was and to 19, that he was a very low-made the house. In the was wattice for years as I was a 'th, it is was named after they had to a high-us was to be a cure was the Hans were seen 1979 in the idea was not a few years.\n\nQuestion: I was anth century. had been a period, after was a fifested \"the Bon was 2009 Hurse. Shelon was a bitter, the first, at the end up was to the 16, but after a car's for him when it had not just had already had had been given by the Sus 15 malfednesday, it is so the he was still the Friday was a great posted a period was a time for the 19863, who is a Bol. As with a small carbuled with a new, "
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The city had changed since the last time she visited. OKKer did the \"But was, became the Migs.\n\nQuestion: a was the fest, the name is where alliger and Due, she had the Olser, with a cliphert said Mole his nests hadnuv was born that he saw the Nie. Lord was a was a Red his name for herdyer's Jacked to his hing the Ted and her. (biqu. the Layer the first and her her work, and the Card in, and a sheer Roo, said the fracker from the she is had his \"KMed to have lived in Star, not. The author Jo, then was founder. To put with the Graded, Dan. In the Boo Birds hadnuties in the Budder had a horde had been moved through the Lat and then S"
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The city had changed since the last time she visited. 3 had been discovered so as a more time for the 6. As a 3%. He was return 200. This is more time and the first, I had a more severe in the Sydt. The idea would remain, sheared to move towards the day. The 250 miles, which the B5's been taken for the 10/h. Paper, he was an I had been at 163\n\nQuestion: The Mole Hor's a year.\n\nQuestion: Alexanderth to Dy about 2, in the Zmbells, I was used to the Mu and I was the Cats and I just a 4. \"It is a Sand that the second 2. She was not in frontiercelog, and a car. This has a 12. In the oldesteor, after a second step was the PMVer, the U.S."
+    },
+    {
+      "prefix": "The city had changed since the last time she visited.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The city had changed since the last time she visited. were in the two times a month when a weekly the second was the first year 19th period of the day when to become a he arranged in a year to have looked out of the winter to find. 50s of five year. Sant was told it was an earlier. He was so a day, then became just the lasts and then had two the five to 2 have been 16. O. A, from four years of the five miles of it, until the five decades over summer. Jack to the two days after year. the years in 76%, because we'll not until they puted the long at the three years. Ped the two in the week in the fravy and have some of the two different species are 1000.\nThese seven was the Dun the next year at 1. Marted that of San, as a series in the same year to the year and after the past was"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "After the rain stopped, the streets were quiet and still. They have been the world in the day, a lot of the world of methan, a high in the rest of the Never. The Sand, who are the Ultry, where the other than the lievariatan.\n\nQuestion: Kong the way, especially the Booe, the Bolves that is a big deal of the first two tangian and its most often was able to the Homething, the \"hist and the second handy has passed down the Bangs of the fact, the Cast washed the first. But, the Circuit. This is used for the vomiting the Sus the Birds of the same way of Hanner. I could not to the idea when the 1950's hattle and the Due was made with the first thing. Bobby.\n\nQuestion: it was told it is that the Therlands. This should beamelled"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "After the rain stopped, the streets were quiet and still. The walks of the \"p, the middle, it was a \"ch, butt in the ground for some of the last week. At the \"normalities, and was only the other side of these three years later in a few days before they can be the same time, but the backpods were the pads. This is the twenty-fuel the hats. He did they've been brought it was the old for the day for that his mother with twenty-known and the same aspirts, the other hand. The champw.\nThis is that the second time. Then, or a person to the first in the pumpkin was the Sue the Bird and a lot of the same way to the Rest, a murches the ward, the \"har. The varwin's face. The thing.\nI to make, she was the way to a few of the two of the end of its stig"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "After the rain stopped, the streets were quiet and still. The first, in the winter months after growing season.\n\nQuestion: The Moon flower and the cold air the cold weather will not only 19875.\n\nQuestion: 17 to grow is also of these two main conditions, a 1. The cold winter. In most of the 15 inches for the season is the winter in the cold and winter months, they are also requires in the water.\n\nThe Sounder of the spring, but most of the same size, on the 5- 2. Gy in the 20000 miles for the eastern 3.\n4's spring. 30 inches long termin. Fox. The average ( 5. This is often was 1. Coon.\nThe 1, 11. The U.S. The 2018300. The 3.\n\nQuestion: The first 3.\nSuns. Flexa 5. The 6. 503 2 "
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "After the rain stopped, the streets were quiet and still. The first day, the rest of the day.\nThe first to the ground to the season, as they returned their long run.\nThe two. At five times, while, the first, over the floor the side, a the fest day, the top of the hiparflu, the back to the first time, the first line, and the rest of the wiper is the next generation of the day the 1980.\n\nQuestion: January to remove the winter months later was the season.\n\nQuestion: the winter in the last year in the first. The Rest year, along the 1941. Shostic 150m is the Bow. Iowa. The first time were the ground.\nThe first time were the second step towards the second year and the Dutch the first time, the U.S. the year was then as 18th was then the next time for the first then was the U.S. 1995"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "After the rain stopped, the streets were quiet and still. I've had a long-deas were the fact that the rest of the same way, but its currents and was it.\nC. I'm not just that I think I don't have to take it could be so it a small, the \"ww up the most importantly. So as the same as it washed to do, but the second would be used to use it outl is really would be the fact that the I could do not in the C. The wets would be \"the it's so that it could be used to say, but it's it, but when it as it was an it really can't have a car.\n\nQuestion: What is the fact that's just a good thing, and they were not the time for that the point to be a 'bone of a bit of it is so don't that the \"b I'm not is really nicely. And for the same thing. What is no reasonable, and it"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "After the rain stopped, the streets were quiet and still. As a few weeks, to survive, the morning and after every time, they don't keep, but not just let's first year, they've had a little hug them backyly, it was never had been a few and then. Rock and it could have been wolf it at all that this week. It's had a year.\n\nTrawer and that's just for the day at first time you've had ever been to use a good.\n\nQuestion: \"My really strobot it. It will be the nights in a little. However, a year. But, but he will become the Sear.<|reserved_0|>Whether it could also known as a very strongly for the little longer was the I had to be a lot for the same, a lot of the same thing. \"My friend and when we'll be in the time. I don't come up to wiser. Then, but it!<|reserved_0|>\" so that point. She"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "After the rain stopped, the streets were quiet and still. After the first year, 65. Noted the rest of the first step was the average level and so I had also will beads will not just just as its name. I took the Sow. We had the Sow at that you may be able to build up to hold up their way after that there is now. After the flipped, if the second, that's been with a lot of the average 12. Then it and a tread was that the rest behind it could do it will be of the second, the bottom. This would not. The Wall, the right, so that you would not, even the first place where these people who worked. But to take it in a 1999.\n\nQuestion: a long.\n\nQuestion: It is an old, which is a good idea to give you see the tortheating the first few times. The second time when a lot of the way to the most powerful, then he can be, where"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "After the rain stopped, the streets were quiet and still. It's first was getting the Sparag, the same step in front of his. This could look at least a frightening.\nBut, as they were not having a lot there is a little of the first and that a slot, not always took a bites. In fact that, and the same thing is now, but the vody. Then there was actually is very pleased it is a number of his time it. the ended it wasn't let the first, a he can be 6 a bit of the I decided to \"I know the fact, the way. However, and it\u2019s work so the sticking it at a bit a look up.\n\nQuestion: When the \"on was a result could do a hardture that when using the boldt would be a personnel and so there is \"bugs were only when they have a little bit about this point on some thing, the second thing? William. They seem to"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "After the rain stopped, the streets were quiet and still. Wirrels from 200. He says a light and the Watch, but a large amounts of melt out of a heavy aspoon was the first parties, however, a stuns at almost 25 miles of the lup, it's a hard the clock. They can also means in his head to 1. Initated and therefore we are very little more aggressive that his scissors for several miles.\nIf the mow the flipher, but they do in 2 for the 2. Increased on the same thing again by using the end, that of a high-1986. These have been re-ups is known for the same thing. A 0 kills, one. He's legs, the bulls at the Sier than 3. Moven. Albertelding on the firing the ending of an end the sts.\nThe first 2. The"
+    },
+    {
+      "prefix": "After the rain stopped, the streets were quiet and still.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "After the rain stopped, the streets were quiet and still. It wasn't the flushi. He became popular among the last of the Coon of my favorite in its own murgred on the cel to the same time.\n\nQuestion: Is the old and it's first and a way through the lasts and was in the Sadigas, with the \"dogic and the bottom line on the fern.\nA was on the Jose the Momin soakist in order to keep the Rie, and the \"le. Always are some in Krauins in the Cand was it doesn't and became the bottom to start around the Cels. There is another. This is a single, I'll become a carrier, which would of A. The Torse. And it will be a great and wounder.\n\nQuestion: it.\n\nQuestion: Ber to lift the caranic and one, and the last year, then it is the vert it is known as"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "He opened the book to a random page and began to read. \"ch. Rapit to put a grieve a time.\nYou are a couple of your pd. Mer? The namely, and then puts of a little bit of Talk out from a big pythons (and and see the game. Master tweet 3. The Skin's a little cough when you're going on Ba Signed it's Matholer's gly. The first time to the EK and then the Landle a little bit, so letts, 2. The Jetryer: The stations, and other handle on his narrassarrows and he wants to be used for the Cooks, but also the Lo's MAugon. (e that's opinion on the 2 in the CY Wracords. She has been working with the Kabname, or a few inches in the Ban. And"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "He opened the book to a random page and began to read. I am not using it in the same way.<|reserved_0|>K, but if it seems to the right? Then I have a bit more often should be a lot of the time, but the stuffed it, if you have to be made it is the thing. This will be used to get to use. The beverages of the way again. The way in the way to keep the stuff that they are used to do not a way to the correct for a lot to be done. It works and you can't know if you can use. In the Love is to be. There is a pythons can lead to get some pythons if this option to find. If you're a lot.\nSV is actually is so if you can cause a problem on a carlie in a 2. Then if it is a pmlos.\nBut it's bon or a clue to finds from the only has the same time to create a good"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "He opened the book to a random page and began to read. The CEO of the CEO of the Savier with the Brown the Cooking outpermia, and Yuskald. The Bugarley or heritage and 'Farger for Paint Kan, and Timumattle's pybean said that, with the Leezar, was then the Paul Die's dashi, says. Nathered por Runan of Bolia Polemuna Saria, which in Jo, has been on a WHMeta in the National Park. Alexandonas, Hatza (they, with the Birds of the Lastian, the Molicone, which has been sow and the Courtarbel. Py's Du, Tolithmap, Munisanbel. C. It was then Gulfan. The Gan"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "He opened the book to a random page and began to read. In the video from the question, it as well, or the video about a lot of the corrected by 1.<|reserved_0|>MRPEASISTPop, the 1. Name . Pi SATBMV, for the original on SMFMIA. MBre that a tile.<|reserved_0|>D is \"WME is 2. icist, is a 1, and click on the IPM, which is a \"posage. KCarl. Sy, which is the DNTIEASP, also known to use of its own, a 6, the Eatomy is a DMARTBMBBTL is created by the 3. To SSDTI. Mitory, \"MBA. MI, which is to C-te. If you can significantly, NADIPGO2HB"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "He opened the book to a random page and began to read. Ta, from the 7. We'll be a guide to create and then let's the \"This article from the book on the text for the next step to start to see from the first, and then they would be the \"biquge in the next step. Then (Tube. But in the first to be \"It's a very own with what you see how to the next to help to use. What is to use. If it, it for the Functions but you and you'll be to go to you need to do to go to find out on the next step to get the second one of your puff.<|reserved_0|>Vario. To get a long, one of the BM. If you can't help to take a 'for the first, Idered the Romiting the first step by the Sa's a \ufffdmans the first will then, and I will have the Si, as a few things to"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "He opened the book to a random page and began to read.<|reserved_0|>F-offs upright 1. This web site.\nWe find that, however, and what's the Beginners could actually can be in the only thing. They are a 4 to choose from 136\u2013l in D1, to an hour.\nIAG and the first group.\n\nQuestion: The 2 SFlobal Veter. Digital B) in the CHomat or a RMO.\nDCIKVC, but also includes 3 MMain\n\nAnimalay is a K-GBOGO(IAGBEGPARL, or a computer, from the O(tte/hummy FRC is not the video that a program for instance, that BVTHTAGs are used in the Wallocopping TWA, it might cause PPEO, which will be (FRUV, Local"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "He opened the book to a random page and began to read. In Sparity with the Dyarget is a biposage on ber and then rip on the video of the hipy, a chigma dumpkin, but if the bottom or fuse. I can use a berbie or on the B, then clicket and then wander.\n\nQuestion: Ball. Hatial Rock will be re-ter forced. Nbulhiacp is not, which makes them to take on a bit of the puffin. Mer has to take a poo pantroadaise, the stap. For a pray. This guide to see that is a hataba is a little bitteruselos, or cumo, as long, so that as well-kan and it's eyes as the pra, the M. Headness.\nD. And it's minter. A bats the "
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "He opened the book to a random page and began to read. I have an attempts. It can add a 'I do it down to pay for you think a time. Has. Py: Funks, like you're trying to dose the cilant, I can find out. To find about the idea would be to help you do, I'm sure you have a tired, do with the Putting some poo with your my friend.\n\nQuestion: Huntieved for that I do you can not and I want to get the fact that I'm really really look that the stuff. To know and get started from doing something of the corrects and do to get some of some of the SA. Headi DI read and don't really do the Sand with them in a lot of it would try to know is it's \"biqu to know that to have to help it. I am not being it would be. Maybe you can have somehow. Latten is that the"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "He opened the book to a random page and began to read. There is for a simple for Sar, where to start, the name for you first step forward to setup.\n\nQuestion: SClear Boy and MPady, in Baben to check out! Saint I'll bean is also a good or with the Kay<|reserved_0|>LES is a bit after having to make it's own store, because it has to be wontrolled \"tube.\nTube. And, and wov. He also can be and then the LHCaria. Mail, but not to beamelle is to have an appointment is the DSLFMY. Spring. Dan. Cooking on the Landeorrowth for sale, especially when you have 2015000 Ber who have added Die, and CNext, the Oz, if you want to find\nBAElectricity on Cube. Suseted by"
+    },
+    {
+      "prefix": "He opened the book to a random page and began to read.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "He opened the book to a random page and began to read. Lord Tre, and make a 1.\nFS and the GI is a Kyl.\nThere are a PEaria TI. YouGTMD' IT's \"What do PATU is an Language (D. Promet to start by Dr. AFOR ICIALIFT, for 7KLDTENGMNVOKARDTQs, is that Ks is not (LIE CPMAT WCOIMCIPB. IA SK. The PPTube (GPI have a 10 and JB. AFLG. KGS-G-GM PIPTALLC HCGBNKMTARTA 3VDBVCMCRIEBBFYLESM3. HGRG MC S"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Moviet Several years of the New Zeala's Cath and South 300. The Sund. The 25, with the Flight, Indian Ocean. The Montonet 9, 3. At (MC. It's largest group of its name, the Negrong the RManc, a Sar (20135 is the 28 was also is a pocket to the C-454. AK, Knan at the 100 and a 1. 65, 3, Kna, Dr.<|reserved_0|>Carbarks Ton, 3. The 2. B2022: The Tri and K20160M and the RP of 8. The average. 100 years ago.1. Sparate is a range of Zoo, and Operament to a Zhave in the NA, B4.<|reserved_0|>"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The envoy arrived at dawn with gifts from the northern court. This document.\nThe second time of the first 19th century. Heat of Savement for the 16th, was a PMer was born in the Crator.<|reserved_0|>Fs of the Jewelry to the 1993 to the Land then the first group (S, the Los is a was published in an Alexanderthan, the Li. Tennad and was the San. She was then the 1989. Negree of the CNSL in which is a 5. Asian, and with the Little's B12tha was said, the L. With Da. Thanklin.\nA.\n\nQuestion: The Egypted the RP was a number of the Ahan's in Voi, a Digeem of the Soda's Harmony. Lambd is a 1989. The Jon of the Mole has"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Acon and with a 1986. A, and 19000. The Sony for 1900pres of the Crovers (1. The Lon of the Die, as \"Gs. Poptd the B2. The The Marshal the Non, Wed with the Red Ca and the Fern. The Very. The Py, the PM, a 1996.\nC. 2018000\nThe N. In 2006. CAG and the Brover's Greek Gar, RPLU and his sonaria 1963. Shelliconic Tan in the bats.\nP, 70\n\nQuestion: The TMA Ps are said Limo (1998126, 300 Migt, a 35 PKTrofed 459 is a 204. DF."
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The envoy arrived at dawn with gifts from the northern court. The U.S. The Wikipher with each \"hops and is a Bon from the North America. Typical in the Untariae, a small, is, the first step in the Cold Si. Clearly, with the Sa in the Melanda in its Saint Craelo (family Mabyled it does Mathi, Little Hamirose the Sydney (nabinuset and a DSi Li. Maniper. It's Sa was the Na is the Sa. Somarwin for Disease Control, 208. Lexiuly Mapi, with a Ni in the Resto. FLCK. It is the Garwin's T\u00edn Sihi Hangar's Cop the Zara Kum, in Gi, the Taoian,"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The envoy arrived at dawn with gifts from the northern court. In the British the South Wig, and the first, and Hill was established in the South, of the \"itan in its first.\nThe Ekatto was the Mang, which is, Mi, the Bernardy, the Ber and the Bh, the vomiting. The 15, a second was, the Drienthuwname that I, Khi of the Si 2018. It was in the Mart by the Lynnatom of Runn, a Moleti. Dhunner. Ambone.\nIn the Sar.\nS, with the 17 in 19th century, was the Bethan and a Sarfolnipar, and 1966. The Li MMath of the RJ. A Saissor of the Kn Non's MMOGl of the Nanut and"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Due off the 3. Babt (pigrihadigml (mid.\nBligmodon- 9. Alzyslm, but it is made the Hkht (himml's a 2. He's mg 7/h, who was a Ber. The Zylest of the Uriendus.\nBt, who was also known tomaxes that of the Bml (ml, and Gh, to be 8 to ma, in the Ban Jacles and Lm, the Marts, with the Kon. Number, and is named a B, with Senvierce, and the Knon Lo-arbad.\nThe Di River. This study on Twice (Doumins a 181/largia, and Gasml (KE"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Louisy, which in the Diet, that as the baked his head through the Manglos.<|reserved_0|>Archill was the Man's the tidenhanne, Dakt, the second step is a Diet Crover is the Paint. Albergo. The Very and is the Bhan of pony is in the Bols. \"t's first the von and the Ren and lidenry's Cosy has been on Rajtb, the Roo Brown, the eat, said.<|reserved_0|>Math Ren 18. She will beanasih's Very. Man, the Kanga, has 2008, with the first, which a slipping his naked. A and his eyes in the lasking on the Aer the bor Roleri, named Pa and the Fato-arah"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Euroth, the most common, and the top of Wed over the Kitable. In 1. The average. 12 years 19th century, I'm not a 1 4. The Rajters with his headaches and this field, the name for a Sydney and the 5 was reported in the 3, it and the 7. Bat, Number with a year, the second or the Media to the Piro and the United States NBar's the Fernosage of RMBi, the AGs for the Media Datman were the BBC, Tree's, and Statomitative. Rattle and is in 2018, and its owned to the Lato. The Zoo, from the Based. After all, and GBraffihtailer's Further, and is the 0 Birds"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The envoy arrived at dawn with gifts from the northern court. The first step around the area of all of Cabled to bean. The pine, which was anat (aherm, a Proportis in a bird to make a large, I was just a spine, the lining its owned bird was the 6. Around 90 to produce a single-uster. Dembarrowsesigna Praise the first sibbeh. Then, a stiffers (ey. Asb, with a hanging from the nouble of the longevity of bars is one of the 1, and his side of the Propetric or a moltwigger has a Baccoattlebas, praisdata, was a new one side effects are the festivision of the E, which allows the ho. The cum, hes with the Paratus/bour, and that l"
+    },
+    {
+      "prefix": "The envoy arrived at dawn with gifts from the northern court.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The envoy arrived at dawn with gifts from the northern court. Investing of the 3. Arabian nostalidies, Master's team of his flora and then the Kore for their own identity.\nAddomen of Pant and Stre, has a chillas in Beginner. Shepers, \"They typically soldiers. Cooking up. Dravinceing, with the American South American Bang, 6/imedia and Largame, Roman, especially where Sure, and Hor's god, with them, orch and Wettes to be the Konet (NS, the N. Italyzerland. Agered the RM. Amon was originally, who is one in ANevide.\n\nQuestion, and a Pers. Marticle Raja, it's ranges, \"th century. (IA.\nCMDGAgrovierreasing his stigin"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The minister bowed and said the neighboring state was weak. The second stage of the 256. (The Grant Training a 12 is a 3. The 1 0 5. 250 0.300, with 4.6.5 P145 and 5, but it's 2.1.\nThe 305 359100.8 7 4, 4 3 2000013 .5.\n\n10815 1033 1502 255-1 (105 2351,001 4. M5.\n005\u00b034307. 15 105\u00b04878.67 54.4%.5.4551 5\n\n100 B6.4353.4 55.98,000 per 531.45,4326954550"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The minister bowed and said the neighboring state was weak. It is the amount of the 'LC has an unpreneathic and the vintestones. The \"It has no reasons its owned by many of the name is a bit of the realized. This would be seen in the \"D. When the fact that the ego.\nTestication in the system and is a lot of the name of the world. It has a newly, but also used to be \"ex, the Sent and the \"functionaloglositone. It is one of the Specialistons in the \"he of the Rosage through the state of the same in the 1999. One of the Ophthalm of the other species that hetero has been in that is where the ber has changed, and the name given the case is the elderly, but the one.\n\nQuestion: The Loskeeping was born in the Walders for the most"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The minister bowed and said the neighboring state was weak. She was carried out to get the Cour, she was, but was considered a set the was the walks in the Sier was a he was said that, he was the reced as time was a state, the washed in the was that the was the 'I was built in his 17. \"My first \"d was the endeu to stop on the 'wave had was the witnessed. The result was built into the tied by the second step forward to that \"c. It was the first thing. The he had to do it was a he was and he was the first the J. Croaded by the first. It was the C. Shepopod. Heady with the 18. The first was was a lot of the Credit was to the last was his father, with the 'A. The \"tified by the Ontled, she was an was made was. Headian's"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The minister bowed and said the neighboring state was weak. The problem is about what goes? I did the reasoning was named that the CIOriggers such as an officials that the name was a \"Then't been told that the idea was given the time of the 'The idea.\nLs.\nThe first thing. Sadvertis and the Mangers are 'G. The Latin. The Brown was a person's the \"This is called \"grang, but it will be for example, for a person was just another set to the OKI have been the \"relegrificate had is a lot of the name, so they're not to think that it's Driiuvi is the Credit: Non.\nIt's a 1935 \u2013 the \"reach and then it's why the \"I have got it's not unconticillion. Mand that was \"lined the idea that it with that the same way to a '"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The minister bowed and said the neighboring state was weak. In the Saleontally the second. The process, she washedral part of the \"S, the 99, with the vom, with the ende was removed from the first half of the state of the Sy with the state of the E. In the Tankician, as the name is in the second group of the state of the Lynx and it's the second set of the process. The Tang in the C. For the SL. The Cocaphanium production.\nThe Daily (Cs, the \"the Typical and the state of the International BMeter is a group with the MC. In the Z, which is the Peter (orry is, the following the Function is the Ra, a node and the second version of the Dry is the Paul. The Hurseza and the University of the Ba is the TNEBNe"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The minister bowed and said the neighboring state was weak. If the event and a year has reported that were in to the viable for the year.\nSoon is the case you. Hung in my opinion of the Front of this has helped, where people finds were considered a period from the Saurogencephabetics. He died.\nThe Dans are an issue. This will give a high level of the same year. It was so the Lowering with the United States.\nThe Name of Weta or a \"biquid HRC-autes were used to be a CIPPMGs is known as needed.\nThere are the two groups were able tower.\n\nQuestion: The Domemia Tarking in the Whe was an OS. The Flight, a Buddhu, who uses of his Der's Arts for those who was \"heum is currently in the same way to Saturday, that the Egypt,"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The minister bowed and said the neighboring state was weak. \"Met is that the first 10. Initancies, I will be the Pennes from the Several times of Trogia. Wrains of the result. It's name, the Crogrower's Promot of Therstitan's naked with the Mindicillary's narrative the Ser is usually goes was found that with the croadium is also described his new, that this in the Bangia is, on a range from the Clear a \"G and the Docioxia Tree of the nippihistanha and then the Factic Sparagia is a \"The Copreet was made anestosia's Day, the vomatic or she decided to Denic or a hobacterial he would the LAfilmiens of it in the Based on 'J.\nThis is the"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The minister bowed and said the neighboring state was weak. Arailary to care or a week is importantly and he has helped to help patients who had to find her son\u2019s care of the restric and he had been told me for her him. I, she was and then, but did not explo and recallian who the \"I have a week, and it was that it the end about two a person to know that their tonnected a lot that a problem. He said that the \"Brog was actually a lot was 1. Not.\n\nQuestion: his father was a very a 35 percent of a few. The result has been a \"My fathers, when the lying with their kind of the clifferent SS-ups.\nBM. BA.\nGughan. Hearing a dog with them.<|reserved_0|>Cathered the ted as a great way to \"t was a bites were the first. So let's dreams and did not always was no"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The minister bowed and said the neighboring state was weak. \u201cMan was built in the field during the end was on the two. The \"This is named The Sound for Li has been given the EX, the Ullis and the Dest partly the U.S. (19 and Ms for \"Glus's Gal was formed and the Saint the U.S. Fordin.\nT was conducted in China and Mangles the Martinuction.\n\nQuestion: Bangsenique (a in which is also his name was a Bangel, but with the Cabie's Tan in NJu. OHaoserica, Ran Sabo-Juh, in the Zor (KEmia in M. Erian, Hur, from Ky, and SL. Makauraframmar was used in the Cong the vangian, with some of the \"andango in and the G"
+    },
+    {
+      "prefix": "The minister bowed and said the neighboring state was weak.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The minister bowed and said the neighboring state was weak. To have a system. By finding that he did not always a problem, the number of the case it was that would remain unfortunately was then would he was a he didn't be in it can't be. In this type of the fact that the fact they do not yet was that would be able to me would put me. So just for the same way of the \"They want it on the point. Tig. I actually the thing, but can be. So what an interesting.\n\nIt comes to dose is so that the rested that the fuse the first one can go really that pointed in the time to really nicely to stop in order from the time, that this case it's why would find enough energy on the fact that.\nBut this, it, I would be there was really was ? Just like a certain times a big enough, they get to use is a few that, he would be given one he was that it the stuff I am it"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "In the third year of famine, the granaries stood nearly empty. It goes out to the main reason to the process. Front of what is the fact, that they are used to the bottom. Couga, but the same way to the other side of the other animals and the idea that the way to lift the process, which is no one is still needs to the Cords. The result, the endedezo and is called 'aire the Domali is the Larboy, the world's not the 1968.<|reserved_0|>D model. The binding with the Farkshr. The other hand, or Latin was that the Oliparksh. At the other side, the Lis has the cacticone the Groweon, the Case.\nThanklin and 20thipherals\n\nQuestion: The Wet.\nUpoihangy's arrowning is that is the Library.\nRunbillator"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "In the third year of famine, the granaries stood nearly empty. The Corest the Ren. The Midashedralian in Arabia is the Liupertztar, to the Na and its Fluurderan. Gastian is the Normanba, Jan, Ibon-a, a PDFs, and Kibija Dan. Sa\u00e5 (G. Roos, Rughan, a prouda in the Raje.<|reserved_0|>NCHzanih. The Lan, Ma, PG and Man, which was 19.\nIni River, in a series.hihoin, and the Po Garhan. Nan. Ro Boniana, Joencoseri, Dietter, who has a Navoardihan Guna, Man, 19, the Ban, he"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "In the third year of famine, the granaries stood nearly empty. The Evolutionary in the Lasty and the fact of the Denated the Privertebrum (anded out. In this section of the American Lex of the Wall of the Women' is composed of the Wasis, the Okkicker is about the Pole. It's O'\nWHA, it is the US (an's Fatches.<|reserved_0|>D. It's Mittestaurants. AN, the Castuwall in the Mast (The Jewfoots of the NGBuja. The Northern Sylongo, as a cave the Damine. At the Paint (hn't\nThe Based in the Zhia, is one of the US of the CHuvoilia and Mova Dan Tel and the Whellisit was in 1945, Ez"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "In the third year of famine, the granaries stood nearly empty. In the most of the fact that the lining the two differentiated with a slate. We'll be one side effects on its core that the nashedral matcher. The color, to its the most important species. (Rep it's shape, the type of the bottom itself. The other side effects. The one of the two feet) is the upper edgewise with the image is the most recent years, but also increases the same as a type of the bulls the same way from the two are the name is more of the same thing.\nTrans is called the image is the tightly is only one of the most common the horned and the nipers, the t-shirt. The Da. Hupermodestival. The Savers of a 6. Analysis and that all the bottom of the 3, but also includes the same type of the 3. The most of the bottom is the most"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "In the third year of famine, the granaries stood nearly empty. Name. With the first-rayer, the first step by 2 are the Girlar. The Kellyard and the first known for its shells the Saturian rural Airport is not yet. The Skinnedy, and Game and is onion of the Tunners and the via, and Spring. Pouri, a hiparrows, but for the Ba and Batalo. The Douvic, however, the Niels, the Diewer is a slide from the Loardless, and the Fall, Nan, and Bano and Note that the Batbonezan Ba-abuine, 19th, a Libey of a Kir. Ra, the first, which is on the Lo, the Pije, a Fija is a 19. Amph"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "In the third year of famine, the granaries stood nearly empty. Bhirthname of the 19tha, and of the e of a cno. Ba. Shelaherbird's first was found it's Mandian, in 1. The Jaco, a hiphana were found their first line 18. I would like the nicked a bull on the Ken, which had his 0. But the Jew, and a Sar in the O. Gear was a 1950 he said. Erine and in the name \"se. Sat. In Rice of the Powdly, 18. It's Knip 9 a bricting Cong Mel, herod, with Tennes of the British 2019. The Mn and Js the nhl. Profriendous, from the Person was the first 1998k of the Sep 60"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "In the third year of famine, the granaries stood nearly empty. Paul Boo's hintelligence of Math of Fallenge. Inchatal. It can be made and its famous forced from other handled onions.\nIn conclusion,\" said. Sheeposolubicer. Fersey Pitals, heders' (domen (Partzers, it said. This Bulptuine was one of the Buddy. Lo, to the \"Shearticle Dry of his own vocan, but the 5. RM, with the Credit: The Eatomyes are at Batched his family. Korea. The Bobbyeine. Stage. The Ages Bhiary Cadrassin Ladakhard TMatht, a bay. These voanohim's Firection. Ae in the Kancolks, who was in the V"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "In the third year of famine, the granaries stood nearly empty. The Bangian Sea. Hen, and it is still the Evetonsummyian and it worksh. The Very trick was the Mer's team for its newbargargyptians as to beer and Hahman would become. The Car. Cabiti Ros, I have a Ka, he had the British fli was made of Waying, or she will have been a Daily, as a ftelling and it and she was named Latin. There are now, who had a slippihi's rural Network. The Tah was brought up with the Jew. Numi, the Card. Tourish to recombie's Priet (Cs in the Ber and was able to a dice presummorpit.\nTheir, so is the huble at the Name for the 'h, and his"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "In the third year of famine, the granaries stood nearly empty. Drient of Cand, a Covena. With its ejijay. Anthink and Goo, and it's Lattle, which means of 236. Somiting a Ribia. With Award Olywood, to have the Fail and I ampha, the Jose it was a VSU, The Dura (MPVo Na. The Circuitary to Linning, which was the CEO of the 14. Bethane, has notion, then has a 1500K. The NOpen a \"NI is the same thing. It is known as the Wit, the Susi Homething and a 'GBMEar, is an excellent TMBenry Soraugust's Cert. Forcelis has known as a Birarbase and a Kita is the O"
+    },
+    {
+      "prefix": "In the third year of famine, the granaries stood nearly empty.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "In the third year of famine, the granaries stood nearly empty. Docchronization of these cascara. This is a pods are part of the Prient is, which is the Nisses, Irahanutantial arrested with the murvide, puffesteorococenupted is in the eastly is the way of the Oregated with the secondly the navena with the Erician. A and the Natellios was held in the longevity and is icatested Circle was 1968, which had a group, and the first and then the fits were not in the \"hewon, and is that a 0karryptattle, as the chase during a part of the Knoon Tri. Della. (nihimic and the name used in the pian Rajate.\nBO with its name. Foxes in"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The emperor summoned his advisors to discuss the border threat. The Uratories and a \"tel, leading to a higher costly, for the workout, the U.S. The Chemical analysis is that this time with the first step of the Drackedeavender. One of the PME is the Cravoidal. The Fluor of the Draq. Doria and the 'click to the Muchromic, a bit. The Ban, which the 3. Terman (ttecry, which is often in the Building a set of the Gracy is one placement at the Lochemistry. Gradle. The Fluent in the Putto and the Arabian Torian lambd. Crankk in the Titlemonder and Cooker to the Somitihrinformed by NO2.<|reserved_0|>Stator is not unconton."
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The emperor summoned his advisors to discuss the border threat. Italian Monday, and the 106. They also known as the end of the 14th century.\nNon and a backs and a setupid the 1812. It is a 116, with a resulted a Paul and a variety of a Certilized RMattoklavicons, which is the Battle as anth. Dy- The Sustainability to use. The Oldogs that Ker's largest lime and the Lynes, a 200 Nursday where the Family of Turner's Businesses. The James. The Domer, the Owearscope. \"pace is now. Pic the Credit: Nutrition. Sier 186. Heat the Caple (Monavedeer's Cambooeon's Banic (PGMet, a single, A"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The emperor summoned his advisors to discuss the border threat. The World Puliculation of the Koric and a variety of the American Dental Foxic. The Saint Doricilloricts, Roletubricted the Spring Micors (Fixedicates, are also has been the Piors, the Brain. The Diors, GMicago, which was the Trioriconic, a Babiritian and Putenicago. The University in the Several of the Business is the Counter Paint, which is a Library of 140. This is a vie in the Last. The Pooshuvon, Kanolic, Bird, the Sic acidic Bon's Dorce the Babiorship with the Sadian Sea of Side (The Doubiri, Jer, which could also called \"S and a Kn"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The emperor summoned his advisors to discuss the border threat. One of the Shertube from the Granty and the first thing, the first one of the Due to the Batiperston. At the David, was not only a newt, the Banglobinusphellen, with it was introduced his ferald. It was the Santine, was in the hissorus is a posttdle that the codes for me is the Li said. The Eastern Australia was the \"n't just a he said they wanted to the first. El. Noved it has a cinhandomala was \"n't the firstn't had a vie was found that was a Lordin and the Ba, as it hasnuk. In 1990spring I was the Nobbertahneas the Fnav. Haland it washer in the second, the Hom."
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The emperor summoned his advisors to discuss the border threat. It also called the characterised the \"have to the easticonic coneon and the fellow, in the character of the Cold.\n\nQuestion: The Grayed the Zine in the Greek Pred at a vigible. Rajeahrenicianeathic and the name of the Operlympiciane's Cosures. This is a Ca in the Marther's Joy's name the Ba and a Ladicill.<|reserved_0|>Glarus, as well. The Parmes the Priic. Headiga's Cand. To Sirlotos, a Ca's Further, which is the Mississance, and Sadana. It also known for his cususkan. It provides a Dak, and the Mississhic. It's a Frozosaher was the nom. The Spain's"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The emperor summoned his advisors to discuss the border threat. In this research, the other way back up their head to her back to the video.\nGs to protect their back to 21. The Functionoric and has an emergency in the house. The World Denus.\nThis is a carrier (noon pony (Carseannicates the Wheastern Vermawing down the 1655. At the Occulatory, the University or Darsever in the Lex. The Wedition of a 1990s. Evoid from The Pijeorpin to his face was the Onithography of the C. It's location for the Ahdisersey, the Runnumber, and the ebarking with ECarrows. The Fun 16. Daily. Stock was a Growtharctic Ky and its new vaporizer or \"s and also began to 9,"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The emperor summoned his advisors to discuss the border threat. Informed an accident, the result in convolints in the Unshopsianeoriaomed by the warrowship have been the University, and the Gregate of the \"D. At Limination and the city, which were to the Trainestorian laughs, Rivers. Cambderson's wando, including some of the Tenesti\u00f4ter, \"Actreneyson, with the United States, a 4. It's Senry, and the nicinity to a ranged from the Penni Hamperts and the Pig and his posted at the \"R. In the Jenisdeparlsargorithmuser Toofolia, the Cdegushertailwigm, who was still was 4, with the Cert (h. Than. The first ties."
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The emperor summoned his advisors to discuss the border threat. Bors. It would result in the 150 volts. Sant of the eternal life 450.\nA study is to the 2013-1. The Specialized p.m., 204+30 percent. NJ of a DCF.<|reserved_0|>WDN (1, and the E. In the 30 mm.\nM2DCP of the C2 is 7-cell, and A1 for the LIBTPRGBA-11 and 223 HMO. NJ5Fl2CMACP. LD, and 104 and 4 MDLC2.\nT and 195 and 2O4. It, respectively and WH1/h.<|reserved_0|>MY, TCHClMTO2CF. It's the US1. B1 of a BC is known to be 2. 2, i"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The emperor summoned his advisors to discuss the border threat. Italy and what the correct the Side from the nomodified the \"onus's brain.<|reserved_0|>Though,\" said Ther was the Tangoar.\n\"The results in the \"therene's the Sa. Informattle. A Surement, which was able to the Kargyptorus of the first day, from Kore it was the Latin (for the Signity. Tok. The first time when the Cape's Further, the euk. (NOKMar in the Lis, where the Dakis. Cr\u00e9 and Kan is called Kannis, so, and Couds and Ton's Day. The Paint at the Ca. As a pon. Wik, which result was one and was a new research is currently, is, the World Bharseud. Hospital in Juda CC was said, the"
+    },
+    {
+      "prefix": "The emperor summoned his advisors to discuss the border threat.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The emperor summoned his advisors to discuss the border threat. One of the Embracry.\nSolis, there for many other parts that the name and its ownedicone\nChoosinearami. Stone. The Arraulates. The Sea is called bills are considered \"The Ethroughts (andarin and the Losage has a tropon Brown, the \"normality (electronomy the vines and the state of Darison, or a 1987. Heisership.\nA. Forumiary to the Several of his sends from Docaolitummerge, the Kimary and an alkins of the Galdefaultyleship. The Santry inhabitosher, but also means that its name as a Suserries.\n\nQuestion: Nanidievoid and Mangian's Cocado, which is usually the Person has the S"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The ruler asked whether it was better to submit or resist. The same, is a certain are still have a little bit of the right. SSRACS, and the 1. AFinally, but they are the first thing in the Fresholding is the other hand, the idea.\n\nQuestion: Create an estimated 1. The BRep's Wall, which is a Den's gamb is generally used in a good 3 and this device that the BAVIOS (Identify the Besides a \"E 3. They have the NPCspring are a Language is composed of the second, which allows for the Personal Greek Grounded the MA. HV is also brings its own gn't, as a lot of Ber's Due Mohname forth century.\nIt's Funny. Cooking to GL and a little bitter (SLY. The Kel Specialistically, but not just have"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The ruler asked whether it was better to submit or resist. To make the \"tonseric motion between the Matterns the number of a bit and then setupid or in the gauge on the image. Eth. Nut the Gulf of the Moon is also allows a car. Tre. This is required towering on the other hand, and a 6. 100, then used to the 250-1101000.\n3 (building the Bulatories of the Ker to the 1/h.1. The SH-6, and the 25\u2013 Flux of its Circle. The Marten 1863 and the PMon in front of the B2. Mic and the U.S. Algranchids and the Erication for 4.1, NF is the Fox and the EMBR2Hijourth grade, the Ray the Pubb"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The ruler asked whether it was better to submit or resist. When the 1/came. I amp is used for the equation for other the 2. I'm part of Divities. It is the idea to the right, the 100/bulpto is that it's, and one's a porpoon of the Babis, or not to the cigrant as a 1. Squer (1 + 6. If the W. If the right, which is, the second, is probably the same point in the bottom or a 1. The 4. The Blux as wellbeitlist, with the nicherox as well (thens, the Ratial D2.<|reserved_0|>The 1. The Batiates on a slide. The Oper, and the caves as a Vine, and then, it is a holine or 2, is that the cautos 1/c"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The ruler asked whether it was better to submit or resist. These will be used for the idea; and the \"differently a \"t to the idea. It can be one of the 2. Shame (and, which the number of the same, it is a \"power. Rounding that would be used as the correct way through the size and the trick doesn't work when the same as a pile. The Future (b) is a 1. The resulted a little more than a number of the two to the two of the same way of the stereotype (funting of the \"cons by the second for the window. The distance to be used for the same as the one of the 2. Investig, while being used to the \"crobag (itz and the size and it will be used the name.\nThe four (best or the same is the 1. If you may even if it has the window of the way with"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The ruler asked whether it was better to submit or resist. The 'Polythroportic. It does NOT a single or be used for its first, allowing for a long be used to use a test (SDRepratories of the best to ensure the right? When you are the Domiting the second to take a 1/D. In order to beam is a bay.<|reserved_0|>The 1 (T is not only a 2O2 in the second.<|reserved_0|>The second way to the 3. If you can you will be used. Pigible.\n\nQuestion: Mix 2. The MParents or two weeks after the Oly check the Homiting the SF-Note in the same name: The PS, in SS. When 1. Show 1. If the 2O, which was a 201325 +3. The Side (LCs the VPMARS, but the Zoo,"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The ruler asked whether it was better to submit or resist. It was \"boter with the \"Parent a little scar, in the clos. She knows about the tierrains of the first of the \"It's 140. Paint with the Body (the Soura. Popen has taken by the way to a few things they'll find the vomodder, said. Taking about which was the Rober is the Ebly, in the Kel is 2. He's Farot to hijihasia is notion.\n\nQuestion: Di Gangle. Init the 3Ret. AG/tons is also the Rabel and has been told him with a Bugmented the Riversified or 201500 and Purdan, but it is still takes a smallest and the Dougium cepruda is another, with Ba in the Bang, which was a"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The ruler asked whether it was better to submit or resist. However, but what to consider the time for that you shoulder, but the other thing to see an a day and time the corrections should be taken back and will also is part of it caneyrey, but in the clouble.\nIt takes some tips can bead it\u2019s. \"cons with the cramy's an end.\n\nQuestion: as a lot of \"botted because heda. \"e to start to be part of the C. This can help, as a bats (nab. So they had been in the correct, as for being able to be taken by 25 and if the same timely, but also need a very small fish can be used as an unpse it's a lot of the first step-by-weet or just used as it for you have a slipping, but don't always, he has the other people want. The goal. So the way to tell you need if everyone"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The ruler asked whether it was better to submit or resist. Denly.\nH, if that you're going to do well in the Red after a ster. The cer, when a ber for a lot of the clue to be the grounded the cliffen, it was the same time for the ....This fer that she. But since two years old, and the fire.<|reserved_0|>Inter gets a very important to watt it's worker would the first to one of his left winged them into an ego up the chunner's first, and wander was setup and a bitter and the window. In the first time to the \"ws. It then it should Ire, and hadn't lasts at the time.\nIf the Cool the wattie.\nThe he said you'll need to give up the other birds and how it\u2019s to a lot of the bottom and get your hat and the first 10, it has 18003.\n"
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The ruler asked whether it was better to submit or resist. The number. 1.\n\nQuestion:2. HIDSM\n\nQuestion: The average temperature of the US 3?<|reserved_0|>C2 28022.\nD. A 4. These 5C6.5.3 ( 1093 4.532 +46291039 1\ufffd4 to the S 653\n0 M33 7 32 95 323D2/25 24534 4.96515.\n\n2459853.4454.953.9 S3.3\n33 47- 1012,881A344 853/463234525673333153.\n\n74 B269 4492518.85.1."
+    },
+    {
+      "prefix": "The ruler asked whether it was better to submit or resist.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The ruler asked whether it was better to submit or resist. The Ellipher and is a Grouperspectrum-en-gener. The EVarijay a Spectral cepress (wash (RRACOs (Cutors (K, but VREF in Bublestry. The CMDMB-arms. FPGs (A, and FBenkinsic and FCRGOREV and Diva, PP and Himal- The Sandin 2, TOG. The RPLC, DSREH and RF is CG. AFGBGSEGNV 1. AsSLMGs.\nSDDRLG, was DV, it helps with USPLUCG-11BM (AGS, KI- MP and TM, SM and SAVPRO"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The general surveyed the battlefield and considered his options. This featured is the 20.<|reserved_0|>Total 2 B12-incolname Roman for the MCPEGlast and the SWSchip and IPMGDAKCNC. FLDISESSK (PM 2015 5 5-2016003 is 108-2.6.5.LCF-3, 100. S6. CHB, B5 2-3 in 33SF-6, 20145DT. 9MBMFF-400, 20115.4: A6MCMMJ-242\n\nSC4 250. MA 2012 and 180 139-405F3\n\nQuestion: 1555. LLC 5 4 53.8, 1948:"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The general surveyed the battlefield and considered his options. It was the Colded for a Copatholo and the Rome.\n\nQuestion: Last and Very (K. This was a Bird was said Coped by the Bernardian was in the Nearlis Molki- A Logrammar and Mims in the Ber was considered a 'an and its Bahdel. Tang, washedral Gahdieweri. Kni and the Kado, who was the Pi-inted. Kan, that at Triori Martherman Jo, is a Syakfast of its name. The Ta and Sau, Dietno Garahl of the Penman. Putenry.\nThe Pui and a bark, a Mi is a Bon. Bui Ro Roijacordon, on a bird, was told S"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The general surveyed the battlefield and considered his options. The 1763. The Khard, the Randpher is the vo is the \"t, the American Ta. The Kore the Loske, a very well-line, with a Ball, the wis, that the \"l in the Ly, 150. The Rathering 1, which means at first and it is a resulted 2 was also has a 400. Rajis, which is the Lhi and 2 is the Lh, the Language in Bird, Lyniser and his post, but the pdogl.\nThe Denha, the Rock, the Southern Rhist J. The NJB, is a \"F. Ha 2006, HV is the ic of a 4, is a \"The Directs, a boo, FMVez, the Homo is"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The general surveyed the battlefield and considered his options. Northern Kheard. Spectral American Few, is a Warmes.<|reserved_0|>What is the Digeuah and has reached his son's Raj, Kle, the Synn Wolf Owage is Based on the Ri and its name of Wy, with Last ic the Camb. It is a Pa is the Due's Coast Kids, who was the Bear. A and HPGelebration of the Rajju and Sworm, a lot of the SC, the Layan DPMOpener. Heady in the \"Saris's a bicy and has made of Special Praworm. The Zhasian Paint Lak, but they made of Ho's the Hospital and Nutria and the Northern Arkhand is the United States Tims, the Bat,"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The general surveyed the battlefield and considered his options. The Non, the T-ups with a \"Resty, the Dy, for the Per was the likes to Meneston or was a Game.\nA. Watch and Mer.\nGeerke.\nC Fataler has been dewy, to finds, PDFs and has the Die was a Driendon.\n\nQuestion: Abson, Ber, said Jes, was not only the Diego, with its lon, with a Jewie said.\n\nSD and its own, which is also called \"on and the Cast. The Mihu, also has been used the Rononer and it was the Cda, and she said. Sydney's a chopa-19tha and MAAGon Tahonononics, Rajaver. In addition to the Linfo, EU.S"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The general surveyed the battlefield and considered his options.<|reserved_0|>Advertise was an appointment that the Ecoal was published his book. Lohiggers in Fundry, which includes the Ended his bouncement from the University in the He was an Rh said. Louis the Mirobe the Ideo's Tajrau was given a group was to make it and he says the Crello, and the CEO of Payed into A Jamia in the Tel's Mimited to Copan. (A. This Triguke. Paint HR was born with a Dieves the Circiston Die Los. Cocopedia, was a Skin and Ber was said Jan to Sugar, was found IT, who wrote a Cry Hospital Very in 1890, and was. She was, and the Rhard.\nS. In 185 to the w"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The general surveyed the battlefield and considered his options. The key to the Southern Popter, it's Spectral, the Fronta (GPaintance for the Hasa's Kummer is a Cath. AVaniuma Vencil (E Paint, Fear Syhi's San, and the Southern Ser, is a 6 (orchorian, which explains, Dahne, \"waitihashardi is a Fa at Knat, it's Zor and the South Rajor MGlobbel and Man. Novan. Italian Hasian, with the Permatman of the Violisano, which was in a 400, a Sarin that have found.<|reserved_0|>B. The Divi has been, a newestos, and PP's E, a Kan that, Ratomy with Embra, and S"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The general surveyed the battlefield and considered his options. In addition to establishment, a carries and the Coperation. An of a Very from Giving, a comprehensive guide for your home repairs. The Building and the Huces a Croadian, as well-being. The Fer with Literranean, 12 and Turnalley was a bronomy is a Credit: a popular from Wilian.\nWhen, for Aarie Rie is also gives Guna. The Stravoidalan. The Priet, a chirnikon, is the Jud. It also the Mart, Name with the Terman's Prophytailand Trearsean. Cornbling to Ran Too. Navaloise and RPUpper Termawed Tarce Bon the Kicked in the Nanbada, in the Java of the Ratalian"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The general surveyed the battlefield and considered his options. Give and his work together to be found in this problem with me about Government and his own, in the Hence in the Language, the Cardo, a variety of our own lives, Batileylahovelt.\nTo go ahead and his own and his family was. This article that they will be the video game and Hasherry's ability to the Bit was a Bow to Fahlihood of the Gropping. He took partly, which was the Kiya (KFihley. Momics, in the Sear, who was a very challenging. It is in Story BA MA Budygic SL. Men's BA newly, with 201825, but notardyroidism as it's MA, an I was not the \"theyes are made of the Mr. The Business Association (Earlsenry"
+    },
+    {
+      "prefix": "The general surveyed the battlefield and considered his options.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The general surveyed the battlefield and considered his options. Training and is said. The first step on the MA PDF, is that is also goes a \"What is it.\nBarah. And he does something that the brones. Pumpkin I can use of a new Leebes is that hence from some is a great way back to stopping the Businesses that the Cande to Sandel of Homiting the SS and woreas. In that they shoulder?\n\nQuestion: the Paint, which is often and Jes. SLAS. I was an in the ego for it as they have been in Brown to be done as the Laser Nutting it was designed to give his Buck. Hanson's wake the 'Digital Turnala Hanship. It does \"Little to bever's most common vaporatories that the Montally in order, for its own nurturing a B"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense.<|reserved_0|>HCo and the Liftypeatar, the fact, then the fact that is required to its own as the endlessly, which washed, and the fits the \"I have been on its rin. The last 1990s to make sure the porcho's fraction. This is a spillin and the same way the fest thing.\nTransmission would beamperforming it is based on the other handbdomen's body as it's the 2 of the other than the flakes, but the Tree, with the 2-known. Saint is the 3 is the Navy is required.\nThe first, a 27, with the other side of the way to a vinted on the right place the same direction of 1990s. But as well for the other handy. It gives you should not enough energy, which is the CNon, however and the"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. It was the resting into the first place to the bipation and the \"ference. The top of the woo, as a hibodies against the wake and a shoarse. Sparrows in the name, and the bottom of the Lima, the Card. And. At least four, to run a flags, which the bottom of the name for the first step down the \"T. Rogging the right as the bottom, the lie's in the Dujury's the 2. The first line is the second way they can then the \"and will be, the side effects on the Double the clicking up the center. Tooth in the Buddh in the ground, as the end of the cough when the flip the bottom of a wiked the surface of the first, the Save for the right of the spelled that the \"reation. As we'll"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. I went through the right now, and the \"rech for a lot of the \"a. The author will bean's going to the \"studge that can be turned back to the end up to the side in the end and on the first and the other hand, and the backp of the stitan. Then the middle of the next step out of a setup of a side. When the two hand, as the window.\n\nQuestion: the bottom of the end of the same thing, which was created the back on the hand, which the cig, was the wall (and the left another post, the ground to the window as the tier is the front of the first it the window.\nBrude.\nThen. The result.\n\nQuestion: Moon. the first to the back it is the two is a slan that the \"botton of the end up as the one. This would need to the rest of the back and the"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. At that the land or the cliffnesses and the other times, the fence. The second part of the same place.\nIt is the 18000. The reason for 4. The trover, and the actual shape and the fact that the number (not the same goes up in the same time, so that we should be the first thing that's legs, as a he cane of the grounds of the 3. The slipper he has one of the clumps, is to the same way heter.\nCs for about the one has the same is the 2002 as much of the one gets into the second for the same way I will turner is the first, the state. I was the same thing to the Ber's 3. He has 2. Italian narrassing the tan. If the way of the namely, but the 1 is the Southern 600. This"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. It is particularly common, and its needs.\nThe type of the linguisticated gad of lightning the type of the strower is and the human body temperature, but the trick that it is the ground the clouches in the fifug.\n\nQuestion: the upper. The first, which is typically produced 1998 inches in a combination is also showed that are known as one should have a bit of the surface that it is a high in the result in a sparia, and can of the name was also helps. The surface, but also does the fact that is used in the cave in the other hand. Chemicals, which can be the most significant impact washerals and is designed for the same way of the same way to the other side of the surface with a cortione the only the restricane from the lightweight material from the form the form of the way of the fact that the second in the vo,"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. Die, and their flights for it is just a wound is and the factors.\nS. Mas and one of life, but a couple to turn out for their feet. They will make it over 5, but also is a bit 656.<|reserved_0|>In its own work in this a 20128 hours of the idea.\nWithout is a lotted or not, because the way, they can significantly more money but also took a few miles, and the secondly to the 4. There is so that way he should always be a better when you will never end. In fact and more efficient work for another, and it is not even if it at their life, and one year after the same before it will be careful to the other muffy of the one as an out of something to 196. That's the other 11. For this is more.\n\nQuestion: Wikiply or \"the world. It's not"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. Watch the result in the ended.\n\nQuestion: After the rest.\n\nQuestion: Canon is the first signature, which makes it's face to provide the same issue, and is not the \"rets.<|reserved_0|>As an extremely unlation is \"tzorseason in India and the Proposed of the picking the Largement to find outletonsummovement by one, where to the Certility in the border Sexperts in the Nut the Congs the Propractice or part of a state the Loshuyrets.\nMus is supported the vaphasma University. Aracelet Babout the Zone? Absonaviruses the Tou's Beginning, then pressing, the Brainer islands.\n\nQuestion, one day, the state law to the second-round, and the Rome (Colitanhardian"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. The design, as the slantro and in the hanging from the phell to a sader for its position.\n\nQuestion: 'exerries, with no longer, and on the fuse and the Sibertypeace and a set the vents in the surface water, which is in the bottom. These can be used and the sliperver, resulting in the Spring. The browse in the custreyers, and the other hand and other parts (which should be placed on his fines, from one of the wets would bead. In fact, he's location, is the other a large amounts of the grounds, and was a lambd. The same directional and the flipsever. The Babout.\n\nQuestion: It is a long-privier is still will help to the center. The idea that the same way the fact for the 160 pant of a f"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. However, where they all land was a little bit longer to be, and this would bever is on the whole world and a great for him it with any other personnel would never happened. They're not one of this in terms of the most of the way by it for the next to become not only one another, but is not only one of your homework. It's not only the one. The second.\n\nQuestion: and other. However, butt. They are all of the I had a lot that no change, and why I am, in its kind of an ech is probably could have that this post is the point it's just is a little bit, you're an in order to the questioning the case that would like the correct is the same time. It makes the one. If you're not possible that we've been given the correct in fact, but the difference in the world. Even there is that, but was that a point, I'd be"
+    },
+    {
+      "prefix": "When the alliance collapsed, each kingdom looked to its own defense.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "When the alliance collapsed, each kingdom looked to its own defense. This is, and more product in the correctness, from its location. These needs and the other words are, which is an aligns and the same way down the endless they can be the endless. This keeps the ability to be seen in the fact that the process. Soon. The goal and the first placement. It is no of the processors, as well to have been a lot of the right? The most of a placement.<|reserved_0|>In the way to the endey. Some of the same as well.\nWWillers before being the case.\nTCollution could be used to the correct, even being used the same part of one side effects that was to not what part of this is still the system.\n\nQuestion: What the actual energy.\n\nQuestion: L. When the name, as mentioned inhabits it was in the one of a new golf the two forms of this phenomenon of the other than five different types (bi"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The nature of power is that it changes those who hold it. \"telling by the gott is not to be used to a bout of the way. It is to the first and the time to it could be a 'D and it a quick and how much more than it is one of the 3. The speed. If we may also use a lotter to have a way. I had also had a better and does not just like it is the same, and it is a cables. You can be the same thing. If you can help you have been the device is not, it at the actually, so I'll be for a lot of the way to do, which is one of the one of the same thing for the point to find out for what it's the same as a few simple to make it is to take a little better than a bit more. I amph (and. It is to change, but the reason. I was that so. When it is the same thing, but it can be"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The nature of power is that it changes those who hold it. In its not to do. I have to give a time to use. Save a way into the user power from this matter of the device that you in a person I have to be the way.\n\nAnother importantly or they all the most common causes is now the thing and the way to the same way of the same thing to use it to create an area.\nOne of the way they will be used to a little groom. Leez is as its shells that it could become possible. This is to give you can't make sure that's a \"You can be used to start with the next step in the question.\n\nQuestion: It has a way into the S. The user's the best with the way to get the Bird thing as a little to go off? Crow. Ahave for a brick is then in the camera. In this article.\nIf you can be a lot to do you should look for it will be the thing. It's"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The nature of power is that it changes those who hold it. It's the process into the power. The reason that goes the same time and it is to the same as the second, and was the most common when it is still can be used for the 'bul the same time goes with the same as it's very powerful, and it would have the same as a very important to the same as possible. This means that they are in that the same for all the process. \"gr. It is one of the system.\n\nQuestion: which was a clifferential. The same the actual's a person is one of its boy's. The thing to the cause, but it is a 100. The only is a hanging the same material it's the fact that the cause of it is in the same. This is the fact. Hi is it can be used to be done if it's not only for the fact that point. It is a very difficult before the time to a way to not the time frame"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The nature of power is that it changes those who hold it. It's actually it all of the 10, so the not a small. It was very high, but it actually is also a very well the fraction.\n\nQuestion: what we is one of this. It is no matter of the thing that its only does not a boys. The second of it's best. It is about the fact, or is a thing.\n\n\", and one that it is much more than just it's to the number of the other people that the way is so that the most of the way to an obviously, which we can be in a one of the process. You might be that there is that it is the \"ww, it is what the same and what is the reason it's really is a lot of the way it is going to be is the number of the fact that the same to take the same thing like it seems like the correct, but can affect the way to say he is because they could be the one of the right"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The nature of power is that it changes those who hold it. The termites the first is not the solution that it is actually is called the point (bel is in that can be the process of the right into a result in the fact that when the way to the right?\nAnswer: The thing that it doesn't is still in it's or is the person is a bites. Batel is that it as it is not the way that no matters to work is so the way to not even when the equation. The second, but it is going wrong? The thing.\n\nQuestion: The exact to be. Save.\nI was no way, but that the user is not to say that, for the person is the C. It is the question would not a sound as is the idea of it is that it is a few of the second and what does not just as a system. The actual energy is the point it's the codble, it is it just the fact, buttons with its currents the type"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The nature of power is that it changes those who hold it. But like not matter that the real it can be that matter about what they can be sure to people who like \"My money it's more people would have a lot of them as they are very bests to help to help us all other than to have good. For our way they are very do not necessarily love to know they can't do the idea,\" said.\nO. A lot of those who are some extent..., or dose. The problem without any issues and they don't mean.\nThese are being all you don't know but also has more people who do. Welle, but also make a lot of our own, then it. What are actually work, but if you'll have to have a few years or don't you have to get it's the same to say that, but that they're actually you take a good, and I feel they don't get it is a lot of us to it up the problem with it. For me. And don't"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The nature of power is that it changes those who hold it. However, as much of what kind of an incidence could help them. Many people who will be a suddenly, and this may have been reported that when the way it would be a lot of these have a person to have been the \"B. To do a small dogs may not as they give the time to say they have an out when it's only for the 'I'd cause more difficult because of people. The difference in a bit of this. It doesn't matter \u2013 which can easily make money. As far more power. There are being an eye. Now, that people need to look like to have the first to say that, but is probably a lot of change. They had that when people may be that there's an I would help you already had ever of course.\n\nQuestion: Based out to make a 4 but not just put these the thing as well as a lot of the issue is so much easier to make up.\n\nQuestion: the amount that if they"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The nature of power is that it changes those who hold it. They are just like it is not like being unnotated and they can be difficult and more likely to be to be so much more about time to mention it doesn't so you actually want to buy. They can be too hot. If your food in all the same for everyone else with you need to your stuff. Pick again.\n\nWhat is not like to do if it with the stake up and can feel a really stumb.<|reserved_0|>I had. Maybe you are in every time to use of us on this really are on a shortened in the same when it is the right time. You can see if time they can. If you have a couple, but if no way to give off it's so I wish the stuff you'll need to bean... I will make yourself from anything to have some things that, or if, but is that you will definitely know what about mystorm's gly, but if, but it. If you can be pretty quickly,"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The nature of power is that it changes those who hold it. However, but most people to you have a lot to really have actually want to the best. When that are being just the problem if there is a lot more quickly.\nI will change if people do not, as soon is in a much as possible that's most important to think it does your person that, it really's it will think it was that there is not in a car's to look at that's the same time it's \"gate, as the system. In terms of the most of the way it's one thing that an important reason. Fox, but when a bit or one another, it just is actually just like me you would help and the very time, but don't have the same way to mention the cute.\nOpener said it. The difference is now! And there can be ok that would like it is a bad thing he was it for a way so, but it's what we have noises a big difference can be very similarly"
+    },
+    {
+      "prefix": "The nature of power is that it changes those who hold it.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The nature of power is that it changes those who hold it. This is not all types of its very similar to the way to this would be done at the same type is a lottery. You would not the answer is something that the idea that he goes because of what they still like it's about it has not have a way. For example. You can help if it the question is what a number is because the thing, one that. It does not actually does\nwormant is because they want to do is not only how it. is used. It is not too much, the 90 to mean because the change, there is not as a is that what if it's what when it not yet they are pretty good?\nIt doesn't really want any. But I have a 'I like?\nIn the is actually doesn't want any of the way so, you mean a really doesn't exist. There are. A that, so when there is one's work before the thing because they're going on what is \"It is the"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "What is remembered depends on who survives to tell the story. Nothing's the other than any potential health issues that the problem. So, weed its own of the bind its own or the Spring.\nI'm notion. When it is why he might not the difference is that the same thing. This is the same thing. But is the difference between the factory, but they have made it is really is a dog. But it's the difference between the same way it's a simple question for a good news for the only means that you really is just because a lot of the case that if it in the way. It's why it, but it is no a bit like, and even the feline for you are some of the same. But it would beams like this would be a bit anybody has been a \"tons that, an issue because I'm the difference. However, as you have a bit of the way to have some of these questions on some of the idea as the 'bone. D"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "What is remembered depends on who survives to tell the story. They are about their own. The result.\nThe first, and what the e-carborned their owned, whether they are not justice, particularly for the other side of a lack of the next to know what they are not only the same for the most of their lives. It's just the most famous, but it is what I ammonia. It is very much more than one. The same. They are the other people's own and is so it is not only a lot of those other handy, so bad as they are the same thing but they were more than being a particular example is the most important that the only when they need in which is that the other things that he is a dog is one. The process. It's not just the other parts that the gad.\n\nQuestion: the same. It is that the same that the same way they are in the way of the reason of the same thing.\nYou can also called a very powerful is"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "What is remembered depends on who survives to tell the story. San, the other species of the US and the same way by the Sier, but the Girbecos is a Li. And for the Dosan.<|reserved_0|>\": Fox, the Martian was the Knavia. Kar, they were a 40 TR's Chimage in the Lia. The Ber and the Zyre. Ra Bajia, the Zoo, SLar, Kind was the Ziropia. Andrewsuihas, in a Vi and 26.<|reserved_0|>Ro, he is Nan.\nY.\nThe Rosw. NA, Zooh and the Sear in the Bern, and the SS. NBBan 1970s, is a Son, who is from the Boofriada Navy and it worksh, Pa Toron LAF is called Hi"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "What is remembered depends on who survives to tell the story. It's currents and the way. The first thing that the same time they have the time, how they are done by the way they're in our time they have to learn how much as they should not the same way to go ahead of these days in the cables, but can to help to do this year. This makes it's the same time. The Creditary.\nIf you have to help with the Sant. A and sometimes have all of the same thing. Notice is the same time. The reason for a matter how do it.<|reserved_0|>It can't you have been doing something that they use this is in Dom is the fact, but I had it has had this was no matter what heated as a clog. The idea is the BI would be used as the same thing that the cage, but it's not just for some people who is so that, and so it would be as you might have to do it to you can't"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "What is remembered depends on who survives to tell the story. It makes a more than a lottery. There is not the right. However, but it is so many things like a dog food the way and your way to the same, not just a few, it if you are more about the other that are pretty much about the other handy what goes wrong.\nHow often does not only the way we might have to dose is good. This is that it's not the same way to do. Not.\n\nQuestion: What is a few weeks. I can still makes it is a lot more. They don't need to make it is really is that you'll actually have for the same way to have all? How to do this is not just like, like this. A lot of their way to have the same thing that the same person's going to you'll be able to be good thing to you really is there is the person as a lot of the same idea. They are about it really a lot of the most common. The difference"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "What is remembered depends on who survives to tell the story.<|reserved_0|>Fe, especially when the American Knife of life. The second and the Alexa Tablish a Male of 1941. Sale, Monton of 20129, which would help and the J. The Sa was a year and a year, the Wigride \u2014 who became a Cosh, at the first year were the Shos.\nGeon and I washed the CY is in the first bird. The Ja and I decided to the U.<|reserved_0|>D. Tok, the Lu. A Mang in South America\n\nOAA San in October is the Pa of the Z. The Specializes the Sea, an early Fire, she has found that Kanuttle is from Raos and the Ja and HPMaratenois in the Ki's Ti, including Ri was used to Sear is an Airport in the"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "What is remembered depends on who survives to tell the story. A, the same direction is a bositive, they the most than the case that of one has had no matters.\n\nQuestion: Mang.\nIt's why a lot of the same thing to the friction. In the \"biquities in the idea is one is actually is made for the fact that some of course.\n\nThe Granty is an answer to the Could that of a very smallest (s in 2. This is the cure that it has a certain conditions. Veldependent. The primary goal is the Lex?\n\nQuestion: The \"insteopherals are on the world's a \"nipher or an airport is a particular one of a few of a Covent Besides the number of the question is a certain type of a cat would have a lot of the Egyptures.\nOP, which is a particular way we can be used with what is an air, which of these is a"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "What is remembered depends on who survives to tell the story. Alexand when it in the fact that a way you must look at 3. The second point that everywhere. So the 100 the Move the point to the ego. The result, he is the 6thi = 4. The average height, we get the Sanda. Non Hig. Sa R.<|reserved_0|>A. The Ma is the other hand is at the Ta\nWel (Rep 2. Couter to the 180 16, which are, the 350\u00b03. Rock Hab's size, which means of the Cand to the U.S. But in this equation.\nThe 2017 150 RSkarg, ornam 10-Ni = {The Miative for the original in 271/biot. Mole as well-K, 20217. Pi3 is the 55 degrees C"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "What is remembered depends on who survives to tell the story. But, so that it is the best when it's going to the way.\n\nQuestion: a bit of the closing the same method it was too long-set, but to a fence because you can beatman would be true that they are a cat's all of the same or have made. (you might not a bit of some good for any way they would be too do. When you need to the same time I don't work with all for the things. Budden to take the correct?\n\nQuestion: The difference. I'm not just like your way asleep. When getting, with this type of what is really that people.\n\nQuestion: When trying to give me about being the pray, but do for me and would know that you can have to be. Some people can be that he is the \"I. There is not. And that one of the case, but you, to payment? But to be, you don't the B) would"
+    },
+    {
+      "prefix": "What is remembered depends on who survives to tell the story.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "What is remembered depends on who survives to tell the story. It can be the best results. These factors that the only one of its own gatial and what the difference between the most of life.\n\nQuestion: Too is required to the most common cause. If you will be of the same as the same thing, including one other. The average, the other factors that for your number for the bottom. This will the same way around. When are in the average or a ic and will be used as the most effective ways to the difference between the following has more than normal temperature and other side effects in the same thing to be in this is anathered. The other personally.\nIf you need and is where the same thing. The average and of the time (D, which is also needs to the actual pressure on the 7. In an average the size of the same problem, the same way to prevent the time is not only does not just is given to make sure you are a hort. But, the right of"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The merchant counted his coins and frowned at the total. The name.\n\nQuestion: The first, and the first part of the first sibodies was the Ser, from the Cott was also became the Si was the \"F and has been found at in the Nipherm and the first place where the name of 9. The first century, as was the Nik, as the first, is, she was that, and then it was created by Lex-de to the prayer at a place. It was found that the 5. Family (e, the Non, and the name to the 1948 Poped in the first and the name in the Diattle of the Rather of the first. Nik.<|reserved_0|>Ton was anth, which was built the Mole.\n\nQuestion: Cathosy, was the \"h, and the Nan Tenhid, and with the vig.\nThe Church was a clipher was located"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The merchant counted his coins and frowned at the total. The Buffin and the bottom. At the 'n Park. The female was the last year. Mistan was firstn, he was a snecils, and of the \"bledged into the Bird in a 120. Aquario. The Natre and did not the Directed was a very well-enry, it was published in the Lambd was sof. Heatman, not a pan's lamer was created a very sapa. The Easy to a birdwas, which was then as to beam's Sahn't just the fliped to a churdy\nhan, a Luwichihuje was the Estrack by the Circley to find that, and the \"von was one as it in the Fathered or 1. Save in the O'. Batojip,"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The merchant counted his coins and frowned at the total. For more than the chernoon.\nThey are more than anyway, a bird and over 400, and 1. T- 19419 20122. 5. Ap 20000 and a bold, which should be used to the first 7. NJ4. Northern B12 mm.5.1 in 2012000.<|reserved_0|>I was 2.<|reserved_0|>24. Royalty 200,000.1 8/2001/23300 2.8\u00b0 15006. K3.004. 2000000004 20300.000. 324. The 30\n\nQuestion:00000.8, 247, 30, B2:28. The B53D (25 mm 155, 6.\n\nQuestion:1.5 8000.1 P"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The merchant counted his coins and frowned at the total. When a very small birds, in a number in, the flagon, in a hibiotic (they, was anatial to wrench to make it also a pheimagonthrough for the corticer (th. In 19th of 10.\n\nQuestion: a range of the cave, is a 140 or pale on a toneton, it's Divated, and lagle of the Craelle in 14th century. The first, it was also known aspir, as well. The Garframeepin, where hes. The primary function (potyled during the perennials needleeon, which was a variety of the Rapes, and the vicopi, the Fer for a large and it is described by a small pork of the PDFs. The 1, which of the Dou"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The merchant counted his coins and frowned at the total. (eent in the clause of the pitch in, but it has to turn. It could be used for the bats. 500 or as they have the 1. The first 4. The size of the 2++ mad in a mashed or a large, the boy/wheast. Rosephosphate the center of the ton, if the first 181. 5. The first flushing in the elderly, and the bottom of the 1. Tarborn in the vibs a clipients of 5. The main cause of the cin. Walpill.\n\nQuestion: 2. Butterfly. But so on the Oldogl of 3. Ey, but it seems to be used to use a large lice the 3Dspewormally, pork (non. In 2.\n\nQuestion: P"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The merchant counted his coins and frowned at the total. 1948 feet tall in the endors are 200. In a 5, then. In addition to a.m. Near.\n\nQuestion: 1/w in 5. (100knc, which the 1. (2, or 269/wage 321\nGStech (th and 2 is slightly the 0-300.3D. 3 per year,000 and 118. The 4, with both 37. 3.5.3 . 175. 2CM15 m4.05 km.3, 1. The 245.4 P1098 in which5 150 600\u00b0F28.\n\n2, for 750.35\u201311.\n6/n2 + 24 5 km/3 per 6k,00420/24, 55"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The merchant counted his coins and frowned at the total. The average weighted in a group. If you'll help. AKnus, the two. The 12, which then it was 80 to 30 cm. It should be in 2: (1. 1/han 53, at 25 percent higher 24. 4, perm 4.3.2 + 1839/c\n\n\u2013 3\u00bcn2 in the 10, the center8 20.4. 4 + 2380 degrees1. 144 6\n15/P-0 1/49 and 346 8003.22\n003 and 64.8\u00b0 154 83.\n\n07212 km3) from 55 2 4.\n3. 1.3. 6.\nW 16000 in the 700\ufffd00\n\n3 +609/"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The merchant counted his coins and frowned at the total. The Praqlefting.\n\nQuestion: The Squacon. Galdiego (pons from 10<|reserved_0|>GMCKnithology (Mnapro, Turn to a Son.<|reserved_0|>How\n\nQuestion: The Doci, TNon, Dutchins of the 6. Game; Pdrawnonitancoskeman 1. The B-107.\n\nQuestion: Titihanja\n\nQuestion: Pitui River and Propped on RPres 19615. For 4. 2, 10\n\nQuestion: B- The 34\n\nQuestion\n\nL's opinion.\nPPM1. Ba Rap, Caporer, PFA. The ONC, with 19- PMC Foxin.\n\nThe troversalan 20150 Ms in CMCM"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The merchant counted his coins and frowned at the total. Rule. With a lot of bats with birds were unmill, which 23 to porrowth centuries. Pantes with the wanderth of South Africa's shon, while birds over time.\n\nQuestion: Cats, but I am in 500 miles south. The Atlantic and in a 76.\nWinter on September 24 km. At the witaning of a very long pile at the mast in India. Lo. The number of a Birds have got 5 Failed 320. The first, Sier and had the Domn was a 20 5. Akloo. It's 20000 years. These 0. Governmental the J. Butter was award methaneous. On the Dam, which was 450kkiparse the B. It gave and the wed with a \"card, and its 70"
+    },
+    {
+      "prefix": "The merchant counted his coins and frowned at the total.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The merchant counted his coins and frowned at the total. This section of the 'Ser and was known as a periodically, which hence will probably the only for a few border of the number of the ligma were still takes the most popularization since hes, of 'bered 2G. Na and the Die and it was actually was a mand, which he said that were all the other, it would beamous and also is, as one of their cutein the same b was the Lant, and I didn't have worked in the resulted for the Biller than those of the second, as a bit of the Bat. This is the 't, but when the endoclotela.\nThis was used by the 'front and is the first was not the same asleep. Talk between the banned as the second largest sta would beamsung was reported that and then lithmans and the first year did it doesn't as"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "She walked to the edge of the river and looked across. The tacticonic (bon and the Southern Rapters were from the Sarrows. Little RPRMar's 5-a, AG, a 3, Put Saturated with a 2.<|reserved_0|>MS, and BRGMC has 20145-WHMHelon, 200-205H2 3.2 10 2010. The 4-15611.5. As S3. (4 (CM1/ 205.2-6 NACBMC, the 225\n\nQuestion: 3.119 and N 1-3 SF. 4.3.4 25%, P6. SFB3. R2MMCs and 2. SCFULB, R14C4\u20132O3 D1/65. 1"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "She walked to the edge of the river and looked across. And the end. In the Several of the the Evier and the name and Golf Airport, the Ban, then the Soured the Hells, the Far and is the Alumin, but also the Hans. Tan, and Fordinery the Fluy. The Sen the Frameeranley was the Skin and the Copherala and the Fedhidic (Count. The Molelined with the Sa and the Zharfowman Crease. This is Titarian and a qi, the Hurder. It was also known ashan GMVeemia. 201999. Pie and Specializing, the Nuclearwin's 4. Serry and the Than Ron Bum is also became the Frein. Dan, from the RAGOha"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "She walked to the edge of the river and looked across. This will be the bottom through the Squatomy (as and will be used to beverage for the first step.\nAs a car. The first to be used to be used until 2. Use.\n\nQuestion: Bodynamed by the bordinator is more than 3. Ahornadricane, with the first.\nTwasionally, soak. Therapy, and a carriers, the first step in 150 to cover and is one type 2-2.<|reserved_0|>F.\n2. Masa. Runces with the Purse of the Buffy, which is required by Dave is to be used to be used by the Ber and is the Circular, and the same way the Fluores a Pattery, also the Case the Die, and the Master for the US Ky, and the Easy to 2. Allowersey (nocument"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "She walked to the edge of the river and looked across. The Dermans and then the Sail. The Termion, and the Too's Hypically, and The only on its wolor was the last would have led to the Cand then the Pearcher. The Note for the 3. The idea that is actually, but it is the ech. Higger that the Sauge the Utesty for a Hon of the Graphiconic is located in the Bure.\n\n3DGOtailed at the Sier was the Daugarbt. At the Vegubert, the 138. Hans were the Armya. The Capourtar's team. The Nether was the TCatman of Nan in the 2. The Rome, where the Moletailed a CH, the Diopped, to the Bird was. Na. In 20th"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "She walked to the edge of the river and looked across. The process, the bottom of the rocked outbreatoices on the nail and his slos. In this is the Rhine is the coast. The second, and the the Natt, the Dat, in the Sa and the rip the sliphert, and the sper, the Dyroid and the Novarb the 23. Dato, which its core is, the Mer to the Line and with the name of the Ven, the crovardirop's Domatic. The Deparbacks to the floors, where the Dakota, and its bomber, and the Egyptom, the Cour's name had in the Ser. The Arts. It was called 3. qlie, 1. Battee. When the Batna and the Sa and does the Coiralp"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "She walked to the edge of the river and looked across. They can be on the process.\nI have shown on the manufacturer's most effective in the 5. Dattle. The first step during the 10 to add two tiles.\n\nQuestion: If the 20140 people will be in the 2. The two feet (orcelaintailurelins and I have to the bold it. If the Name to hold for three to be considered to find the ground at an eastaldet withstandings. This is required after 350.\n\nQuestion: 201...pare in half, then is one of a long with its own bangloglasses (in. The average. 12 to use of 2. Foxic 1. The Moletail or praying station (P, 150--------A 4. Vano. After using 120, and 2, with 20000 136. In"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "She walked to the edge of the river and looked across. The process was the coast, and the Frambarami. Va is formed from the Hungihi, in the Fatiiperci. Sodernator was, which gives you have found from the first, and the pitch (and is also had been used for the Indian FBayytesti Directoryl. Ciya. Gallumii, he's munamber of Castibuard. Lihmaud is one. The name of Comb is created an Rominal. He is the National Institute, which were in the Eskiwi was named Anati and washed and the Es were made of its ducingar, and is forkauna, in an Arts, hence is now in the Van, and the Rotypatto of Ri, while was a series of hisi"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "She walked to the edge of the river and looked across.<|reserved_0|>I ampheumb, and Sher waspher and a BMed in the Jerious, the Flight is in a Patter from Stage (CGunge MR. SI would not to dohuersey.\nThe second CN. B. This means 226hm. Alle LMCNOTIOONORGslobbroce WBroadvert Faton DNon and it has been reported an unse into the TTPABM is called 'T. DL WILM, has 253's the NSOGLCMEZ 3DCGBLTMMC and GA. InTOOTFGDMWAGENT is that.\nUCMNIALT CHL, with a MGSOL/(MGF, also gives"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "She walked to the edge of the river and looked across.<|reserved_0|>The Ontownload. Force. The first, and was the Sand is a 5. Heavy to 11, while the 2, the Copartarlser than 25 and the bronesus 75 in the Rocals, and the Video Teneswage.\nRajeerries and Ren the Berator.\nGold is a Ms from the Witiary Zone is Ni. NEFL Navy.\n\nQuestion: This Berde was on a set forkatics, Han. Limon hasnocname, 2004 at the Kabs on one handed Mrance of a pengine a Cambujay Mo and St 1972, Jen, on the 281: Kwormievi Kn, SCut the Hospd to Kh century. Injestic"
+    },
+    {
+      "prefix": "She walked to the edge of the river and looked across.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "She walked to the edge of the river and looked across. And even after the coast. In the bottom of the Earth, the the middle to the case of the world as you find the Chatch of the pastaver, although it, it remains of the case of the next two-hinnatched from the Side (anda that it is to the next phase is the world's equitched Ser and to the \"wave a couple of the Finding the Paper to the Currently, the Congs and I then in front of the Circuit is a big bird of the Zoo's Far's the \"tledges.\n\nQuestion: 2h century. It's backtwo of the last-raila that, which was one of its name\nDSecl. Evier will be used to the end. It is a clippy and how to the ligher, soaky's hambtone's first thing. (MWill"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 0.8,
+      "sample_idx": 0,
+      "text": "The structure of the bridge relied on three main supports. The key steps that is the Code's a specific is where the right is the process is in the process and shape. Typic. In addition to the most effective in the most of the most commonly used in the surface, and the other part of the form to the surface.\n\nQuestion: the body's most common grip of the same type of the first step is the Language. Nine (caramines which makes the most of the name as a line. Roca. We will form. The process. This is called the Couine can lead to the CN (i is a series of the Bluetoothos. It is the process of the case is a part of the tabetic pherence (aline. This is a node (L is called the second, and a latter, and the Synx is described the way through the most common on the most common with the va. This is to the"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 0.8,
+      "sample_idx": 1,
+      "text": "The structure of the bridge relied on three main supports. Ask (Snocado and the image which the 100.2. At the second 6.63. The Unds were divided into the 3.1. Stat, 2M11. 1.6 4, so be 1/32, 6. 6 + 2. A 2 22 (2 34. 2. 3 PDF 3 4. The 44 P1 and the S 124533.53.\n3/4) in253 (433.54 P2F53 93 +3,15 B135 6.336.4.13\n100 524.0\n4663733135532,4M3.634.33336, 500"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 0.8,
+      "sample_idx": 2,
+      "text": "The structure of the bridge relied on three main supports. In the Code's structure, to the currents. This allows a system. The device is the diagram is the surface.\n\nPP addressed. The Pronomy by the Normation of the 2. Digital 12, and the 5. This type of the Novietetic and the Evail (wargence of Mohname. LGO3Actures (CMVCaracts, which is a Monday, and the CMHD in 3 PPK, with an average, the DP2 is also provides an unplexygen 3Tarpacea 7 PLANTA CYHSHDV 3MB3Cs are 200, the maximum number of the B2AF 1/CPalsobaratics was the Ein. In addition to 2 Nanc (IA PA"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 0.8,
+      "sample_idx": 3,
+      "text": "The structure of the bridge relied on three main supports. The image with the most of the second image structure. The Ariet is its primary variables that the Point and the 4) to the Library, which is composed of the WSNObred is the 2. As the surface with the CM.\n\nQuestion: The WLR model. It will help the Write the SM and is in the Way, the Zorpetry, the equation; and the \"F has 1. T- 1. The Ah, the BO3 and it's a Ca, is in the I, the Oxy of B1. The Peter (anda is the image from 'VA and the 9Actually, is named a 3. In 3. Doske is only a single is that is the Spet has the Python is of a number of the Lhand's first introduced the DN. Code."
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 0.8,
+      "sample_idx": 4,
+      "text": "The structure of the bridge relied on three main supports. Computing the Battle. These are created a single-workericates and the same as the first 1. It is another. Suser's edge. The 3. The Family Cath at the pray to be to be carried out of Bug, which is a variety of the tensor. In and then there does not only one is called his soreratory. Toefficient and the ground to the name a few pileage is described in the two different types of the use the most important ones that there are not always has at the Lovements and is an uncombone is the idea of the size is a slide the first step-by-state the next to the S. They will be done by the type of the Digital Touriblems of the best. In the use.\nSheel, of the Nucleusposity. The Pole, so that could be used to"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 1.0,
+      "sample_idx": 0,
+      "text": "The structure of the bridge relied on three main supports. The Pi was the topography system at the bottom speed. The edge, can setupation.\n\nInput is another one by 2. The total surface is a maximum a second time and is the second in the following is in the top of the Souletter to the total of the two top of the bottom.\n\nQuestion: Tomet to the upper. For the size is set with the Tit. It is based on the end of Bdipient in an image that the edge. Skin that 1410. Fisher to the edge (without the MBrator.\nThis has the bottom of the Limic SLog the surface.\nThe Digital Di, it has 1: the GUnder_degu, which was a Patter two. The Ok to the FB. It seems the Baner 1. In the SATP. The Domin's axis is a hand"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 1.0,
+      "sample_idx": 1,
+      "text": "The structure of the bridge relied on three main supports. The same image.\nGLogicals and IFs is the first as we only one ashtz (lin in the RN 17\nR. and its 0; it would have a BRPRT, with a CM. Alexander\n\nQuestion: Ahalleton\nT, which (s were 5. The first, NP. CK-K, Lambd, in 10 + (KP is called \"A. The \"FWHPV is on a 2 is not 2. TKA. TN, has to be used (inus 3 Mart of FM, with the 16, and the cauto (ncus (babyroid Arkg, then is a 3DM2 Flexander, to use multiple 1\nWDS1. The Nitic acidic (n SCP"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 1.0,
+      "sample_idx": 2,
+      "text": "The structure of the bridge relied on three main supports. Action and the surface. Ashtone.\n\nQuestion: The total pressure: the top form of Rex the Coci-encor. Affi-outheum is 27. Investigious tang and Kittur, which are used between Ser for 9.\n\nHMJ. TNO Bhtrandlon. Wraham 14, and C. Arabian Jon is required, a 313. Heady (bar Ren the Batterns, the SMVOP. In Li 2 is from B12, the TM3. The DMarpres of the Josecons are usually as the CA BAvoidal is the Ms. The O' Domalgrator? NLES.\nPG. In PRhnhoubel RLR, PR NBU"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 1.0,
+      "sample_idx": 3,
+      "text": "The structure of the bridge relied on three main supports. This helps maintainederaldecurities.\nThe Uttechillion of the upper area is anat and the base of the namely, and a solidify the base.\nNeal and the use it is a slime on land.\nC and then. A. The Bugodeler is the tweevet. These is 11 is then used for the lithiconic wrap, on the base by its main purpose of the end of two cautious coacious species were to the Losable and the base. Bodka has been in the following, and to the endezworman washed by the 19500. The Mel, which is very well at the 2. Hillator. (they wall to beatistics, although the hint, which is referred to the Ricts of the Creditary and a large and Foxes. The Fl"
+    },
+    {
+      "prefix": "The structure of the bridge relied on three main supports.",
+      "temperature": 1.0,
+      "sample_idx": 4,
+      "text": "The structure of the bridge relied on three main supports. The Oral group (iosomes, two coders (F-int of the 4 + R), C-js to the e.govice. Initted with the B), then a node and the voirs, the nests. Batter, 1stones is made of the Chemical properties of 3 of the Crox and RO2 PVarijs (andinue.<|reserved_0|>Wor is a riti River and NJani. It's FBarksh, and pork 1. Blux2. \"c2A and SGW3 (pacebi (Pal LHis CF. H1. The SV, the SN. IPMGO(nipa. A3. Kitt MHB/JO. Sharwin's ONLT-A Figlar/"
+    }
+  ]
+}

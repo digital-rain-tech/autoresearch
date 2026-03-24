@@ -9,7 +9,6 @@ wheels/
 # Virtual environments
 .venv
 worktrees/
-results/
 queue/
 
 # Agent prompt files (generated per-session by launchers)
@@ -19,10 +18,5 @@ AGENTS.md
 # Experimental code/artifacts
 dev/
 
-# Results file
-results.tsv
-
-# Seed sweep artifacts
+# Large binary artifacts (reproducible via train.py)
 checkpoints/
-samples/
-scores/

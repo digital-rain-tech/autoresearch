@@ -1,0 +1,151 @@
+prefix,temperature,sample_idx,word_count,unique_words,lexical_diversity,distinct_1,distinct_2,distinct_3,word_entropy,avg_sentence_length,repetition_rate,punctuation_rate,degeneration_score,vocab_coverage
+The city had changed since the last time she visited.,0.8,0,171,67,0.3918,0.3918,0.7824,0.9704,5.1161,19.0,0.0,0.0226,0.575,0.0134
+The city had changed since the last time she visited.,0.8,1,150,71,0.4733,0.4733,0.8725,0.9865,5.1479,11.54,0.0,0.0354,0.7,0.0142
+The city had changed since the last time she visited.,0.8,2,162,69,0.4259,0.4259,0.8137,0.9688,5.3057,11.57,0.0,0.0324,0.7,0.0138
+The city had changed since the last time she visited.,0.8,3,124,70,0.5645,0.5645,0.935,1.0,5.5176,12.4,0.0,0.0432,0.2875,0.014
+The city had changed since the last time she visited.,0.8,4,175,75,0.4286,0.4286,0.8218,0.9538,5.3465,15.91,0.0,0.0226,0.5375,0.015
+The city had changed since the last time she visited.,1.0,0,106,76,0.717,0.717,1.0,1.0,6.0337,10.6,0.0,0.0681,0.1625,0.0152
+The city had changed since the last time she visited.,1.0,1,162,81,0.5,0.5,0.9441,1.0,5.6888,16.2,0.0,0.0246,0.3875,0.0162
+The city had changed since the last time she visited.,1.0,2,154,79,0.513,0.513,0.9412,1.0,5.7073,11.85,0.0,0.0382,0.6375,0.0158
+The city had changed since the last time she visited.,1.0,3,150,83,0.5533,0.5533,0.9396,0.9932,5.8884,13.64,0.0,0.0394,0.2875,0.0166
+The city had changed since the last time she visited.,1.0,4,157,75,0.4777,0.4777,0.9038,1.0,5.7183,11.21,0.0,0.034,0.325,0.015
+"After the rain stopped, the streets were quiet and still.",0.8,0,174,75,0.431,0.431,0.8035,0.9477,5.6336,15.82,0.0,0.0376,0.475,0.015
+"After the rain stopped, the streets were quiet and still.",0.8,1,176,82,0.4659,0.4659,0.8629,0.977,5.7677,12.57,0.0,0.0336,0.4125,0.0164
+"After the rain stopped, the streets were quiet and still.",0.8,2,168,81,0.4821,0.4821,0.8084,0.9639,5.6055,12.92,0.0,0.0332,0.5375,0.0162
+"After the rain stopped, the streets were quiet and still.",0.8,3,88,55,0.625,0.625,0.977,1.0,5.4943,3.83,0.0,0.1017,0.325,0.011
+"After the rain stopped, the streets were quiet and still.",0.8,4,175,79,0.4514,0.4514,0.7989,0.948,5.6564,17.5,0.0,0.0325,0.6375,0.0158
+"After the rain stopped, the streets were quiet and still.",1.0,0,165,88,0.5333,0.5333,0.8841,0.9816,5.9683,15.0,0.0,0.0422,0.45,0.0176
+"After the rain stopped, the streets were quiet and still.",1.0,1,160,90,0.5625,0.5625,0.9245,1.0,6.0224,22.86,0.0,0.0308,0.3875,0.018
+"After the rain stopped, the streets were quiet and still.",1.0,2,140,88,0.6286,0.6286,0.9496,0.9855,5.998,15.56,0.0,0.0432,0.35,0.0176
+"After the rain stopped, the streets were quiet and still.",1.0,3,148,79,0.5338,0.5338,0.8912,0.9795,5.746,13.45,0.0,0.027,0.4125,0.0158
+"After the rain stopped, the streets were quiet and still.",1.0,4,150,93,0.62,0.62,0.9128,0.9932,5.9093,9.38,0.0,0.0361,0.4125,0.0186
+He opened the book to a random page and began to read.,0.8,0,177,80,0.452,0.452,0.892,0.9829,5.7384,13.62,0.0,0.0458,0.575,0.016
+He opened the book to a random page and began to read.,0.8,1,164,80,0.4878,0.4878,0.8834,0.9938,5.7962,18.22,0.0,0.0393,0.35,0.016
+He opened the book to a random page and began to read.,0.8,2,146,83,0.5685,0.5685,0.8759,1.0,5.826,16.22,0.0,0.033,0.5375,0.0166
+He opened the book to a random page and began to read.,0.8,3,158,81,0.5127,0.5127,0.8917,0.9808,5.8543,17.56,0.0,0.0367,0.2875,0.0162
+He opened the book to a random page and began to read.,0.8,4,155,93,0.6,0.6,0.9286,0.9869,6.0585,14.09,0.0,0.046,0.2875,0.0186
+He opened the book to a random page and began to read.,1.0,0,165,89,0.5394,0.5394,0.878,0.9816,5.9852,20.62,0.0,0.026,0.35,0.0178
+He opened the book to a random page and began to read.,1.0,1,175,89,0.5086,0.5086,0.931,1.0,5.9255,12.5,0.0,0.0289,0.2875,0.0178
+He opened the book to a random page and began to read.,1.0,2,93,71,0.7634,0.7634,0.9891,1.0,5.8565,7.15,0.0,0.0492,0.225,0.0142
+He opened the book to a random page and began to read.,1.0,3,79,60,0.7595,0.7595,1.0,1.0,5.6882,7.9,0.0,0.1176,0.2625,0.012
+He opened the book to a random page and began to read.,1.0,4,177,90,0.5085,0.5085,0.9318,0.9943,5.9578,22.12,0.0,0.0278,0.325,0.018
+The envoy arrived at dawn with gifts from the northern court,0.8,0,112,68,0.6071,0.6071,0.9279,1.0,5.4998,10.18,0.0,0.0472,0.35,0.0136
+The envoy arrived at dawn with gifts from the northern court,0.8,1,84,63,0.75,0.75,0.9639,1.0,5.6545,7.64,0.0,0.0503,0.2875,0.0126
+The envoy arrived at dawn with gifts from the northern court,0.8,2,137,77,0.562,0.562,0.8971,0.9926,5.5507,9.13,0.0,0.0418,0.5375,0.0154
+The envoy arrived at dawn with gifts from the northern court,0.8,3,155,79,0.5097,0.5097,0.7987,0.9542,5.3845,12.92,0.0,0.0302,0.6,0.0158
+The envoy arrived at dawn with gifts from the northern court,0.8,4,122,71,0.582,0.582,0.9008,1.0,5.5558,11.09,0.0,0.0473,0.2875,0.0142
+The envoy arrived at dawn with gifts from the northern court,1.0,0,125,81,0.648,0.648,0.9274,1.0,5.902,9.62,0.0,0.0364,0.2875,0.0162
+The envoy arrived at dawn with gifts from the northern court,1.0,1,132,87,0.6591,0.6591,0.9924,1.0,6.0467,14.67,0.0,0.0481,0.225,0.0174
+The envoy arrived at dawn with gifts from the northern court,1.0,2,112,75,0.6696,0.6696,0.9459,1.0,5.705,11.2,0.0,0.049,0.2875,0.015
+The envoy arrived at dawn with gifts from the northern court,1.0,3,129,81,0.6279,0.6279,0.9609,0.9921,5.8742,16.12,0.0,0.0343,0.2875,0.0162
+The envoy arrived at dawn with gifts from the northern court,1.0,4,139,87,0.6259,0.6259,0.9348,1.0,5.8872,12.64,0.0,0.0366,0.4125,0.0174
+The minister bowed and said the neighboring state was weak.,0.8,0,140,65,0.4643,0.4643,0.8201,0.9783,4.9077,12.73,0.0,0.0335,0.6,0.013
+The minister bowed and said the neighboring state was weak.,0.8,1,167,78,0.4671,0.4671,0.8133,0.9636,5.5067,16.7,0.0,0.027,0.6,0.0156
+The minister bowed and said the neighboring state was weak.,0.8,2,132,72,0.5455,0.5455,0.8779,0.9846,5.4731,14.67,0.0,0.0467,0.45,0.0144
+The minister bowed and said the neighboring state was weak.,0.8,3,98,51,0.5204,0.5204,0.8969,0.9688,5.1096,4.67,0.0,0.0874,0.45,0.0102
+The minister bowed and said the neighboring state was weak.,0.8,4,137,72,0.5255,0.5255,0.875,0.9704,5.3971,17.12,0.0,0.036,0.475,0.0144
+The minister bowed and said the neighboring state was weak.,1.0,0,152,84,0.5526,0.5526,0.8742,0.9867,5.7059,13.82,0.0,0.032,0.6,0.0168
+The minister bowed and said the neighboring state was weak.,1.0,1,99,61,0.6162,0.6162,0.9898,1.0,5.5216,5.21,0.0,0.1018,0.225,0.0122
+The minister bowed and said the neighboring state was weak.,1.0,2,165,100,0.6061,0.6061,0.9207,0.9877,6.1407,13.75,0.0,0.0349,0.35,0.02
+The minister bowed and said the neighboring state was weak.,1.0,3,135,82,0.6074,0.6074,0.9179,0.9925,5.7537,16.88,0.0,0.0322,0.4125,0.0164
+The minister bowed and said the neighboring state was weak.,1.0,4,164,101,0.6159,0.6159,0.9509,1.0,6.1699,10.25,0.0,0.0332,0.2875,0.0202
+"In the third year of famine, the granaries stood nearly empt",0.8,0,161,81,0.5031,0.5031,0.8562,0.9748,5.7805,12.38,0.0,0.0453,0.475,0.0162
+"In the third year of famine, the granaries stood nearly empt",0.8,1,83,56,0.6747,0.6747,1.0,1.0,5.4745,7.55,0.0,0.1141,0.2625,0.0112
+"In the third year of famine, the granaries stood nearly empt",0.8,2,75,58,0.7733,0.7733,0.9865,1.0,5.5467,9.38,0.0,0.0667,0.225,0.0116
+"In the third year of famine, the granaries stood nearly empt",0.8,3,159,76,0.478,0.478,0.7975,0.949,5.4167,19.88,0.0,0.0275,0.5125,0.0152
+"In the third year of famine, the granaries stood nearly empt",0.8,4,140,74,0.5286,0.5286,0.8129,0.9855,5.5166,12.73,0.0,0.0377,0.4125,0.0148
+"In the third year of famine, the granaries stood nearly empt",1.0,0,155,98,0.6323,0.6323,0.9675,0.9935,6.2836,11.92,0.0,0.0397,0.325,0.0196
+"In the third year of famine, the granaries stood nearly empt",1.0,1,118,78,0.661,0.661,0.9487,1.0,5.9237,13.11,0.0,0.039,0.35,0.0156
+"In the third year of famine, the granaries stood nearly empt",1.0,2,92,67,0.7283,0.7283,1.0,1.0,5.7066,11.5,0.0,0.0366,0.1625,0.0134
+"In the third year of famine, the granaries stood nearly empt",1.0,3,159,93,0.5849,0.5849,0.9367,0.9936,5.9755,19.88,0.0,0.0313,0.35,0.0186
+"In the third year of famine, the granaries stood nearly empt",1.0,4,151,95,0.6291,0.6291,0.94,0.9933,6.0983,18.88,0.0,0.0428,0.35,0.019
+The emperor summoned his advisors to discuss the border thre,0.8,0,147,69,0.4694,0.4694,0.8082,0.9793,5.2024,12.25,0.0,0.0276,0.6,0.0138
+The emperor summoned his advisors to discuss the border thre,0.8,1,164,94,0.5732,0.5732,0.9325,1.0,5.9807,20.5,0.0,0.0293,0.3875,0.0188
+The emperor summoned his advisors to discuss the border thre,0.8,2,145,82,0.5655,0.5655,0.9028,1.0,5.6634,24.17,0.0,0.0249,0.35,0.0164
+The emperor summoned his advisors to discuss the border thre,0.8,3,166,90,0.5422,0.5422,0.8364,0.9878,5.5843,16.6,0.0,0.0194,0.6,0.018
+The emperor summoned his advisors to discuss the border thre,0.8,4,135,84,0.6222,0.6222,0.9104,0.9925,5.7314,10.38,0.0,0.0302,0.4125,0.0168
+The emperor summoned his advisors to discuss the border thre,1.0,0,119,81,0.6807,0.6807,0.9661,1.0,5.829,7.93,0.0,0.0507,0.225,0.0162
+The emperor summoned his advisors to discuss the border thre,1.0,1,124,83,0.6694,0.6694,0.9431,1.0,5.8305,17.71,0.0,0.0265,0.2875,0.0166
+The emperor summoned his advisors to discuss the border thre,1.0,2,142,92,0.6479,0.6479,0.9574,0.9929,6.0913,15.78,0.0,0.0292,0.225,0.0184
+The emperor summoned his advisors to discuss the border thre,1.0,3,143,81,0.5664,0.5664,0.9085,0.9929,5.6544,15.89,0.0,0.0232,0.475,0.0162
+The emperor summoned his advisors to discuss the border thre,1.0,4,124,82,0.6613,0.6613,0.9431,1.0,5.8389,8.86,0.0,0.0399,0.2875,0.0164
+The ruler asked whether it was better to submit or resist.,0.8,0,181,75,0.4144,0.4144,0.8167,0.9665,5.5945,15.08,0.0,0.0208,0.4125,0.015
+The ruler asked whether it was better to submit or resist.,0.8,1,167,80,0.479,0.479,0.8735,0.9636,5.7509,20.88,0.0,0.0347,0.5125,0.016
+The ruler asked whether it was better to submit or resist.,0.8,2,172,79,0.4593,0.4593,0.8538,0.9706,5.7592,14.33,0.0,0.034,0.45,0.0158
+The ruler asked whether it was better to submit or resist.,0.8,3,177,88,0.4972,0.4972,0.8523,0.9657,5.8894,22.12,0.0,0.0212,0.5125,0.0176
+The ruler asked whether it was better to submit or resist.,0.8,4,168,76,0.4524,0.4524,0.8623,0.9759,5.7106,18.67,0.0,0.0388,0.4125,0.0152
+The ruler asked whether it was better to submit or resist.,1.0,0,169,95,0.5621,0.5621,0.9345,0.994,6.0729,15.36,0.0,0.0329,0.2875,0.019
+The ruler asked whether it was better to submit or resist.,1.0,1,167,85,0.509,0.509,0.8855,0.9879,5.9235,11.93,0.0,0.0408,0.35,0.017
+The ruler asked whether it was better to submit or resist.,1.0,2,160,92,0.575,0.575,0.9245,1.0,6.0328,11.43,0.0,0.0286,0.35,0.0184
+The ruler asked whether it was better to submit or resist.,1.0,3,153,87,0.5686,0.5686,0.9145,0.9868,5.9606,15.3,0.0,0.0372,0.35,0.0174
+The ruler asked whether it was better to submit or resist.,1.0,4,167,91,0.5449,0.5449,0.9096,1.0,5.9545,13.92,0.0,0.0318,0.2875,0.0182
+The general surveyed the battlefield and considered his opti,0.8,0,172,81,0.4709,0.4709,0.8246,0.9588,5.5878,19.11,0.0,0.0217,0.6,0.0162
+The general surveyed the battlefield and considered his opti,0.8,1,140,82,0.5857,0.5857,0.8993,0.9855,5.6225,12.73,0.0,0.0372,0.5125,0.0164
+The general surveyed the battlefield and considered his opti,0.8,2,137,72,0.5255,0.5255,0.8676,0.9704,5.3917,11.42,0.0,0.0354,0.6,0.0144
+The general surveyed the battlefield and considered his opti,0.8,3,77,64,0.8312,0.8312,1.0,1.0,5.7468,19.25,0.0,0.0673,0.2625,0.0128
+The general surveyed the battlefield and considered his opti,0.8,4,142,77,0.5423,0.5423,0.8652,0.9929,5.4157,12.91,0.0,0.0427,0.6,0.0154
+The general surveyed the battlefield and considered his opti,1.0,0,144,84,0.5833,0.5833,0.9021,0.9859,5.9457,13.09,0.0,0.0362,0.2875,0.0168
+The general surveyed the battlefield and considered his opti,1.0,1,124,86,0.6935,0.6935,0.9512,1.0,6.0285,8.27,0.0,0.043,0.2875,0.0172
+The general surveyed the battlefield and considered his opti,1.0,2,108,70,0.6481,0.6481,0.972,1.0,5.6356,12.0,0.0,0.0389,0.225,0.014
+The general surveyed the battlefield and considered his opti,1.0,3,104,73,0.7019,0.7019,0.9612,1.0,5.956,5.47,0.0,0.078,0.325,0.0146
+The general surveyed the battlefield and considered his opti,1.0,4,101,74,0.7327,0.7327,0.98,1.0,5.8751,12.62,0.0,0.0353,0.225,0.0148
+"When the alliance collapsed, each kingdom looked to its own ",0.8,0,156,81,0.5192,0.5192,0.8839,0.974,5.8607,13.0,0.0,0.0361,0.45,0.0162
+"When the alliance collapsed, each kingdom looked to its own ",0.8,1,176,72,0.4091,0.4091,0.7314,0.908,5.1588,19.56,0.0,0.0209,0.6,0.0144
+"When the alliance collapsed, each kingdom looked to its own ",0.8,2,166,73,0.4398,0.4398,0.8182,0.9451,5.4196,16.6,0.0,0.0326,0.6,0.0146
+"When the alliance collapsed, each kingdom looked to its own ",0.8,3,165,83,0.503,0.503,0.8659,0.9693,5.646,13.75,0.0,0.0305,0.7,0.0166
+"When the alliance collapsed, each kingdom looked to its own ",0.8,4,167,80,0.479,0.479,0.8434,0.9394,5.8432,13.92,0.0,0.0371,0.4125,0.016
+"When the alliance collapsed, each kingdom looked to its own ",1.0,0,155,82,0.529,0.529,0.8636,0.9673,5.5621,17.22,0.0,0.0279,0.6,0.0164
+"When the alliance collapsed, each kingdom looked to its own ",1.0,1,134,87,0.6493,0.6493,0.9398,1.0,5.9941,19.14,0.0,0.0331,0.2875,0.0174
+"When the alliance collapsed, each kingdom looked to its own ",1.0,2,155,96,0.6194,0.6194,0.9286,1.0,6.1132,11.92,0.0,0.0405,0.35,0.0192
+"When the alliance collapsed, each kingdom looked to its own ",1.0,3,161,80,0.4969,0.4969,0.8875,0.9748,5.7903,12.38,0.0,0.0419,0.4125,0.016
+"When the alliance collapsed, each kingdom looked to its own ",1.0,4,150,84,0.56,0.56,0.8725,0.9595,5.81,15.0,0.0,0.0268,0.5375,0.0168
+The nature of power is that it changes those who hold it.,0.8,0,171,81,0.4737,0.4737,0.8235,0.9408,5.7911,15.55,0.0,0.0318,0.4125,0.0162
+The nature of power is that it changes those who hold it.,0.8,1,161,83,0.5155,0.5155,0.8625,0.9497,5.7168,13.42,0.0,0.035,0.5375,0.0166
+The nature of power is that it changes those who hold it.,0.8,2,177,82,0.4633,0.4633,0.858,0.9714,5.8316,14.75,0.0,0.0281,0.4125,0.0164
+The nature of power is that it changes those who hold it.,0.8,3,175,78,0.4457,0.4457,0.7816,0.9306,5.5513,13.46,0.0,0.0259,0.6,0.0156
+The nature of power is that it changes those who hold it.,0.8,4,183,73,0.3989,0.3989,0.8022,0.9392,5.6629,20.33,0.0,0.0199,0.45,0.0146
+The nature of power is that it changes those who hold it.,1.0,0,175,82,0.4686,0.4686,0.8736,0.9884,5.8312,13.46,0.0,0.0489,0.5125,0.0164
+The nature of power is that it changes those who hold it.,1.0,1,182,94,0.5165,0.5165,0.9448,0.9944,6.1535,15.17,0.0,0.0275,0.225,0.0188
+The nature of power is that it changes those who hold it.,1.0,2,178,96,0.5393,0.5393,0.9266,1.0,6.0538,12.71,0.0,0.0344,0.45,0.0192
+The nature of power is that it changes those who hold it.,1.0,3,166,86,0.5181,0.5181,0.8727,0.9817,5.9092,18.44,0.0,0.0392,0.4125,0.0172
+The nature of power is that it changes those who hold it.,1.0,4,171,94,0.5497,0.5497,0.9588,1.0,6.1978,19.0,0.0,0.0327,0.2875,0.0188
+What is remembered depends on who survives to tell the story,0.8,0,159,68,0.4277,0.4277,0.7595,0.9554,5.2045,10.6,0.0,0.0319,0.6,0.0136
+What is remembered depends on who survives to tell the story,0.8,1,122,71,0.582,0.582,0.9091,0.9833,5.4685,7.62,0.0,0.0475,0.575,0.0142
+What is remembered depends on who survives to tell the story,0.8,2,176,90,0.5114,0.5114,0.8743,0.9943,6.0762,35.2,0.0,0.0375,0.35,0.018
+What is remembered depends on who survives to tell the story,0.8,3,113,70,0.6195,0.6195,0.9464,1.0,5.4253,10.27,0.0,0.0429,0.2875,0.014
+What is remembered depends on who survives to tell the story,0.8,4,157,83,0.5287,0.5287,0.8782,0.9871,5.7526,14.27,0.0,0.0394,0.475,0.0166
+What is remembered depends on who survives to tell the story,1.0,0,157,90,0.5732,0.5732,0.8974,0.9742,5.9716,13.08,0.0,0.0361,0.475,0.018
+What is remembered depends on who survives to tell the story,1.0,1,175,99,0.5657,0.5657,0.9138,0.9942,6.2501,12.5,0.0,0.0368,0.35,0.0198
+What is remembered depends on who survives to tell the story,1.0,2,124,72,0.5806,0.5806,0.935,1.0,5.6942,13.78,0.0,0.0367,0.2875,0.0144
+What is remembered depends on who survives to tell the story,1.0,3,158,91,0.5759,0.5759,0.9363,1.0,5.9126,13.17,0.0,0.0247,0.4125,0.0182
+What is remembered depends on who survives to tell the story,1.0,4,109,75,0.6881,0.6881,1.0,1.0,5.7651,10.9,0.0,0.0404,0.2625,0.015
+The merchant counted his coins and frowned at the total.,0.8,0,106,60,0.566,0.566,0.9429,1.0,5.2703,6.24,0.0,0.0785,0.35,0.012
+The merchant counted his coins and frowned at the total.,0.8,1,94,57,0.6064,0.6064,0.9892,1.0,5.3776,5.22,0.0,0.0689,0.225,0.0114
+The merchant counted his coins and frowned at the total.,0.8,2,104,60,0.5769,0.5769,0.932,1.0,5.3447,7.43,0.0,0.0743,0.35,0.012
+The merchant counted his coins and frowned at the total.,0.8,3,91,59,0.6484,0.6484,0.9556,1.0,5.4568,4.55,0.0,0.1124,0.325,0.0118
+The merchant counted his coins and frowned at the total.,0.8,4,105,63,0.6,0.6,0.9712,1.0,5.5557,8.08,0.0,0.0636,0.325,0.0126
+The merchant counted his coins and frowned at the total.,1.0,0,93,61,0.6559,0.6559,0.9674,1.0,5.6119,7.75,0.0,0.0728,0.3875,0.0122
+The merchant counted his coins and frowned at the total.,1.0,1,106,78,0.7358,0.7358,0.981,1.0,5.9621,13.25,0.0,0.0714,0.325,0.0156
+The merchant counted his coins and frowned at the total.,1.0,2,113,76,0.6726,0.6726,0.9643,1.0,5.875,18.83,0.0,0.0535,0.2875,0.0152
+The merchant counted his coins and frowned at the total.,1.0,3,85,62,0.7294,0.7294,0.9762,1.0,5.6695,4.47,0.0,0.0924,0.325,0.0124
+The merchant counted his coins and frowned at the total.,1.0,4,109,75,0.6881,0.6881,0.9722,1.0,5.8257,12.11,0.0,0.0424,0.225,0.015
+She walked to the edge of the river and looked across.,0.8,0,142,80,0.5634,0.5634,0.9078,0.9857,5.7019,12.91,0.0,0.0505,0.4125,0.016
+She walked to the edge of the river and looked across.,0.8,1,148,85,0.5743,0.5743,0.9252,0.9863,5.9481,11.38,0.0,0.0473,0.2875,0.017
+She walked to the edge of the river and looked across.,0.8,2,141,79,0.5603,0.5603,0.8714,1.0,5.5424,15.67,0.0,0.0304,0.6,0.0158
+She walked to the edge of the river and looked across.,0.8,3,141,84,0.5957,0.5957,0.9286,0.9928,5.7856,11.75,0.0,0.0333,0.35,0.0168
+She walked to the edge of the river and looked across.,0.8,4,108,62,0.5741,0.5741,0.9065,0.9717,5.4689,6.0,0.0,0.0671,0.3875,0.0124
+She walked to the edge of the river and looked across.,1.0,0,163,88,0.5399,0.5399,0.9259,1.0,5.9474,23.29,0.0,0.0248,0.4125,0.0176
+She walked to the edge of the river and looked across.,1.0,1,98,75,0.7653,0.7653,1.0,1.0,5.9871,7.0,0.0,0.0518,0.1625,0.015
+She walked to the edge of the river and looked across.,1.0,2,166,81,0.488,0.488,0.8424,0.9878,5.5472,20.75,0.0,0.0261,0.6,0.0162
+She walked to the edge of the river and looked across.,1.0,3,160,87,0.5437,0.5437,0.8994,1.0,5.8543,11.43,0.0,0.043,0.4125,0.0174
+She walked to the edge of the river and looked across.,1.0,4,120,83,0.6917,0.6917,0.9748,1.0,5.9386,13.33,0.0,0.0482,0.225,0.0166
+The structure of the bridge relied on three main supports.,0.8,0,95,63,0.6632,0.6632,0.9787,1.0,5.4333,8.64,0.0,0.0457,0.225,0.0126
+The structure of the bridge relied on three main supports.,0.8,1,108,51,0.4722,0.4722,0.8692,0.9717,5.0439,4.7,0.0,0.1119,0.575,0.0102
+The structure of the bridge relied on three main supports.,0.8,2,83,61,0.7349,0.7349,0.9634,1.0,5.5711,11.86,0.0,0.0514,0.225,0.0122
+The structure of the bridge relied on three main supports.,0.8,3,76,49,0.6447,0.6447,0.9467,1.0,5.2424,9.5,0.0,0.1014,0.4875,0.0098
+The structure of the bridge relied on three main supports.,0.8,4,163,79,0.4847,0.4847,0.8333,0.9814,5.4461,14.82,0.0,0.0248,0.6,0.0158
+The structure of the bridge relied on three main supports.,1.0,0,131,85,0.6489,0.6489,0.9538,0.9922,6.0165,10.92,0.0,0.0511,0.2875,0.017
+The structure of the bridge relied on three main supports.,1.0,1,133,74,0.5564,0.5564,0.9167,0.9847,5.7213,10.23,0.0,0.0363,0.35,0.0148
+The structure of the bridge relied on three main supports.,1.0,2,113,73,0.646,0.646,0.9821,1.0,5.8335,8.69,0.0,0.0658,0.225,0.0146
+The structure of the bridge relied on three main supports.,1.0,3,125,76,0.608,0.608,0.9194,0.9756,5.7744,11.36,0.0,0.0464,0.225,0.0152
+The structure of the bridge relied on three main supports.,1.0,4,94,63,0.6702,0.6702,0.9677,1.0,5.7118,5.88,0.0,0.1092,0.2875,0.0126
